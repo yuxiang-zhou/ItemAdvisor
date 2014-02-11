@@ -7,12 +7,23 @@
 //
 
 #import "NewsViewController.h"
+#import "MakePostViewController.h"
 
 @interface NewsViewController ()
 
 @end
 
 @implementation NewsViewController
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"Making A Post"]){
+        
+    }
+}
+
+
+
 
 - (void)viewDidLoad
 {

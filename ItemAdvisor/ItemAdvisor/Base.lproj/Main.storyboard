@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - 广场-->
         <scene sceneID="tXd-vl-dHS">
             <objects>
                 <navigationController definesPresentationContext="YES" id="seZ-5v-0wg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="oQw-tn-o15"/>
+                    <tabBarItem key="tabBarItem" title="广场" id="oQw-tn-o15"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v1b-sc-Vev">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="696" y="-1201"/>
         </scene>
-        <!--Make Post View Controller-->
+        <!--Make Post View Controller - Title-->
         <scene sceneID="lbO-g6-PFQ">
             <objects>
                 <viewController id="CcJ-Rq-bry" customClass="MakePostViewController" sceneMemberID="viewController">
@@ -31,12 +31,50 @@
                     <view key="view" contentMode="scaleToFill" id="wdW-Zm-CNq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oab-tz-7uV">
+                                <rect key="frame" x="20" y="491" width="74" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="+pic">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-GV-jEA">
+                                <rect key="frame" x="123" y="491" width="74" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="+文字">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwv-QP-2bK">
+                                <rect key="frame" x="226" y="491" width="74" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="+tag">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRl-M3-fSj">
+                                <rect key="frame" x="20" y="20" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8YX-ce-x5E" kind="modal" id="5yo-0s-1oW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="ldH-pF-kNr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBP-56-gOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="-1870"/>
+            <point key="canvasLocation" x="-86" y="-1420"/>
         </scene>
         <!--News View Controller - 广场浏览-->
         <scene sceneID="FhO-yK-SVj">
@@ -94,7 +132,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="广场浏览" id="EM0-Jd-VkV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="9oy-No-1jG"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="9oy-No-1jG">
+                            <connections>
+                                <segue destination="CcJ-Rq-bry" kind="modal" identifier="Making A Post" id="EFH-LM-q0j"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="first" id="qDr-HL-hDO"/>
                     </navigationItem>
                     <connections>
@@ -103,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSU-x7-wVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="-1198"/>
+            <point key="canvasLocation" x="1138" y="-1201"/>
         </scene>
         <!--Search View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -199,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wo-zP-6dF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="840"/>
+            <point key="canvasLocation" x="-138" y="620"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X3h-hJ-34k">
