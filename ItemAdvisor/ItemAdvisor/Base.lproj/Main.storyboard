@@ -20,24 +20,6 @@
             </objects>
             <point key="canvasLocation" x="696" y="-1201"/>
         </scene>
-        <!--Make Post View Controller-->
-        <scene sceneID="lbO-g6-PFQ">
-            <objects>
-                <viewController id="CcJ-Rq-bry" customClass="MakePostViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ICr-EN-ogs"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Dx-ts-dI6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wdW-Zm-CNq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hBP-56-gOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-106" y="-1013"/>
-        </scene>
         <!--News View Controller - 广场浏览-->
         <scene sceneID="FhO-yK-SVj">
             <objects>
@@ -233,6 +215,80 @@
             </objects>
             <point key="canvasLocation" x="1122" y="184"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RQT-2o-ZfS">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="kq7-ah-Iz1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1GP-Wu-0ig">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="va3-ri-Lo8" kind="relationship" relationship="rootViewController" id="eXW-aA-7EE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZW-Qh-9Eq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2400" y="7"/>
+        </scene>
+        <!--Make Post View Controller - 写日志-->
+        <scene sceneID="V72-iB-xDO">
+            <objects>
+                <viewController id="va3-ri-Lo8" customClass="MakePostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q12-Fy-0ay"/>
+                        <viewControllerLayoutGuide type="bottom" id="yC8-P2-ZbI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tTZ-On-foD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfh-OC-ZCw">
+                                <rect key="frame" x="0.0" y="522" width="106" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.44313725490196076" green="0.53725490196078429" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="加文字">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D70-81-4ZK">
+                                <rect key="frame" x="214" y="522" width="106" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.53725490200000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="加图片">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wO-aF-h4T">
+                                <rect key="frame" x="106" y="522" width="108" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.44313725490196076" green="0.53725490196078429" blue="0.41176470588235292" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="加物品">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ANY-o8-ctI">
+                                <rect key="frame" x="0.0" y="65" width="320" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="写日志" id="3K4-6w-GsV">
+                        <barButtonItem key="leftBarButtonItem" title="取消/草稿" id="Ymg-q3-DhA">
+                            <connections>
+                                <action selector="cancelOrDraft:" destination="va3-ri-Lo8" id="CxM-7P-Cuw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="发表" id="Nmx-Qe-Swb"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-mf-kSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2918" y="7"/>
+        </scene>
         <!--Navigation Controller - 信息-->
         <scene sceneID="LTj-0v-Qhd">
             <objects>
@@ -264,24 +320,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zeg-Sn-aUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="696" y="-508"/>
-        </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="lRr-7X-38f">
-            <objects>
-                <viewController id="DST-0M-C9a" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FGj-7F-r7q"/>
-                        <viewControllerLayoutGuide type="bottom" id="6YL-Eq-bfP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ce1-67-iu6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wo-zP-6dF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-490" y="-1013"/>
         </scene>
         <!--Navigation Controller - 我-->
         <scene sceneID="X3h-hJ-34k">
