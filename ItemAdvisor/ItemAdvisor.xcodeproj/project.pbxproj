@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A648118A534F600FBDB9C /* MakePostViewController.m */; };
+		2737229018ABC6F200D94103 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737228F18ABC6F200D94103 /* PostManager.m */; };
+		2737229318ABCAD000D94103 /* PostEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737229218ABCAD000D94103 /* PostEntity.m */; };
+		2737229618ABCEC400D94103 /* PostTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737229518ABCEC400D94103 /* PostTag.m */; };
+		2737229918ABD89D00D94103 /* PostCommemts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737229818ABD89D00D94103 /* PostCommemts.m */; };
 		27DD881C18A536E90093827D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD881B18A536E90093827D /* SettingsViewController.m */; };
+		7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A648118A534F600FBDB9C /* MakePostViewController.m */; };
 		7FC1DBBD18A257CA005C216C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBC18A257CA005C216C /* Foundation.framework */; };
 		7FC1DBBF18A257CA005C216C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */; };
 		7FC1DBC118A257CA005C216C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBC018A257CA005C216C /* UIKit.framework */; };
@@ -39,10 +43,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F9A648018A534F600FBDB9C /* MakePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakePostViewController.h; sourceTree = "<group>"; };
-		7F9A648118A534F600FBDB9C /* MakePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakePostViewController.m; sourceTree = "<group>"; };
+		2737228E18ABC6F200D94103 /* PostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostManager.h; sourceTree = "<group>"; };
+		2737228F18ABC6F200D94103 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
+		2737229118ABCAD000D94103 /* PostEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEntity.h; sourceTree = "<group>"; };
+		2737229218ABCAD000D94103 /* PostEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEntity.m; sourceTree = "<group>"; };
+		2737229418ABCEC400D94103 /* PostTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTag.h; sourceTree = "<group>"; };
+		2737229518ABCEC400D94103 /* PostTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTag.m; sourceTree = "<group>"; };
+		2737229718ABD89D00D94103 /* PostCommemts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommemts.h; sourceTree = "<group>"; };
+		2737229818ABD89D00D94103 /* PostCommemts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommemts.m; sourceTree = "<group>"; };
 		27DD881A18A536E90093827D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		27DD881B18A536E90093827D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7F9A648018A534F600FBDB9C /* MakePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakePostViewController.h; sourceTree = "<group>"; };
+		7F9A648118A534F600FBDB9C /* MakePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakePostViewController.m; sourceTree = "<group>"; };
 		7FC1DBB918A257CA005C216C /* ItemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC1DBBC18A257CA005C216C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,6 +106,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2737228D18ABC67C00D94103 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				2737228E18ABC6F200D94103 /* PostManager.h */,
+				2737228F18ABC6F200D94103 /* PostManager.m */,
+				2737229118ABCAD000D94103 /* PostEntity.h */,
+				2737229218ABCAD000D94103 /* PostEntity.m */,
+				2737229418ABCEC400D94103 /* PostTag.h */,
+				2737229518ABCEC400D94103 /* PostTag.m */,
+				2737229718ABD89D00D94103 /* PostCommemts.h */,
+				2737229818ABD89D00D94103 /* PostCommemts.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 		7FC1DBB018A257CA005C216C = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +154,7 @@
 		7FC1DBC218A257CA005C216C /* ItemAdvisor */ = {
 			isa = PBXGroup;
 			children = (
+				2737228D18ABC67C00D94103 /* models */,
 				7FC1DBFC18A28AE2005C216C /* Controllers */,
 				7FC1DBCB18A257CA005C216C /* AppDelegate.h */,
 				7FC1DBCC18A257CA005C216C /* AppDelegate.m */,
@@ -282,8 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2737229318ABCAD000D94103 /* PostEntity.m in Sources */,
+				2737229618ABCEC400D94103 /* PostTag.m in Sources */,
 				7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */,
 				7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */,
+				2737229918ABD89D00D94103 /* PostCommemts.m in Sources */,
+				2737229018ABC6F200D94103 /* PostManager.m in Sources */,
 				7FC1DBD618A257CA005C216C /* SearchViewController.m in Sources */,
 				7FC1DBCD18A257CA005C216C /* AppDelegate.m in Sources */,
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
