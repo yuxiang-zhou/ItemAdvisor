@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A648118A534F600FBDB9C /* MakePostViewController.m */; };
 		27DD881C18A536E90093827D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD881B18A536E90093827D /* SettingsViewController.m */; };
+		7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A648118A534F600FBDB9C /* MakePostViewController.m */; };
 		7FC1DBBD18A257CA005C216C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBC18A257CA005C216C /* Foundation.framework */; };
 		7FC1DBBF18A257CA005C216C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */; };
 		7FC1DBC118A257CA005C216C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBC018A257CA005C216C /* UIKit.framework */; };
@@ -26,6 +26,8 @@
 		7FC1DBEB18A257CA005C216C /* ItemAdvisorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBEA18A257CA005C216C /* ItemAdvisorTests.m */; };
 		7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF718A27AAC005C216C /* AccountViewController.m */; };
 		7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF918A27AAC005C216C /* MsgViewController.m */; };
+		D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D546E18A96A770074C182 /* TabBarViewController.m */; };
+		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F9A648018A534F600FBDB9C /* MakePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakePostViewController.h; sourceTree = "<group>"; };
-		7F9A648118A534F600FBDB9C /* MakePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakePostViewController.m; sourceTree = "<group>"; };
 		27DD881A18A536E90093827D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		27DD881B18A536E90093827D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7F9A648018A534F600FBDB9C /* MakePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakePostViewController.h; sourceTree = "<group>"; };
+		7F9A648118A534F600FBDB9C /* MakePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakePostViewController.m; sourceTree = "<group>"; };
 		7FC1DBB918A257CA005C216C /* ItemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC1DBBC18A257CA005C216C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,6 +70,9 @@
 		7FC1DBF718A27AAC005C216C /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		7FC1DBF818A27AAC005C216C /* MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgViewController.h; sourceTree = "<group>"; };
 		7FC1DBF918A27AAC005C216C /* MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgViewController.m; sourceTree = "<group>"; };
+		D41D546D18A96A770074C182 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		D41D546E18A96A770074C182 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		D41D547318A98C350074C182 /* haha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haha.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +145,7 @@
 		7FC1DBC318A257CA005C216C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D41D547318A98C350074C182 /* haha.jpeg */,
 				7FC1DBC418A257CA005C216C /* ItemAdvisor-Info.plist */,
 				7FC1DBC518A257CA005C216C /* InfoPlist.strings */,
 				7FC1DBC818A257CA005C216C /* main.m */,
@@ -169,14 +175,16 @@
 		7FC1DBFC18A28AE2005C216C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7FC1DBF618A27AAC005C216C /* AccountViewController.h */,
-				7FC1DBF718A27AAC005C216C /* AccountViewController.m */,
-				7FC1DBF818A27AAC005C216C /* MsgViewController.h */,
-				7FC1DBF918A27AAC005C216C /* MsgViewController.m */,
+				D41D546D18A96A770074C182 /* TabBarViewController.h */,
+				D41D546E18A96A770074C182 /* TabBarViewController.m */,
 				7FC1DBD118A257CA005C216C /* NewsViewController.h */,
 				7FC1DBD218A257CA005C216C /* NewsViewController.m */,
 				7FC1DBD418A257CA005C216C /* SearchViewController.h */,
 				7FC1DBD518A257CA005C216C /* SearchViewController.m */,
+				7FC1DBF818A27AAC005C216C /* MsgViewController.h */,
+				7FC1DBF918A27AAC005C216C /* MsgViewController.m */,
+				7FC1DBF618A27AAC005C216C /* AccountViewController.h */,
+				7FC1DBF718A27AAC005C216C /* AccountViewController.m */,
 				7F9A648018A534F600FBDB9C /* MakePostViewController.h */,
 				7F9A648118A534F600FBDB9C /* MakePostViewController.m */,
 				27DD881A18A536E90093827D /* SettingsViewController.h */,
@@ -264,6 +272,7 @@
 				7FC1DBD818A257CA005C216C /* Images.xcassets in Resources */,
 				7FC1DBC718A257CA005C216C /* InfoPlist.strings in Resources */,
 				7FC1DBD018A257CA005C216C /* Main.storyboard in Resources */,
+				D41D547418A98C350074C182 /* haha.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +298,7 @@
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
 				7FC1DBC918A257CA005C216C /* main.m in Sources */,
 				7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */,
+				D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */,
 				27DD881C18A536E90093827D /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

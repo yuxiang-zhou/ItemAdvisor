@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AccountViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 
 @end

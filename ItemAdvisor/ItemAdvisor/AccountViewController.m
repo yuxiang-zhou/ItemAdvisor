@@ -13,9 +13,13 @@
 @end
 
 @implementation AccountViewController
+@synthesize profileImage;
 
 - (void)viewDidLoad
 {
+    UIImage *image = [UIImage imageNamed:@"haha.jpeg"];
+    [profileImage setImage:image];
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
