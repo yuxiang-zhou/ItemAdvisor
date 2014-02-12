@@ -323,15 +323,18 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CMS-vL-8q0">
-                                <rect key="frame" x="0.0" y="257" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="256" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.31372549019607843" green="0.1764705882352941" blue="0.14509803921568626" alpha="0.95000000000000007" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="关注他">
+                                <state key="normal" title="编辑">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="editProfile:" destination="eKy-me-0Ow" eventType="touchUpInside" id="e7L-fO-tEw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ODH-hY-bMI">
                                 <rect key="frame" x="80" y="64" width="80" height="33"/>
@@ -370,14 +373,14 @@
                                 <rect key="frame" x="0.0" y="97" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="陈 晓明" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-uk-eO3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="陈 晓明" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-uk-eO3">
                                 <rect key="frame" x="160" y="164" width="160" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="自我简介" translatesAutoresizingMaskIntoConstraints="NO" id="9CF-DG-ZVP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="自我简介" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CF-DG-ZVP">
                                 <rect key="frame" x="160" y="202" width="160" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,7 +399,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="profileImage" destination="PgX-Tg-6yQ" id="5l5-2H-8gy"/>
+                        <outlet property="followerDetail" destination="BiH-Cd-HqV" id="7L3-JM-oAy"/>
+                        <outlet property="followingDetail" destination="ODH-hY-bMI" id="yHc-Cb-fl6"/>
+                        <outlet property="postDetail" destination="Chc-QL-wzF" id="wda-XC-dKC"/>
+                        <outlet property="profileImage" destination="PgX-Tg-6yQ" id="dng-ul-cZ0"/>
+                        <outlet property="stuffDetail" destination="mkh-4c-a52" id="3j6-KU-yIC"/>
+                        <outlet property="userIntroduction" destination="9CF-DG-ZVP" id="OPQ-Ac-ZNV"/>
+                        <outlet property="userName" destination="RvY-uk-eO3" id="B88-I6-zIU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyO-ra-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>

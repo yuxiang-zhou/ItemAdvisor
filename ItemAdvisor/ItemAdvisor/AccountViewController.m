@@ -10,10 +10,13 @@
 
 @interface AccountViewController ()
 
+
 @end
 
 @implementation AccountViewController
 @synthesize profileImage;
+- (IBAction)editProfile:(UIButton *)sender {
+}
 
 - (void)viewDidLoad
 {
