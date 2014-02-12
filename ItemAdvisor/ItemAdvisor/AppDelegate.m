@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BridgeManager.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation AppDelegate
@@ -35,6 +36,8 @@
     
     // Uncomment to change the color of buttons in tab bar
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
     
     // Override point for customization after application launch.
     return YES;

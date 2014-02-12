@@ -48,4 +48,8 @@
     return authenticationState;
 }
 
+-(void) onUserInfoReceived:(NSString *)data {
+    NSLog(data);
+}
+
 @end
