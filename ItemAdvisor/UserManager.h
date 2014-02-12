@@ -9,14 +9,19 @@
 #import <Foundation/Foundation.h>
 
 @interface UserManager : NSObject
-{
-    NSString* username;
-    
-}
+
+@property NSInteger     userId;
+@property NSString*     firstName;
+@property NSString*     lastName;
+@property NSString*     description;
+@property NSString*     email;
+
 
 +(instancetype) getUserManager;
 
 -(BOOL) isAuthenticated;
+-(void) updateUserInfo;
+-(BOOL) loginAs:(NSString *)userLogin withPassword:(NSString *)password;
 
 
 @end
