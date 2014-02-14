@@ -13,6 +13,19 @@
 @end
 
 @implementation MakePostViewController
+- (IBAction)CancelOrDraft:(id)sender {
+    TLAlertView *alertView = [TLAlertView showInView:self.view withTitle:@"即将返回" message:@"要保存草稿吗？" confirmButtonTitle:@"不要" cancelButtonTitle:@"要"];
+    
+    [alertView handleCancel:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }         handleConfirm:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+    [alertView show];
+    alertView.buttonColor = UIColorFromRGB(0x718969);
+}
 
 - (void)viewDidLoad
 {

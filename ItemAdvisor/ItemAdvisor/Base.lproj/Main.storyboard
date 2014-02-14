@@ -87,7 +87,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="广场浏览" id="EM0-Jd-VkV">
                         <barButtonItem key="leftBarButtonItem" image="first" id="y2l-JR-JYE"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9oy-No-1jG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9oy-No-1jG">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="NewsToMakePost" id="ZZm-aj-jPa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -145,7 +149,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="物品搜索" id="ypo-kZ-9eT">
                         <barButtonItem key="leftBarButtonItem" image="first" id="tze-m8-VSy"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="u6d-z9-OiW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="u6d-z9-OiW">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="SearchToMakePost" id="aZ7-f1-pPq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -208,27 +216,31 @@
                     </view>
                     <navigationItem key="navigationItem" title="消息列表" id="DIH-ST-i8e">
                         <barButtonItem key="leftBarButtonItem" image="first" id="CD3-o9-jlZ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ulk-8x-e0P"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ulk-8x-e0P">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="MsgToMakePost" id="qxO-kZ-Rqz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQa-6v-2LI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1122" y="184"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RQT-2o-ZfS">
+        <!--Prepare Make Post Navigation View Controller-->
+        <scene sceneID="ngA-8i-F8A">
             <objects>
-                <navigationController definesPresentationContext="YES" id="kq7-ah-Iz1" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1GP-Wu-0ig">
+                <navigationController definesPresentationContext="YES" id="1nq-Ch-ZdQ" customClass="PrepareMakePostNavigationViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aK2-ri-5KR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="va3-ri-Lo8" kind="relationship" relationship="rootViewController" id="eXW-aA-7EE"/>
+                        <segue destination="va3-ri-Lo8" kind="relationship" relationship="rootViewController" id="ksL-jS-OR4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZW-Qh-9Eq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="No0-Vn-0dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2400" y="7"/>
+            <point key="canvasLocation" x="1875" y="-143"/>
         </scene>
         <!--Make Post View Controller - 写日志-->
         <scene sceneID="V72-iB-xDO">
@@ -279,15 +291,20 @@
                     <navigationItem key="navigationItem" title="写日志" id="3K4-6w-GsV">
                         <barButtonItem key="leftBarButtonItem" title="取消/草稿" id="Ymg-q3-DhA">
                             <connections>
-                                <action selector="cancelOrDraft:" destination="va3-ri-Lo8" id="CxM-7P-Cuw"/>
+                                <action selector="CancelOrDraft:" destination="va3-ri-Lo8" id="Mhe-XW-Q0V"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="发表" id="Nmx-Qe-Swb"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addImage" destination="D70-81-4ZK" id="QQ9-Zp-DUn"/>
+                        <outlet property="addTag" destination="6wO-aF-h4T" id="pMg-RH-Aga"/>
+                        <outlet property="addText" destination="dfh-OC-ZCw" id="UcE-L0-5GN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-mf-kSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2918" y="7"/>
+            <point key="canvasLocation" x="2376" y="-143"/>
         </scene>
         <!--Navigation Controller - 信息-->
         <scene sceneID="LTj-0v-Qhd">
@@ -434,7 +451,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="个人主页" id="PCa-y3-d9J">
                         <barButtonItem key="leftBarButtonItem" image="first" id="HOQ-U1-q0N"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="AccountToMakePost" id="AmL-Wc-7Ca"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="followerDetail" destination="BiH-Cd-HqV" id="7L3-JM-oAy"/>
@@ -482,4 +503,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="AmL-Wc-7Ca"/>
+    </inferredMetricsTieBreakers>
 </document>
