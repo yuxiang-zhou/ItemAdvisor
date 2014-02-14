@@ -34,19 +34,47 @@
     self.userIntroduction.text = [NSString stringWithFormat:@"%@", intro];
     [self.userIntroduction setFont:[UIFont systemFontOfSize:11]];
     
-    //Initialise details(post,following,follower,stuff)
+    //Initialise details(POST)
     NSUInteger numOfpost = 88;
-    [self.postDetail setTitle:[NSString stringWithFormat:@"\n%lu", (unsigned long)numOfpost] forState:UIControlStateNormal];
+    NSString *postDetailTitle = [NSString stringWithFormat:@"日志\n%lu",(unsigned long)numOfpost];
+    
+    NSMutableAttributedString *postTitle = [[NSMutableAttributedString alloc] initWithString:postDetailTitle];
 
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setAlignment:NSTextAlignmentCenter];
+    [postTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, postTitle.length)];
+    
+    [self.postDetail setAttributedTitle:postTitle forState:UIControlStateNormal];
+
+    //Initialise details(FOLLOWING)
     NSUInteger numOffollowing = 88;
-    [self.followingDetail setTitle:[NSString stringWithFormat:@"\n%lu", (unsigned long)numOffollowing] forState:UIControlStateNormal];
+    NSString *followingDetailTitle = [NSString stringWithFormat:@"关注\n%lu",(unsigned long)numOffollowing];
     
+    NSMutableAttributedString *followingTitle = [[NSMutableAttributedString alloc] initWithString:followingDetailTitle];
+    
+    [followingTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, followingTitle.length)];
+    
+    [self.followingDetail setAttributedTitle:followingTitle forState:UIControlStateNormal];
+    
+    //Initialise details(FOLLOWER)
     NSUInteger numOffollower = 88;
-    [self.followerDetail setTitle:[NSString stringWithFormat:@"\n%lu", (unsigned long)numOffollower] forState:UIControlStateNormal];
+    NSString *followerDetailTitle = [NSString stringWithFormat:@"粉丝\n%lu",(unsigned long)numOffollower];
     
+    NSMutableAttributedString *followerTitle = [[NSMutableAttributedString alloc] initWithString:followerDetailTitle];
+    
+    [followerTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, followerTitle.length)];
+    
+    [self.followerDetail setAttributedTitle:followerTitle forState:UIControlStateNormal];
+    
+    //Initialise details(STUFF)
     NSUInteger numOfstuff = 88;
-    [self.stuffDetail setTitle:[NSString stringWithFormat:@"\n%lu", (unsigned long)numOfstuff] forState:UIControlStateNormal];
+    NSString *stuffDetailTitle = [NSString stringWithFormat:@"物品\n%lu",(unsigned long)numOfstuff];
     
+    NSMutableAttributedString *stuffTitle = [[NSMutableAttributedString alloc] initWithString:stuffDetailTitle];
+    
+    [stuffTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, stuffTitle.length)];
+    
+    [self.stuffDetail setAttributedTitle:stuffTitle forState:UIControlStateNormal];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
