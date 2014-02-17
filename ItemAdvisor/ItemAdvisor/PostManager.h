@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "PostTag.h"
 @interface PostManager : NSObject
 
-
+-(void) getMostRatedPostFrom:(PostTag*)tag;
+-(void) makingAPost;
 
 @end
