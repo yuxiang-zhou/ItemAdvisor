@@ -32,22 +32,8 @@
 
 -(void)requestUserInfo:(NSString *)userid {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].userinfoRH];
     
-}
-
-#pragma mark - NSURLRequest Delegate Methods
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-
-}
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [[UserManager getUserManager] performSelector:@selector(onUserInfoReceived:) withObject:[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding]];
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-
 }
 
 @end

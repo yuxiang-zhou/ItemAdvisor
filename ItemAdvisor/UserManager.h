@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserInfoRequestHandler.h"
 
 @interface UserManager : NSObject
 
@@ -15,6 +16,8 @@
 @property NSString*     lastName;
 @property NSString*     description;
 @property NSString*     email;
+
+@property UserInfoRequestHandler* userinfoRH;
 
 
 +(instancetype) getUserManager;

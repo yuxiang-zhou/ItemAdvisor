@@ -7,6 +7,7 @@
 //
 
 #import "UserManager.h"
+#import "BridgeManager.h"
 
 @implementation UserManager
 {
@@ -25,6 +26,7 @@
     if (self = [super init]) {
         // init propertise
         authenticationState = NO;
+        _userinfoRH = [[UserInfoRequestHandler alloc] initWithDelegate:self];
     }
     return self;
 }
@@ -35,7 +37,7 @@
 }
 
 -(void) updateUserInfo {
-//    TODO: update user info
+    [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
 }
 
 -(BOOL) loginAs:(NSString *)userLogin withPassword:(NSString *)password {
@@ -48,8 +50,13 @@
     return authenticationState;
 }
 
--(void) onUserInfoReceived:(NSString *)data {
-    NSLog(data);
+-(void) onUserInfoReceived:(NSDictionary *)data {
+    NSDictionary* user_data = [data objectForKey:@"user_data_request"];
+    self.firstName = [user_data objectForKey:@"firstname"];
+    self.userId = [[user_data objectForKey:@"userid"] intValue];
+    self.lastName = [user_data objectForKey:@"lastname"];
+    self.description = [user_data objectForKey:@"description"];
+    self.email = [user_data objectForKey:@"email"];
 }
 
 @end

@@ -37,8 +37,6 @@
     // Uncomment to change the color of buttons in tab bar
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     
-    [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
-    
     // Override point for customization after application launch.
     return YES;
 }
