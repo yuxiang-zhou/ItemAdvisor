@@ -31,6 +31,8 @@
 		D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */; };
 		D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C06418AE20C300D7DEC2 /* TLAlertView.m */; };
 		D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D472C06718AE228200D7DEC2 /* QuartzCore.framework */; };
+		D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC418B4E3AE00D27DB3 /* delete.png */; };
+		D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		D472C06318AE20C300D7DEC2 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLAlertView.h; path = ../TLAlertView.h; sourceTree = "<group>"; };
 		D472C06418AE20C300D7DEC2 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TLAlertView.m; path = ../TLAlertView.m; sourceTree = "<group>"; };
 		D472C06718AE228200D7DEC2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D4E63DC418B4E3AE00D27DB3 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,8 @@
 			children = (
 				D472C06618AE20CB00D7DEC2 /* Source */,
 				7FC1DBD718A257CA005C216C /* Images.xcassets */,
+				D4E63DC418B4E3AE00D27DB3 /* delete.png */,
+				D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */,
 				D41D547318A98C350074C182 /* haha.jpeg */,
 				7FC1DBC418A257CA005C216C /* ItemAdvisor-Info.plist */,
 				7FC1DBC518A257CA005C216C /* InfoPlist.strings */,
@@ -317,8 +323,10 @@
 			files = (
 				7FC1DBD818A257CA005C216C /* Images.xcassets in Resources */,
 				7FC1DBC718A257CA005C216C /* InfoPlist.strings in Resources */,
+				D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */,
 				7FC1DBD018A257CA005C216C /* Main.storyboard in Resources */,
 				D41D547418A98C350074C182 /* haha.jpeg in Resources */,
+				D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

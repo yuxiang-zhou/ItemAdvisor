@@ -27,6 +27,51 @@
     alertView.buttonColor = UIColorFromRGB(0x718969);
 }
 
+-(void)refreshScrollView
+{
+    CGSize contentSize=CGSizeMake(320, 458);
+    [_scrollView setContentSize:contentSize];
+}
+
+- (IBAction)addPic:(id)sender
+{
+    UIImageView *aImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"haha.jpeg"]];
+    [aImageView setFrame:CGRectMake(20, 20, PIC_WIDTH, PIC_HEIGHT)];
+    [addedPicArray addObject:aImageView];
+    [_scrollView addSubview:aImageView];
+    
+//    for (UIImageView *img in addedPicArray) {
+//        
+//        CABasicAnimation *positionAnim=[CABasicAnimation animationWithKeyPath:@"position"];
+//        [positionAnim setFromValue:[NSValue valueWithCGPoint:CGPointMake(img.center.x, img.center.y)]];
+//        [positionAnim setToValue:[NSValue valueWithCGPoint:CGPointMake(img.center.x+INSETS+PIC_WIDTH, img.center.y)]];
+//        [positionAnim setDelegate:self];
+//        [positionAnim setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+//        [positionAnim setDuration:0.25f];
+//        [img.layer addAnimation:positionAnim forKey:nil];
+//        
+//        [img setCenter:CGPointMake(img.center.x+INSETS+PIC_WIDTH, img.center.y)];
+//    }
+    
+    UIButton *sampleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sampleButton setFrame:CGRectMake(97,15,20,20)];
+    [sampleButton setTitle:@"" forState:UIControlStateNormal];
+    [sampleButton setBackgroundImage:[[UIImage imageNamed:@"deleteIcon.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0] forState:UIControlStateNormal];
+    [sampleButton addTarget:self action:@selector(deleteButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [_scrollView addSubview:sampleButton];
+    
+//    [self refreshScrollView];
+}
+
+-(void)deleteButtonPressed
+{
+    for (UIView *v in [_scrollView subviews]) {
+        [v removeFromSuperview];
+    }
+    [addedPicArray removeAllObjects];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -94,9 +94,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="newsView" destination="eFg-kV-swG" id="Jt4-s9-eeM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSU-x7-wVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,6 +268,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addPic:" destination="va3-ri-Lo8" eventType="touchUpInside" id="GOt-pV-PXe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wO-aF-h4T">
                                 <rect key="frame" x="106" y="522" width="108" height="46"/>
@@ -300,6 +300,7 @@
                         <outlet property="addImage" destination="D70-81-4ZK" id="QQ9-Zp-DUn"/>
                         <outlet property="addTag" destination="6wO-aF-h4T" id="pMg-RH-Aga"/>
                         <outlet property="addText" destination="dfh-OC-ZCw" id="UcE-L0-5GN"/>
+                        <outlet property="scrollView" destination="ANY-o8-ctI" id="GDZ-XC-YiY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-mf-kSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -501,6 +502,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AmL-Wc-7Ca"/>
+        <segue reference="ZZm-aj-jPa"/>
     </inferredMetricsTieBreakers>
 </document>
