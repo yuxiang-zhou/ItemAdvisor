@@ -11,6 +11,7 @@
 @interface PostManager : NSObject
 
 -(void) getMostRatedPostFrom:(PostTag*)tag;
+-(void) getMostRatedPost;
 -(void) makingAPost;
 
 @end

@@ -18,6 +18,7 @@
 
 @property (nonatomic) NSInteger NumberOfThumbUp;
 @property (nonatomic) NSInteger NumberOfThumbDown;
+@property (nonatomic) NSInteger NumberOfViews;
 
 -(void)putAThumbUpFor:(PostEntity*)post;
 -(void)putAThumbDownFor:(PostEntity*)post;
