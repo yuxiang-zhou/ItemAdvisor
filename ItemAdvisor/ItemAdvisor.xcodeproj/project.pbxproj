@@ -29,6 +29,14 @@
 		7FC1DBEB18A257CA005C216C /* ItemAdvisorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBEA18A257CA005C216C /* ItemAdvisorTests.m */; };
 		7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF718A27AAC005C216C /* AccountViewController.m */; };
 		7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF918A27AAC005C216C /* MsgViewController.m */; };
+		D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D546E18A96A770074C182 /* TabBarViewController.m */; };
+		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
+		D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */; };
+		D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C06418AE20C300D7DEC2 /* TLAlertView.m */; };
+		D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D472C06718AE228200D7DEC2 /* QuartzCore.framework */; };
+		D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC418B4E3AE00D27DB3 /* delete.png */; };
+		D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */; };
+		D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E63DD218B50B9800D27DB3 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +85,18 @@
 		7FC1DBF718A27AAC005C216C /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		7FC1DBF818A27AAC005C216C /* MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgViewController.h; sourceTree = "<group>"; };
 		7FC1DBF918A27AAC005C216C /* MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgViewController.m; sourceTree = "<group>"; };
+		D41D546D18A96A770074C182 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		D41D546E18A96A770074C182 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		D41D547318A98C350074C182 /* haha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haha.jpeg; sourceTree = "<group>"; };
+		D472C05E18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareMakePostNavigationViewController.h; sourceTree = "<group>"; };
+		D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareMakePostNavigationViewController.m; sourceTree = "<group>"; };
+		D472C06318AE20C300D7DEC2 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLAlertView.h; path = ../TLAlertView.h; sourceTree = "<group>"; };
+		D472C06418AE20C300D7DEC2 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TLAlertView.m; path = ../TLAlertView.m; sourceTree = "<group>"; };
+		D472C06718AE228200D7DEC2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D4E63DC418B4E3AE00D27DB3 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteIcon.png; sourceTree = "<group>"; };
+		D4E63DD118B50B9800D27DB3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		D4E63DD218B50B9800D27DB3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */,
 				7FC1DBBF18A257CA005C216C /* CoreGraphics.framework in Frameworks */,
 				7FC1DBC118A257CA005C216C /* UIKit.framework in Frameworks */,
 				7FC1DBBD18A257CA005C216C /* Foundation.framework in Frameworks */,
@@ -146,6 +167,7 @@
 		7FC1DBBB18A257CA005C216C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D472C06718AE228200D7DEC2 /* QuartzCore.framework */,
 				7FC1DBBC18A257CA005C216C /* Foundation.framework */,
 				7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */,
 				7FC1DBC018A257CA005C216C /* UIKit.framework */,
@@ -171,6 +193,11 @@
 		7FC1DBC318A257CA005C216C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D472C06618AE20CB00D7DEC2 /* Source */,
+				7FC1DBD718A257CA005C216C /* Images.xcassets */,
+				D4E63DC418B4E3AE00D27DB3 /* delete.png */,
+				D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */,
+				D41D547318A98C350074C182 /* haha.jpeg */,
 				7FC1DBC418A257CA005C216C /* ItemAdvisor-Info.plist */,
 				7FC1DBC518A257CA005C216C /* InfoPlist.strings */,
 				7FC1DBC818A257CA005C216C /* main.m */,
@@ -200,20 +227,59 @@
 		7FC1DBFC18A28AE2005C216C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7FC1DBF618A27AAC005C216C /* AccountViewController.h */,
-				7FC1DBF718A27AAC005C216C /* AccountViewController.m */,
-				7FC1DBF818A27AAC005C216C /* MsgViewController.h */,
-				7FC1DBF918A27AAC005C216C /* MsgViewController.m */,
+				D4E63DD118B50B9800D27DB3 /* LoginViewController.h */,
+				D4E63DD218B50B9800D27DB3 /* LoginViewController.m */,
+				D472C06918AE276800D7DEC2 /* Setting */,
+				D472C06218AE1BDA00D7DEC2 /* Make Post */,
+				D472C06118AE1B4300D7DEC2 /* Tab Bar */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D472C06118AE1B4300D7DEC2 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				D41D546D18A96A770074C182 /* TabBarViewController.h */,
+				D41D546E18A96A770074C182 /* TabBarViewController.m */,
 				7FC1DBD118A257CA005C216C /* NewsViewController.h */,
 				7FC1DBD218A257CA005C216C /* NewsViewController.m */,
 				7FC1DBD418A257CA005C216C /* SearchViewController.h */,
 				7FC1DBD518A257CA005C216C /* SearchViewController.m */,
+				7FC1DBF818A27AAC005C216C /* MsgViewController.h */,
+				7FC1DBF918A27AAC005C216C /* MsgViewController.m */,
+				7FC1DBF618A27AAC005C216C /* AccountViewController.h */,
+				7FC1DBF718A27AAC005C216C /* AccountViewController.m */,
+			);
+			name = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		D472C06218AE1BDA00D7DEC2 /* Make Post */ = {
+			isa = PBXGroup;
+			children = (
 				7F9A648018A534F600FBDB9C /* MakePostViewController.h */,
 				7F9A648118A534F600FBDB9C /* MakePostViewController.m */,
+				D472C05E18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.h */,
+				D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */,
+			);
+			name = "Make Post";
+			sourceTree = "<group>";
+		};
+		D472C06618AE20CB00D7DEC2 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D472C06318AE20C300D7DEC2 /* TLAlertView.h */,
+				D472C06418AE20C300D7DEC2 /* TLAlertView.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		D472C06918AE276800D7DEC2 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
 				27DD881A18A536E90093827D /* SettingsViewController.h */,
 				27DD881B18A536E90093827D /* SettingsViewController.m */,
 			);
-			name = Controllers;
+			name = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +360,10 @@
 			files = (
 				7FC1DBD818A257CA005C216C /* Images.xcassets in Resources */,
 				7FC1DBC718A257CA005C216C /* InfoPlist.strings in Resources */,
+				D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */,
 				7FC1DBD018A257CA005C216C /* Main.storyboard in Resources */,
+				D41D547418A98C350074C182 /* haha.jpeg in Resources */,
+				D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2737229318ABCAD000D94103 /* PostEntity.m in Sources */,
+				D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */,
 				7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */,
 				7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */,
 				2737229918ABD89D00D94103 /* PostCommemts.m in Sources */,
@@ -322,7 +392,10 @@
 				7FC1DBCD18A257CA005C216C /* AppDelegate.m in Sources */,
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
 				7FC1DBC918A257CA005C216C /* main.m in Sources */,
+				D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */,
+				D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */,
 				7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */,
+				D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */,
 				27DD881C18A536E90093827D /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

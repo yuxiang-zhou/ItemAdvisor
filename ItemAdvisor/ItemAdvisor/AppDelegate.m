@@ -16,16 +16,26 @@
     // Uncomment to change the background color of navigation bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x2a477a)];
     
-    // Uncomment to change the color of back button
+    // Uncomment to change the color of back button in navigation bar
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-    // Uncomment to change the font style of the title
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    // Uncomment to change the font style of the title in navigation bar
      NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
      shadow.shadowOffset = CGSizeMake(0, 0);
      [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
      [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName, shadow, NSShadowAttributeName,
      [UIFont fontWithName:@"System" size:16.0], NSFontAttributeName, nil]];
+    
+    
+    // Uncomment to change the background color of tab bar
+    [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x2a477a)];
+    
+    // Uncomment to change the color of buttons in tab bar
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
     // Override point for customization after application launch.
     return YES;
 }

@@ -29,13 +29,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    UILabel *labelExample = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 130.0, 320.0, 44.0)];
-    labelExample.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    labelExample.text = @"Example Label";
-    labelExample.backgroundColor = [UIColor clearColor];
-    labelExample.textColor = [UIColor blackColor];
-    [newsView addSubview:labelExample];
-    
+//    UILabel *labelExample = [[UILabel alloc] initWithFrame:CGRectMake(1.0, 100.0, 320.0, 44.0)];
+//    labelExample.font = [UIFont fontWithName:@"system" size:10];
+//    labelExample.text = @"Test";
+//    labelExample.backgroundColor = [UIColor clearColor];
+//    labelExample.textColor = [UIColor blackColor];
+//    [newsView addSubview:labelExample];
 }
 
 - (void)didReceiveMemoryWarning
