@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad
 {
+//    [[UserManager getUserManager] getCurrentUserInfoAsync:1 withDelegate:self];
     //Initialise profile image
     UIImage *image = [UIImage imageNamed:@"haha.jpeg"];
     [profileImage setImage:image];
@@ -83,6 +84,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onUserInfoReceived:(NSDictionary *)userData {
+    
 }
 
 @end
