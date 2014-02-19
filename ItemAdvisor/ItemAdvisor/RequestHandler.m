@@ -13,8 +13,13 @@
 -(instancetype)initWithDelegate:(id) delegate {
     if(self = [super init]) {
         self.delegate = delegate;
+        observers = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+-(void)addObserver:(id)observer {
+    [observers addObject:observer];
 }
 
 #pragma mark - NSURLRequest Delegate Methods

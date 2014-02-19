@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoRequestHandler.h"
 
+@protocol UserManagerDelegate
+@required
+- (void)onUserInfoReceived:(NSDictionary *)userData;
+@end
+
+
 @interface UserManager : NSObject
 
 @property NSInteger     userId;
@@ -23,8 +29,8 @@
 +(instancetype) getUserManager;
 
 -(BOOL) isAuthenticated;
--(void) updateUserInfo;
--(BOOL) loginAs:(NSString *)userLogin withPassword:(NSString *)password;
+-(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate;
+-(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password;
 
 
 @end

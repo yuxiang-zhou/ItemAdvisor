@@ -7,12 +7,20 @@
 //
 
 #import "UserInfoRequestHandler.h"
+#import "UserManager.h"
 
 @implementation UserInfoRequestHandler
 
 -(void)onSuccess:(NSDictionary *) jsonData{
     if([self.delegate respondsToSelector:@selector(onUserInfoReceived:)])
         [self.delegate performSelector:@selector(onUserInfoReceived:) withObject:jsonData];
+    
+    for (id dele in observers) {
+        if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
+            [self.delegate performSelector:@selector(onUserInfoReceived:) withObject:jsonData];
+    }
+    
+    [observers removeAllObjects];
 }
 
 @end

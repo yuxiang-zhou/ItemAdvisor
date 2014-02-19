@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface RequestHandler : NSObject <NSURLConnectionDelegate>
+{
+    NSMutableArray * observers;
+}
 @property (weak) id delegate;
 
 -(instancetype)initWithDelegate:(id) delegate;
+-(void)addObserver:(id)observer;
 @end

@@ -31,24 +31,28 @@
     return self;
 }
 
+#pragma mark - Requests
+
 -(BOOL) isAuthenticated {
 //    return authenticationState;
     return YES;
 }
 
--(void) updateUserInfo {
+-(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate {
+    [_userinfoRH addObserver:delegate];
     [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
 }
 
--(BOOL) loginAs:(NSString *)userLogin withPassword:(NSString *)password {
-    self.userId = 11234;
-    self.firstName = @"Xiaoming";
-    self.lastName = @"Chen";
-    self.description = @"I'am lazy to write descriptions...";
-    self.email = @"xiaoming.chen10@gmail.com";
-    authenticationState = YES;
-    return authenticationState;
+-(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password {
+//    self.userId = 11234;
+//    self.firstName = @"Xiaoming";
+//    self.lastName = @"Chen";
+//    self.description = @"I'am lazy to write descriptions...";
+//    self.email = @"xiaoming.chen10@gmail.com";
+//    authenticationState = YES;
 }
+
+#pragma mark - RequestHandler
 
 -(void) onUserInfoReceived:(NSDictionary *)data {
     NSDictionary* user_data = [data objectForKey:@"user_data_request"];
