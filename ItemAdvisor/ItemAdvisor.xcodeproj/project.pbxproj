@@ -33,6 +33,7 @@
 		D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D472C06718AE228200D7DEC2 /* QuartzCore.framework */; };
 		D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC418B4E3AE00D27DB3 /* delete.png */; };
 		D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */; };
+		D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E63DD218B50B9800D27DB3 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		D472C06718AE228200D7DEC2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D4E63DC418B4E3AE00D27DB3 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteIcon.png; sourceTree = "<group>"; };
+		D4E63DD118B50B9800D27DB3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		D4E63DD218B50B9800D27DB3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,8 @@
 		7FC1DBFC18A28AE2005C216C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4E63DD118B50B9800D27DB3 /* LoginViewController.h */,
+				D4E63DD218B50B9800D27DB3 /* LoginViewController.m */,
 				D472C06918AE276800D7DEC2 /* Setting */,
 				D472C06218AE1BDA00D7DEC2 /* Make Post */,
 				D472C06118AE1B4300D7DEC2 /* Tab Bar */,
@@ -353,6 +358,7 @@
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
 				7FC1DBC918A257CA005C216C /* main.m in Sources */,
 				D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */,
+				D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */,
 				7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */,
 				D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */,
 				27DD881C18A536E90093827D /* SettingsViewController.m in Sources */,
