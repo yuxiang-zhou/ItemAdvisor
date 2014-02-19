@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LGu-vc-wI8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -19,24 +19,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0j5-9h-d83" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="696" y="-1201"/>
-        </scene>
-        <!--Make Post View Controller-->
-        <scene sceneID="lbO-g6-PFQ">
-            <objects>
-                <viewController id="CcJ-Rq-bry" customClass="MakePostViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ICr-EN-ogs"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Dx-ts-dI6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wdW-Zm-CNq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hBP-56-gOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-106" y="-1013"/>
         </scene>
         <!--News View Controller - 广场浏览-->
         <scene sceneID="FhO-yK-SVj">
@@ -97,6 +79,19 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rp8-hZ-zd5">
                                 <rect key="frame" x="0.0" y="109" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qca-SU-7Hv">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Post for Test">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="b7L-4C-hoO" kind="modal" id="B5b-Wx-sSv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,12 +100,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="广场浏览" id="EM0-Jd-VkV">
                         <barButtonItem key="leftBarButtonItem" image="first" id="y2l-JR-JYE"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9oy-No-1jG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9oy-No-1jG">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="NewsToMakePost" id="ZZm-aj-jPa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="newsView" destination="eFg-kV-swG" id="Jt4-s9-eeM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSU-x7-wVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,7 +159,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="物品搜索" id="ypo-kZ-9eT">
                         <barButtonItem key="leftBarButtonItem" image="first" id="tze-m8-VSy"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="u6d-z9-OiW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="u6d-z9-OiW">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="SearchToMakePost" id="aZ7-f1-pPq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -226,12 +226,105 @@
                     </view>
                     <navigationItem key="navigationItem" title="消息列表" id="DIH-ST-i8e">
                         <barButtonItem key="leftBarButtonItem" image="first" id="CD3-o9-jlZ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ulk-8x-e0P"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ulk-8x-e0P">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="MsgToMakePost" id="qxO-kZ-Rqz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQa-6v-2LI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1122" y="184"/>
+        </scene>
+        <!--Prepare Make Post Navigation View Controller-->
+        <scene sceneID="ngA-8i-F8A">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="1nq-Ch-ZdQ" customClass="PrepareMakePostNavigationViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aK2-ri-5KR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="va3-ri-Lo8" kind="relationship" relationship="rootViewController" id="ksL-jS-OR4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="No0-Vn-0dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875" y="-143"/>
+        </scene>
+        <!--Make Post View Controller - 写日志-->
+        <scene sceneID="V72-iB-xDO">
+            <objects>
+                <viewController id="va3-ri-Lo8" customClass="MakePostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q12-Fy-0ay"/>
+                        <viewControllerLayoutGuide type="bottom" id="yC8-P2-ZbI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tTZ-On-foD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfh-OC-ZCw">
+                                <rect key="frame" x="0.0" y="522" width="106" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.44313725490196076" green="0.53725490196078429" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="加文字">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addText:" destination="va3-ri-Lo8" eventType="touchUpInside" id="Ond-xI-dZk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D70-81-4ZK">
+                                <rect key="frame" x="214" y="522" width="106" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.53725490200000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="加图片">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPic:" destination="va3-ri-Lo8" eventType="touchUpInside" id="GOt-pV-PXe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wO-aF-h4T">
+                                <rect key="frame" x="106" y="522" width="108" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.44313725490196076" green="0.53725490196078429" blue="0.41176470588235292" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="加标签">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTag:" destination="va3-ri-Lo8" eventType="touchUpInside" id="tFf-2e-ct1"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ANY-o8-ctI">
+                                <rect key="frame" x="0.0" y="65" width="320" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="写日志" id="3K4-6w-GsV">
+                        <barButtonItem key="leftBarButtonItem" title="取消/草稿" id="Ymg-q3-DhA">
+                            <connections>
+                                <action selector="CancelOrDraft:" destination="va3-ri-Lo8" id="Mhe-XW-Q0V"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="发表" id="Nmx-Qe-Swb"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addImage" destination="D70-81-4ZK" id="QQ9-Zp-DUn"/>
+                        <outlet property="addTag" destination="6wO-aF-h4T" id="pMg-RH-Aga"/>
+                        <outlet property="addText" destination="dfh-OC-ZCw" id="UcE-L0-5GN"/>
+                        <outlet property="scrollView" destination="ANY-o8-ctI" id="GDZ-XC-YiY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-mf-kSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2376" y="-143"/>
         </scene>
         <!--Navigation Controller - 信息-->
         <scene sceneID="LTj-0v-Qhd">
@@ -264,24 +357,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zeg-Sn-aUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="696" y="-508"/>
-        </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="lRr-7X-38f">
-            <objects>
-                <viewController id="DST-0M-C9a" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FGj-7F-r7q"/>
-                        <viewControllerLayoutGuide type="bottom" id="6YL-Eq-bfP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ce1-67-iu6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wo-zP-6dF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-490" y="-1013"/>
         </scene>
         <!--Navigation Controller - 我-->
         <scene sceneID="X3h-hJ-34k">
@@ -317,21 +392,21 @@
                                 <color key="backgroundColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="0.95000000000000007" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="日志  88">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title=""/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CMS-vL-8q0">
-                                <rect key="frame" x="0.0" y="257" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="256" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.31372549019607843" green="0.1764705882352941" blue="0.14509803921568626" alpha="0.95000000000000007" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="关注他">
+                                <state key="normal" title="编辑">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="editProfile:" destination="eKy-me-0Ow" eventType="touchUpInside" id="e7L-fO-tEw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ODH-hY-bMI">
                                 <rect key="frame" x="80" y="64" width="80" height="33"/>
@@ -339,7 +414,7 @@
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="0.94999999999999996" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="关注  88">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -350,7 +425,7 @@
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="0.94999999999999996" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="粉丝  88">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -361,7 +436,7 @@
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="0.94999999999999996" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="物品  88">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -370,14 +445,14 @@
                                 <rect key="frame" x="0.0" y="97" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="陈 晓明" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-uk-eO3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-uk-eO3">
                                 <rect key="frame" x="160" y="164" width="160" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="自我简介" translatesAutoresizingMaskIntoConstraints="NO" id="9CF-DG-ZVP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CF-DG-ZVP">
                                 <rect key="frame" x="160" y="202" width="160" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -387,21 +462,160 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WhI-dU-WpW">
                                 <rect key="frame" x="0.0" y="300" width="320" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIQ-n3-HcV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Post for Test">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="b7L-4C-hoO" kind="modal" id="neP-75-t6e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="个人主页" id="PCa-y3-d9J">
                         <barButtonItem key="leftBarButtonItem" image="first" id="HOQ-U1-q0N"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv">
+                            <connections>
+                                <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="AccountToMakePost" id="AmL-Wc-7Ca"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="profileImage" destination="PgX-Tg-6yQ" id="5l5-2H-8gy"/>
+                        <outlet property="followerDetail" destination="BiH-Cd-HqV" id="7L3-JM-oAy"/>
+                        <outlet property="followingDetail" destination="ODH-hY-bMI" id="yHc-Cb-fl6"/>
+                        <outlet property="postDetail" destination="Chc-QL-wzF" id="wda-XC-dKC"/>
+                        <outlet property="profileImage" destination="PgX-Tg-6yQ" id="dng-ul-cZ0"/>
+                        <outlet property="stuffDetail" destination="mkh-4c-a52" id="3j6-KU-yIC"/>
+                        <outlet property="userIntroduction" destination="9CF-DG-ZVP" id="OPQ-Ac-ZNV"/>
+                        <outlet property="userName" destination="RvY-uk-eO3" id="B88-I6-zIU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyO-ra-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1122" y="870"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aCl-7l-9xv">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="b7L-4C-hoO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r6o-n6-33O">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EEW-T8-tB4" kind="relationship" relationship="rootViewController" id="DVX-qg-3PM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTn-F4-2Fa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1689" y="900"/>
+        </scene>
+        <!--View Controller - 日志-->
+        <scene sceneID="hPS-4V-MiM">
+            <objects>
+                <viewController id="EEW-T8-tB4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xCa-3Z-1u9"/>
+                        <viewControllerLayoutGuide type="bottom" id="rTX-D3-Ksl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="52k-Kv-XWe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="日志" id="iFG-2w-HpR">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="g5r-ni-oR0"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7bd-mk-DmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2179" y="900"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="QnI-oh-9Wz">
+            <objects>
+                <viewController id="LGu-vc-wI8" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hWV-SH-Lui"/>
+                        <viewControllerLayoutGuide type="bottom" id="L19-JO-QiH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Frq-0k-rAG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkT-Jq-g2h">
+                                <rect key="frame" x="128" y="337" width="64" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="登陆">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="LGu-vc-wI8" eventType="touchUpInside" id="TaL-Ls-j2P"/>
+                                    <segue destination="8YX-ce-x5E" kind="modal" identifier="Login" id="VSN-Dr-86a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgu-0K-91b">
+                                <rect key="frame" x="212" y="512" width="88" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="用微信登陆">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exz-B6-JfY">
+                                <rect key="frame" x="45" y="253" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pu-6S-2qG">
+                                <rect key="frame" x="45" y="284" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-LV-gjF">
+                                <rect key="frame" x="109" y="253" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YIL-gD-oxs">
+                                <rect key="frame" x="109" y="284" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.61176470588235299" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="passWord" destination="YIL-gD-oxs" id="24X-Nb-RbZ"/>
+                        <outlet property="userName" destination="Whd-LV-gjF" id="t9k-Ho-IJ3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ga-9T-bIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-138" y="-752"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -435,4 +649,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="B5b-Wx-sSv"/>
+        <segue reference="ZZm-aj-jPa"/>
+    </inferredMetricsTieBreakers>
 </document>

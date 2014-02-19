@@ -1,18 +1,21 @@
 //
-//  SettingsViewController.m
+//  LoginViewController.m
 //  ItemAdvisor
 //
-//  Created by Hongcheng Guo on 07/02/2014.
+//  Created by Xiaoming Chen on 19/02/2014.
 //  Copyright (c) 2014 ia. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "LoginViewController.h"
 
-@interface SettingsViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation LoginViewController
+- (IBAction)login:(id)sender {
+    
+}
 
 - (void)viewDidLoad
 {
