@@ -27,6 +27,7 @@
         // init propertise
         authenticationState = NO;
         _userinfoRH = [[UserInfoRequestHandler alloc] initWithDelegate:self];
+        _loginRH = [[LoginRequestHandler alloc] initWithDelegate:self];
     }
     return self;
 }
@@ -34,8 +35,7 @@
 #pragma mark - Requests
 
 -(BOOL) isAuthenticated {
-//    return authenticationState;
-    return YES;
+    return authenticationState;
 }
 
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate {
@@ -43,13 +43,9 @@
     [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
 }
 
--(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password {
-//    self.userId = 11234;
-//    self.firstName = @"Xiaoming";
-//    self.lastName = @"Chen";
-//    self.description = @"I'am lazy to write descriptions...";
-//    self.email = @"xiaoming.chen10@gmail.com";
-//    authenticationState = YES;
+-(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password withDelegate:(id) delegate{
+    [_loginRH addObserver:delegate];
+    [[BridgeManager getBridgeManager] login:userLogin password:password];
 }
 
 #pragma mark - RequestHandler
@@ -61,6 +57,22 @@
     self.lastName = [user_data objectForKey:@"lastname"];
     self.description = [user_data objectForKey:@"description"];
     self.email = [user_data objectForKey:@"email"];
+}
+
+- (void)onLogin:(NSDictionary *)response {
+    NSString *isSuccess = [response objectForKey:@"result"];
+    if([isSuccess  isEqual: @"YES"]) {
+        NSDictionary* user_data = [response objectForKey:@"user_data_request"];
+        self.firstName = [user_data objectForKey:@"firstname"];
+        self.userId = [[user_data objectForKey:@"userid"] intValue];
+        self.lastName = [user_data objectForKey:@"lastname"];
+        self.description = [user_data objectForKey:@"description"];
+        self.email = [user_data objectForKey:@"email"];
+        authenticationState = YES;
+    } else {
+        authenticationState = NO;
+    }
+
 }
 
 @end

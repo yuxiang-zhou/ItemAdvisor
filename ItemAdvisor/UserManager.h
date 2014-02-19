@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "UserInfoRequestHandler.h"
+#import "LoginRequestHandler.h"
 
 @protocol UserManagerDelegate
 @required
 - (void)onUserInfoReceived:(NSDictionary *)userData;
+- (void)onLogin:(NSDictionary *) response;
 @end
 
 
-@interface UserManager : NSObject
+@interface UserManager : NSObject <UserManagerDelegate>
 
 @property NSInteger     userId;
 @property NSString*     firstName;
@@ -24,13 +26,14 @@
 @property NSString*     email;
 
 @property UserInfoRequestHandler* userinfoRH;
+@property LoginRequestHandler* loginRH;
 
 
 +(instancetype) getUserManager;
 
 -(BOOL) isAuthenticated;
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate;
--(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password;
+-(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password withDelegate:(id) delegate;
 
 
 @end
