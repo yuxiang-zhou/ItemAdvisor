@@ -32,11 +32,20 @@
     CGSize contentSize=CGSizeMake(320, 458);
     [_scrollView setContentSize:contentSize];
 }
+- (IBAction)addTag:(id)sender {
+    UITextField * mainContent = [[UITextField alloc]initWithFrame:CGRectMake(20, 20, 250, 20)];
+    mainContent.backgroundColor = UIColorFromRGB(0xd3d3d3);
+    mainContent.text = @"Item description..";
+    mainContent.textColor = [UIColor blackColor];
+    [mainContent setFont:[UIFont systemFontOfSize:12]];
+    [_scrollView addSubview:mainContent];
+    [_scrollView setUserInteractionEnabled:YES];
+}
 
 - (IBAction)addPic:(id)sender
 {
     UIImageView *aImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"haha.jpeg"]];
-    [aImageView setFrame:CGRectMake(20, 20, PIC_WIDTH, PIC_HEIGHT)];
+    [aImageView setFrame:CGRectMake(20, 220, PIC_WIDTH, PIC_HEIGHT)];
     [addedPicArray addObject:aImageView];
     [_scrollView addSubview:aImageView];
     
@@ -54,7 +63,7 @@
 //    }
     
     UIButton *sampleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sampleButton setFrame:CGRectMake(97,15,20,20)];
+    [sampleButton setFrame:CGRectMake(97,215,20,20)];
     [sampleButton setTitle:@"" forState:UIControlStateNormal];
     [sampleButton setBackgroundImage:[[UIImage imageNamed:@"deleteIcon.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0] forState:UIControlStateNormal];
     [sampleButton addTarget:self action:@selector(deleteButtonPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -62,6 +71,17 @@
     
 //    [self refreshScrollView];
 }
+
+- (IBAction)addText:(id)sender {
+    UITextView * mainContent = [[UITextView alloc]initWithFrame:CGRectMake(20, 358, 280, 70)];
+    mainContent.backgroundColor = UIColorFromRGB(0xd3d3d3);
+    mainContent.text = @"Say sth..";
+    mainContent.textColor = [UIColor blackColor];
+    [mainContent setFont:[UIFont systemFontOfSize:12]];
+    [_scrollView addSubview:mainContent];
+    [_scrollView setUserInteractionEnabled:YES];
+}
+
 
 -(void)deleteButtonPressed
 {
