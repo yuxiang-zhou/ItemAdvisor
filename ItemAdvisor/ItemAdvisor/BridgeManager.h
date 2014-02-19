@@ -13,5 +13,6 @@
 +(instancetype) getBridgeManager;
 
 -(void)requestUserInfo:(NSString *)userid;
+-(void)login:(NSString *)useremail password:(NSString *)password;
 
 @end

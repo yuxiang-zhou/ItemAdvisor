@@ -27,6 +27,8 @@
     
 }
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSString * str_data = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog([NSString stringWithFormat:@"Response from server: %@", str_data]);
     NSError *error = nil;
     id object = [NSJSONSerialization
                  JSONObjectWithData:data
@@ -44,8 +46,6 @@
     {
         [self onError:@"JSON Syntax Error"];
     }
-    
-//    [[UserManager getUserManager] perf	ormSelector:@selector(onUserInfoReceived:) withObject:str_data];
 }
 
 -(void)onSuccess:(NSDictionary *) jsonData{
@@ -54,6 +54,7 @@
 }
 
 -(void)onError:(NSString *) description {
+    NSLog(description);
     if([self.delegate respondsToSelector:@selector(onSuccess:)])
         [self.delegate performSelector:@selector(onError:) withObject:description];
 }

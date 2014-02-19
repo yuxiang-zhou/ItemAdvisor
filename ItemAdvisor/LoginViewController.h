@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserManager.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UserManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
 

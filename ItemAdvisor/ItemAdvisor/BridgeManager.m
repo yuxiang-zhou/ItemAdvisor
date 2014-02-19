@@ -12,6 +12,7 @@
 @implementation BridgeManager
 {
     NSString* gerUserURL;
+    NSString* loginURL;
 }
 
 + (instancetype)getBridgeManager {
@@ -26,14 +27,26 @@
     if (self = [super init]) {
         // init propertise
         gerUserURL = @"http://113.55.0.233/itemadvisor/getuser.php";
+        loginURL = @"http://113.55.0.233/itemadvisor/login.php";
     }
     return self;
 }
 
+#pragma mark - UserManager Requests
+
 -(void)requestUserInfo:(NSString *)userid {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
+    NSMutableURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
     [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].userinfoRH];
     
 }
 
+-(void)login:(NSString *)useremail password:(NSString *)password {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:loginURL]];
+    NSString *postString = [NSString stringWithFormat:@"login=%@&password=%@",useremail, password];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].loginRH];
+}
 @end
