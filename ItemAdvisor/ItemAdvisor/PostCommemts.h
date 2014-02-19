@@ -10,7 +10,10 @@
 
 @interface PostCommemts : NSObject
 
-@property (weak,nonatomic) NSString *comment;
-@property (weak,nonatomic) NSDate *timeStamp;
+@property NSInteger commentID;
+@property NSString  *comment;
+@property NSDate    *timeStamp;
+
+
 
 @end

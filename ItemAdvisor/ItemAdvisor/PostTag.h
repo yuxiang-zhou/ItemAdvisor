@@ -10,4 +10,6 @@
 
 @interface PostTag : NSObject
 
+@property (weak, nonatomic) NSMutableArray *addedTags;
+
 @end

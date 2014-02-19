@@ -10,8 +10,25 @@
 #import "PostTag.h"
 @interface PostManager : NSObject
 
--(void) getMostRatedPostFrom:(PostTag*)tag;
--(void) getMostRatedPost;
+//managing the post
 -(void) makingAPost;
+-(void) deleteAPost;
+-(void) saveAPost;
+
+-(void) getMostRatedPost;
+-(void) getMostRatedPostFrom:(PostTag*)tag;
+
+
+//managing the comment;
+-(void)makeComment:(NSString*)comment;
+-(void)deleteCommentwith;
+
+//managing the tags
+-(void) addATag;
+-(void) deleteATag;
+
+
+
+
 
 @end

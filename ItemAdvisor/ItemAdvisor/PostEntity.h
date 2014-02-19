@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PostTag.h"
 
 @interface PostEntity : NSObject
 
 @property (weak,nonatomic) NSString *words;
 @property (weak,nonatomic) UIImage *images;
-@property (weak,nonatomic) PostTag *tags;
+@property (weak,nonatomic) NSString *tags;
 @property (weak,nonatomic) NSDate *timeStamp;
 
 @property (nonatomic) NSInteger NumberOfThumbUp;
@@ -22,9 +21,5 @@
 
 -(void)putAThumbUpFor:(PostEntity*)post;
 -(void)putAThumbDownFor:(PostEntity*)post;
-
--(void)makeComment:(NSString*)comment;
--(void)deleteComment;
-
 
 @end

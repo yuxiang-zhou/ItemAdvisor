@@ -10,5 +10,12 @@
 
 @implementation PostManager
 
+-(void) makingAPost
+{
+    
+}
+
+
+
 
 @end

@@ -16,13 +16,17 @@
 
 @implementation PostEntity
 
--(id)initWithCurrentTime
+-(id)initAPost
 {
     self = [super init];
     
+
     
     return self;
 }
+
+
+
 
 
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2737229018ABC6F200D94103 /* PostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737228F18ABC6F200D94103 /* PostManager.m */; };
 		2737229318ABCAD000D94103 /* PostEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737229218ABCAD000D94103 /* PostEntity.m */; };
-		2737229618ABCEC400D94103 /* PostTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737229518ABCEC400D94103 /* PostTag.m */; };
 		2737229918ABD89D00D94103 /* PostCommemts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737229818ABD89D00D94103 /* PostCommemts.m */; };
 		27DD881C18A536E90093827D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD881B18A536E90093827D /* SettingsViewController.m */; };
 		7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A648118A534F600FBDB9C /* MakePostViewController.m */; };
@@ -47,8 +46,6 @@
 		2737228F18ABC6F200D94103 /* PostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostManager.m; sourceTree = "<group>"; };
 		2737229118ABCAD000D94103 /* PostEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEntity.h; sourceTree = "<group>"; };
 		2737229218ABCAD000D94103 /* PostEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEntity.m; sourceTree = "<group>"; };
-		2737229418ABCEC400D94103 /* PostTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTag.h; sourceTree = "<group>"; };
-		2737229518ABCEC400D94103 /* PostTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTag.m; sourceTree = "<group>"; };
 		2737229718ABD89D00D94103 /* PostCommemts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommemts.h; sourceTree = "<group>"; };
 		2737229818ABD89D00D94103 /* PostCommemts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommemts.m; sourceTree = "<group>"; };
 		27DD881A18A536E90093827D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -109,16 +106,22 @@
 		2737228D18ABC67C00D94103 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				275A60EE18B4F9B2002F123B /* PostModel */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		275A60EE18B4F9B2002F123B /* PostModel */ = {
+			isa = PBXGroup;
+			children = (
 				2737228E18ABC6F200D94103 /* PostManager.h */,
 				2737228F18ABC6F200D94103 /* PostManager.m */,
 				2737229118ABCAD000D94103 /* PostEntity.h */,
 				2737229218ABCAD000D94103 /* PostEntity.m */,
-				2737229418ABCEC400D94103 /* PostTag.h */,
-				2737229518ABCEC400D94103 /* PostTag.m */,
 				2737229718ABD89D00D94103 /* PostCommemts.h */,
 				2737229818ABD89D00D94103 /* PostCommemts.m */,
 			);
-			name = models;
+			name = PostModel;
 			sourceTree = "<group>";
 		};
 		7FC1DBB018A257CA005C216C = {
@@ -311,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2737229318ABCAD000D94103 /* PostEntity.m in Sources */,
-				2737229618ABCEC400D94103 /* PostTag.m in Sources */,
 				7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */,
 				7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */,
 				2737229918ABD89D00D94103 /* PostCommemts.m in Sources */,
