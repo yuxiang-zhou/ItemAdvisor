@@ -1,23 +1,24 @@
 //
-//  SettingsViewController.m
+//  PrepareMakePostNavigationViewController.m
 //  ItemAdvisor
 //
-//  Created by Hongcheng Guo on 07/02/2014.
+//  Created by Xiaoming Chen on 14/02/2014.
 //  Copyright (c) 2014 ia. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "PrepareMakePostNavigationViewController.h"
 
-@interface SettingsViewController ()
+@interface PrepareMakePostNavigationViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation PrepareMakePostNavigationViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.navigationBar setBarTintColor:UIColorFromRGB(0x718969)];
 }
 
 - (void)didReceiveMemoryWarning

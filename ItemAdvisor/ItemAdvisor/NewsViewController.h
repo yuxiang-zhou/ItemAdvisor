@@ -10,7 +10,7 @@
 
 @interface NewsViewController : UIViewController
 {
-    IBOutlet UIView *newsView;
+    //IBOutlet UIView *newsView;
 }
 
 @end
