@@ -20,18 +20,17 @@
 
 - (void)viewDidLoad
 {
-//    [[UserManager getUserManager] getCurrentUserInfoAsync:1 withDelegate:self];
     //Initialise profile image
     UIImage *image = [UIImage imageNamed:@"haha.jpeg"];
     [profileImage setImage:image];
     
     //Initialise username
-    NSString *name = @"陈 晓明";
+    NSString *name = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];
     self.userName.text = [NSString stringWithFormat:@"%@", name];
     [self.userName setFont:[UIFont systemFontOfSize:20]];
     
     //Initialise introduction
-    NSString *intro = @"自我简介";
+    NSString *intro = [NSString stringWithFormat:@"%@", [UserManager getUserManager].description];
     self.userIntroduction.text = [NSString stringWithFormat:@"%@", intro];
     [self.userIntroduction setFont:[UIFont systemFontOfSize:11]];
     
@@ -84,10 +83,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)onUserInfoReceived:(NSDictionary *)userData {
-    
 }
 
 @end

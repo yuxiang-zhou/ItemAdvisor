@@ -36,9 +36,13 @@
 		7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF918A27AAC005C216C /* MsgViewController.m */; };
 		D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D546E18A96A770074C182 /* TabBarViewController.m */; };
 		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
+		D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */; };
+		D472564B18B7ABF90027AEAD /* CropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472564A18B7ABF90027AEAD /* CropViewController.m */; };
 		D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */; };
 		D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C06418AE20C300D7DEC2 /* TLAlertView.m */; };
 		D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D472C06718AE228200D7DEC2 /* QuartzCore.framework */; };
+		D49E119718B69ACD004F2F7D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E119618B69ACD004F2F7D /* RegisterViewController.m */; };
+		D49E119A18B69C00004F2F7D /* DetailPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E119918B69C00004F2F7D /* DetailPostViewController.m */; };
 		D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC418B4E3AE00D27DB3 /* delete.png */; };
 		D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */; };
 		D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E63DD218B50B9800D27DB3 /* LoginViewController.m */; };
@@ -103,11 +107,19 @@
 		D41D546D18A96A770074C182 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		D41D546E18A96A770074C182 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		D41D547318A98C350074C182 /* haha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haha.jpeg; sourceTree = "<group>"; };
+		D4297D5A18B69EEF002CFC8E /* PrepareRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRegisterViewController.h; sourceTree = "<group>"; };
+		D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRegisterViewController.m; sourceTree = "<group>"; };
+		D472564918B7ABF90027AEAD /* CropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropViewController.h; sourceTree = "<group>"; };
+		D472564A18B7ABF90027AEAD /* CropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropViewController.m; sourceTree = "<group>"; };
 		D472C05E18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareMakePostNavigationViewController.h; sourceTree = "<group>"; };
 		D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareMakePostNavigationViewController.m; sourceTree = "<group>"; };
 		D472C06318AE20C300D7DEC2 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLAlertView.h; path = ../TLAlertView.h; sourceTree = "<group>"; };
 		D472C06418AE20C300D7DEC2 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TLAlertView.m; path = ../TLAlertView.m; sourceTree = "<group>"; };
 		D472C06718AE228200D7DEC2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D49E119518B69ACD004F2F7D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ../RegisterViewController.h; sourceTree = "<group>"; };
+		D49E119618B69ACD004F2F7D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ../RegisterViewController.m; sourceTree = "<group>"; };
+		D49E119818B69C00004F2F7D /* DetailPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPostViewController.h; sourceTree = "<group>"; };
+		D49E119918B69C00004F2F7D /* DetailPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPostViewController.m; sourceTree = "<group>"; };
 		D4E63DC418B4E3AE00D27DB3 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteIcon.png; sourceTree = "<group>"; };
 		D4E63DD118B50B9800D27DB3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
@@ -252,8 +264,9 @@
 		7FC1DBFC18A28AE2005C216C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4E63DD118B50B9800D27DB3 /* LoginViewController.h */,
-				D4E63DD218B50B9800D27DB3 /* LoginViewController.m */,
+				D472564918B7ABF90027AEAD /* CropViewController.h */,
+				D472564A18B7ABF90027AEAD /* CropViewController.m */,
+				D49E119118B69776004F2F7D /* Login */,
 				D472C06918AE276800D7DEC2 /* Setting */,
 				D472C06218AE1BDA00D7DEC2 /* Make Post */,
 				D472C06118AE1B4300D7DEC2 /* Tab Bar */,
@@ -264,6 +277,8 @@
 		D472C06118AE1B4300D7DEC2 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				D49E119818B69C00004F2F7D /* DetailPostViewController.h */,
+				D49E119918B69C00004F2F7D /* DetailPostViewController.m */,
 				D41D546D18A96A770074C182 /* TabBarViewController.h */,
 				D41D546E18A96A770074C182 /* TabBarViewController.m */,
 				7FC1DBD118A257CA005C216C /* NewsViewController.h */,
@@ -305,6 +320,19 @@
 				27DD881B18A536E90093827D /* SettingsViewController.m */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		D49E119118B69776004F2F7D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D4297D5A18B69EEF002CFC8E /* PrepareRegisterViewController.h */,
+				D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */,
+				D49E119518B69ACD004F2F7D /* RegisterViewController.h */,
+				D49E119618B69ACD004F2F7D /* RegisterViewController.m */,
+				D4E63DD118B50B9800D27DB3 /* LoginViewController.h */,
+				D4E63DD218B50B9800D27DB3 /* LoginViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,14 +439,18 @@
 				D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */,
 				7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */,
 				7F24547C18ABB7D300896C81 /* UserManager.m in Sources */,
+				D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */,
 				7F198FE018ABD59700FC5E61 /* BridgeManager.m in Sources */,
 				7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */,
 				2737229918ABD89D00D94103 /* PostCommemts.m in Sources */,
 				2737229018ABC6F200D94103 /* PostManager.m in Sources */,
 				7F9C0FD618B5362C00D022FE /* LoginRequestHandler.m in Sources */,
+				D472564B18B7ABF90027AEAD /* CropViewController.m in Sources */,
 				7FC1DBD618A257CA005C216C /* SearchViewController.m in Sources */,
 				7F9C0FD318B5128F00D022FE /* UserInfoRequestHandler.m in Sources */,
+				D49E119718B69ACD004F2F7D /* RegisterViewController.m in Sources */,
 				7F9C0FD018B50D6200D022FE /* RequestHandler.m in Sources */,
+				D49E119A18B69C00004F2F7D /* DetailPostViewController.m in Sources */,
 				7FC1DBCD18A257CA005C216C /* AppDelegate.m in Sources */,
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
 				7FC1DBC918A257CA005C216C /* main.m in Sources */,
@@ -556,6 +588,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ItemAdvisor/ItemAdvisor-Prefix.pch";
 				INFOPLIST_FILE = "ItemAdvisor/ItemAdvisor-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

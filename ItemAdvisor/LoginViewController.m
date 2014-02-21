@@ -16,10 +16,15 @@
 - (IBAction)login:(id)sender {
     [[UserManager getUserManager] loginAs:[_userName text] withPassword:[_passWord text] withDelegate:self];
 }
+- (IBAction)skipLogin:(id)sender {
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
+}
+- (IBAction)toRegister:(id)sender {
+    [self performSegueWithIdentifier:@"registerSegue" sender:self];
+}
 
 - (void)viewDidLoad
 {
-    _passWord.secureTextEntry = YES;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -42,6 +47,17 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Announcement" message: @"It turns out that you are playing Addicus!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return NO;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 @end

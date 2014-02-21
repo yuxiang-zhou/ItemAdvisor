@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
 
-@interface AccountViewController : UIViewController <UserManagerDelegate>
+@interface AccountViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UITextView *userName;
