@@ -9,13 +9,21 @@
 #import "RegisterViewController.h"
 
 @interface RegisterViewController ()
-
+@property (strong,nonatomic) UIImagePickerController *picker;
+@property (strong, nonatomic) XWPhotoEditorViewController *photoEditor;
 @end
 
 @implementation RegisterViewController
+
 - (IBAction)backToLogin:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)handInForm:(id)sender {
+    
+    [self checkTable];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -52,60 +60,117 @@
     return NO;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
 }
 - (IBAction)editProfileImage:(id)sender {
-    UIActionSheet *profilePicMenu = [[UIActionSheet alloc] initWithTitle:nil
-                                                         delegate:self
-                                                cancelButtonTitle:@"Cancel"
-                                           destructiveButtonTitle:nil
-                                                otherButtonTitles:@"相机", @"我的相册", nil];
-    [profilePicMenu showInView:_registerView];
+
+    NSString *libraryTitle = @"照片库";
+    NSString *takePhotoTitle = @"相机";
+    NSString *cancelTitle = @"取消";
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:cancelTitle
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:libraryTitle,takePhotoTitle, nil];
+    [actionSheet showInView:_registerView];
+
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-        switch (buttonIndex) {
-            case 0:
-                //FLOG(@"相机");
-                _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentViewController:_picker animated:YES completion:nil];
-                break;
-                
-            case 1:
-                //FLOG(@"我的相册");
-                _picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-                [self presentViewController:_picker animated:YES completion:nil];
-                break;
-                
-            default:
-                break;
-        }
+    _photoEditor = [[XWPhotoEditorViewController alloc] initWithNibName:@"XWPhotoEditorViewController" bundle:nil];
+    
+    // set photo editor value
+    _photoEditor.panEnabled = YES;
+    _photoEditor.scaleEnabled = YES;
+    _photoEditor.tapToResetEnabled = YES;
+    _photoEditor.rotateEnabled = NO;
+    _photoEditor.delegate = self;
+    // crop window's value
+    _photoEditor.cropSize = CGSizeMake(300, 300);
+    
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+        self.photoEditor.sourceImage = image;
+        [picker pushViewController:self.photoEditor animated:YES];
+        [picker setNavigationBarHidden:YES animated:NO];
+
+
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    //release picker
-    [picker dismissViewControllerAnimated:YES completion:nil];
+- (void)finish:(UIImage *)image didCancel:(BOOL)cancel {
+    if (!cancel) {
+        _profileImage = image;
+        [_profilePicButton setBackgroundImage:_profileImage forState:UIControlStateNormal];
+        [_profilePicButton setTitle:@"" forState:UIControlStateNormal];
+    }
+    [_picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    [self performSegueWithIdentifier:@"test" sender:self];
-    _profileImage = [info objectForKey:UIImagePickerControllerEditedImage];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"test"]) {
-        
-        UIViewController *CropViewController= [segue destinationViewController];
-        //CropViewController.
+#pragma mark -
+#pragma mark UIActionSheetDelegate Methods
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        [self showImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
+    } else if (buttonIndex == 1) {
+        [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
     }
 }
 
--(void)checkTable
+
+- (void)showImagePicker:(UIImagePickerControllerSourceType) sourceType {
+    _picker.sourceType = sourceType;
+    [_picker setAllowsEditing:NO];
+    _picker.delegate = self;
+    if (_picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        _picker.showsCameraControls = YES;
+    }
+    if ( [UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        [self presentViewController:_picker animated:YES completion:nil];
+    }
+}
+
+
+- (void)checkTable
+{
+    NSString *passwordNotMatched = @"密码不相同";
+    NSString *emailAddressInvalid = @"邮箱地址格式不对";
+    NSString *passwordIncorrect = @"密码格式不对";
+    NSString *errorContent = [NSString stringWithFormat:@"%@, %@, %@", passwordNotMatched, emailAddressInvalid, passwordIncorrect];
+    
+    if (![self checkEmailAddress]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"出错" message: errorContent delegate: _registerView cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (BOOL)checkPassword
+{
+    if (_createPassword.text == _confirmPassword.text) {
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+}
+
+- (BOOL)checkEmailAddress
+{
+    if ([_emailAddress.text rangeOfString:@"@"].location != NSNotFound) {
+        return TRUE;
+    }
+    else{
+        
+        return FALSE;
+    }
+
+}
+
+- (void)sendForm
 {
     
 }
