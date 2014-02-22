@@ -60,7 +60,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    
+    [self onError:[error localizedDescription]];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

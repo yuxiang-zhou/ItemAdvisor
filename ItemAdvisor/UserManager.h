@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoRequestHandler.h"
 #import "LoginRequestHandler.h"
+#import "RegisterUserRequestHandler.h"
+#import "UploadImageRequestHandler.h"
 
 @protocol UserManagerDelegate
 @required
 - (void)onUserInfoReceived:(NSDictionary *)userData;
 - (void)onLogin:(NSDictionary *) response;
+- (void)onImageUploaded:(BOOL) isSuccess;
 @end
 
 
@@ -27,6 +30,8 @@
 
 @property UserInfoRequestHandler* userinfoRH;
 @property LoginRequestHandler* loginRH;
+@property RegisterUserRequestHandler* registRH;
+@property UploadImageRequestHandler* uploadImageRH;
 
 
 +(instancetype) getUserManager;

@@ -28,6 +28,8 @@
         authenticationState = NO;
         _userinfoRH = [[UserInfoRequestHandler alloc] initWithDelegate:self];
         _loginRH = [[LoginRequestHandler alloc] initWithDelegate:self];
+        _registRH = [[RegisterUserRequestHandler alloc] initWithDelegate:self];
+        _uploadImageRH = [[UploadImageRequestHandler alloc] initWithDelegate:_registRH];
     }
     return self;
 }
