@@ -21,7 +21,8 @@
 
 - (IBAction)handInForm:(id)sender {
     
-    //[self checkTable];
+    [self checkLocal];
+    [self checkOnline];
 }
 
 
@@ -173,42 +174,92 @@
     return YES;
 }
 
-- (void)checkTable
+- (void)checkLocal
 {
-    NSString *passwordNotMatched = @"密码不相同";
-    NSString *emailAddressInvalid = @"邮箱地址格式不对";
-    NSString *passwordIncorrect = @"密码格式不对";
-    NSString *errorContent = [NSString stringWithFormat:@"%@, %@, %@", passwordNotMatched, emailAddressInvalid, passwordIncorrect];
-    
+    NSString *passwordInValid = @"密码长度不对；";
+    NSString *passwordNotMatched = @"密码不相同；";
+    NSString *emailAddressInvalid = @"邮箱地址格式不对；";
+    NSString *nickNameInvalid = @"昵称格式不对；";
+    NSMutableString *errorContent = [NSMutableString stringWithFormat:@""];
+   
     if (![self checkEmailAddress]) {
+            [errorContent appendString:emailAddressInvalid];
+    }
+    if (![self checkNickName]) {
+        [errorContent appendString:nickNameInvalid];
+    }
+    if (![self checkFirstPassword]) {
+        [errorContent appendString:passwordInValid];
+    }
+    if (![self checkTwoPasswords]) {
+        [errorContent appendString:passwordNotMatched];
+    }
+    
+    if (![self checkEmailAddress] || ![self checkFirstPassword] || ![self checkTwoPasswords] || ![self checkNickName]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"出错" message: errorContent delegate: _registerView cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert setTintColor:UIColorFromRGB(0xe69a9e)];
         [alert show];
     }
 }
 
-- (BOOL)checkPassword
+-(BOOL)checkFirstPassword
+{
+    if (_createdPassword.text.length > 25 || _createdPassword.text.length <6) {
+        return FALSE;
+    }else{
+        return TRUE;
+    }
+}
+
+- (BOOL)checkTwoPasswords
 {
     if (_createdPassword.text == _confirmedPassword.text) {
-        return TRUE;
-    }else{
         return FALSE;
+    }else{
+        return TRUE;
     }
 }
 
 - (BOOL)checkEmailAddress
 {
-    if ([_emailAddress.text rangeOfString:@"@"].location != NSNotFound) {
+    if ([_emailAddress.text rangeOfString:@"@"].location != NSNotFound && [_emailAddress.text rangeOfString:@"."].location != NSNotFound) {
         return TRUE;
     }
     else{
-        
         return FALSE;
     }
 
 }
 
-- (void)sendForm
+- (BOOL)checkNickName
 {
+    if (_nickName.text.length > 10 || _nickName.text.length == 0) {
+        return FALSE;
+    }else{
+        return TRUE;
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(textField == _emailAddress)
+    {
+        NSCharacterSet *invalidCharSet = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.@"] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:invalidCharSet] componentsJoinedByString:@""];
+        return [string isEqualToString:filtered];
+    }else if(textField == _createdPassword || _confirmedPassword){
+        NSCharacterSet *invalidCharSet = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:invalidCharSet] componentsJoinedByString:@""];
+        return [string isEqualToString:filtered];
+    }
+        else return YES;
+}
+
+- (void)checkOnline
+{
+    NSString *sameNickname = @"昵称已被使用；";
+    NSString *sameEmail= @"邮箱地址已被使用；";
+    NSMutableString *errorContent = [NSMutableString stringWithFormat:@""];
     
 }
 
