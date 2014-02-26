@@ -28,6 +28,8 @@
         authenticationState = NO;
         _userinfoRH = [[UserInfoRequestHandler alloc] initWithDelegate:self];
         _loginRH = [[LoginRequestHandler alloc] initWithDelegate:self];
+        _registRH = [[RegisterUserRequestHandler alloc] initWithDelegate:self];
+        _uploadImageRH = [[UploadImageRequestHandler alloc] initWithDelegate:_registRH];
     }
     return self;
 }
@@ -46,6 +48,11 @@
 -(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password withDelegate:(id) delegate{
     [_loginRH addObserver:delegate];
     [[BridgeManager getBridgeManager] login:userLogin password:password];
+}
+
+-(void)registerUser:(NSDictionary *)userData image:(UIImage *)image withDelegate:(id)delegate {
+    self.profile = image;
+    [[BridgeManager getBridgeManager] registUser:[NSMutableDictionary new]];
 }
 
 #pragma mark - RequestHandler

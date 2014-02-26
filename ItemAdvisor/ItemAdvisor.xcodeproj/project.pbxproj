@@ -17,6 +17,8 @@
 		7F9C0FD018B50D6200D022FE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FCF18B50D6200D022FE /* RequestHandler.m */; };
 		7F9C0FD318B5128F00D022FE /* UserInfoRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FD218B5128F00D022FE /* UserInfoRequestHandler.m */; };
 		7F9C0FD618B5362C00D022FE /* LoginRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FD518B5362C00D022FE /* LoginRequestHandler.m */; };
+		7F9C0FDB18B7C93900D022FE /* UploadImageRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FDA18B7C93900D022FE /* UploadImageRequestHandler.m */; };
+		7F9C0FDE18B7CFDF00D022FE /* RegisterUserRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FDD18B7CFDF00D022FE /* RegisterUserRequestHandler.m */; };
 		7FC1DBBD18A257CA005C216C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBC18A257CA005C216C /* Foundation.framework */; };
 		7FC1DBBF18A257CA005C216C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */; };
 		7FC1DBC118A257CA005C216C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBC018A257CA005C216C /* UIKit.framework */; };
@@ -90,6 +92,10 @@
 		7F9C0FD218B5128F00D022FE /* UserInfoRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoRequestHandler.m; sourceTree = "<group>"; };
 		7F9C0FD418B5362C00D022FE /* LoginRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequestHandler.h; sourceTree = "<group>"; };
 		7F9C0FD518B5362C00D022FE /* LoginRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequestHandler.m; sourceTree = "<group>"; };
+		7F9C0FD918B7C93900D022FE /* UploadImageRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageRequestHandler.h; sourceTree = "<group>"; };
+		7F9C0FDA18B7C93900D022FE /* UploadImageRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageRequestHandler.m; sourceTree = "<group>"; };
+		7F9C0FDC18B7CFDF00D022FE /* RegisterUserRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequestHandler.h; sourceTree = "<group>"; };
+		7F9C0FDD18B7CFDF00D022FE /* RegisterUserRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequestHandler.m; sourceTree = "<group>"; };
 		7FC1DBB918A257CA005C216C /* ItemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC1DBBC18A257CA005C216C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -183,17 +189,9 @@
 		2737228D18ABC67C00D94103 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				7F9C0FD818B7C8A000D022FE /* RequestHandlers */,
 				275A60EE18B4F9B2002F123B /* PostModel */,
-				7F24547A18ABB7D300896C81 /* UserManager.h */,
-				7F24547B18ABB7D300896C81 /* UserManager.m */,
-				7F198FDE18ABD59700FC5E61 /* BridgeManager.h */,
-				7F198FDF18ABD59700FC5E61 /* BridgeManager.m */,
-				7F9C0FCE18B50D6200D022FE /* RequestHandler.h */,
-				7F9C0FCF18B50D6200D022FE /* RequestHandler.m */,
-				7F9C0FD118B5128F00D022FE /* UserInfoRequestHandler.h */,
-				7F9C0FD218B5128F00D022FE /* UserInfoRequestHandler.m */,
-				7F9C0FD418B5362C00D022FE /* LoginRequestHandler.h */,
-				7F9C0FD518B5362C00D022FE /* LoginRequestHandler.m */,
+				7F9C0FD718B7C88A00D022FE /* BridgeModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -209,6 +207,34 @@
 				2737229818ABD89D00D94103 /* PostCommemts.m */,
 			);
 			name = PostModel;
+			sourceTree = "<group>";
+		};
+		7F9C0FD718B7C88A00D022FE /* BridgeModel */ = {
+			isa = PBXGroup;
+			children = (
+				7F198FDE18ABD59700FC5E61 /* BridgeManager.h */,
+				7F198FDF18ABD59700FC5E61 /* BridgeManager.m */,
+				7F24547A18ABB7D300896C81 /* UserManager.h */,
+				7F24547B18ABB7D300896C81 /* UserManager.m */,
+			);
+			name = BridgeModel;
+			sourceTree = "<group>";
+		};
+		7F9C0FD818B7C8A000D022FE /* RequestHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				7F9C0FCE18B50D6200D022FE /* RequestHandler.h */,
+				7F9C0FCF18B50D6200D022FE /* RequestHandler.m */,
+				7F9C0FDC18B7CFDF00D022FE /* RegisterUserRequestHandler.h */,
+				7F9C0FDD18B7CFDF00D022FE /* RegisterUserRequestHandler.m */,
+				7F9C0FD918B7C93900D022FE /* UploadImageRequestHandler.h */,
+				7F9C0FDA18B7C93900D022FE /* UploadImageRequestHandler.m */,
+				7F9C0FD118B5128F00D022FE /* UserInfoRequestHandler.h */,
+				7F9C0FD218B5128F00D022FE /* UserInfoRequestHandler.m */,
+				7F9C0FD418B5362C00D022FE /* LoginRequestHandler.h */,
+				7F9C0FD518B5362C00D022FE /* LoginRequestHandler.m */,
+			);
+			name = RequestHandlers;
 			sourceTree = "<group>";
 		};
 		7FC1DBB018A257CA005C216C = {
@@ -501,6 +527,7 @@
 				D41AE6F318BE323200D282FC /* ImageUtil.m in Sources */,
 				7F9C0FD618B5362C00D022FE /* LoginRequestHandler.m in Sources */,
 				7FC1DBD618A257CA005C216C /* SearchViewController.m in Sources */,
+				7F9C0FDE18B7CFDF00D022FE /* RegisterUserRequestHandler.m in Sources */,
 				7F9C0FD318B5128F00D022FE /* UserInfoRequestHandler.m in Sources */,
 				D41AE6F218BE323200D282FC /* ImageFilterProcessViewController.m in Sources */,
 				D49E119718B69ACD004F2F7D /* RegisterViewController.m in Sources */,
@@ -514,6 +541,7 @@
 				D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */,
 				7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */,
 				D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */,
+				7F9C0FDB18B7C93900D022FE /* UploadImageRequestHandler.m in Sources */,
 				27DD881C18A536E90093827D /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
