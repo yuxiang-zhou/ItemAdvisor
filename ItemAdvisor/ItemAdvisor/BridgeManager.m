@@ -13,6 +13,7 @@
 {
     NSString* gerUserURL;
     NSString* loginURL;
+    NSString* registerURL;
 }
 
 + (instancetype)getBridgeManager {
@@ -28,6 +29,7 @@
         // init propertise
         gerUserURL = @"http://113.55.0.233/itemadvisor/getuser.php";
         loginURL = @"http://113.55.0.233/itemadvisor/login.php";
+        registerURL = @"http://113.55.0.233/itemadvisor/register.php";
     }
     return self;
 }
@@ -41,14 +43,12 @@
 }
 
 -(void)registUser:(NSDictionary *)user_data {
-    NSMutableURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
-    [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].registRH];
+    NSMutableURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:registerURL]];
+    NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@&firstname=%@&lastname=%@&desc=%@",@"123",@"123",@"123",@"123",@"123"];
     
-}
-
--(void)registUser:(NSDictionary *)user_data withProfile:(UIImage *)img {
-    [self registUser:user_data];
-    [self uploadImage:img];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].registRH];
     
 }
 

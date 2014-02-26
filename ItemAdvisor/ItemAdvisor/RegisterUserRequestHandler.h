@@ -9,5 +9,4 @@
 #import "RequestHandler.h"
 
 @interface RegisterUserRequestHandler : RequestHandler
-
 @end

@@ -50,6 +50,11 @@
     [[BridgeManager getBridgeManager] login:userLogin password:password];
 }
 
+-(void)registerUser:(NSDictionary *)userData image:(UIImage *)image withDelegate:(id)delegate {
+    self.profile = image;
+    [[BridgeManager getBridgeManager] registUser:[NSMutableDictionary new]];
+}
+
 #pragma mark - RequestHandler
 
 -(void) onUserInfoReceived:(NSDictionary *)data {

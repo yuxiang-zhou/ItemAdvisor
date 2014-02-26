@@ -17,7 +17,7 @@
         [self.delegate performSelector:@selector(onImageUploaded:) withObject:isUploaded];
     
     for (id dele in observers) {
-        if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
+        if([dele conformsToProtocol:@protocol(UserManagerDelegate)] || [dele respondsToSelector:@selector(onImageUploaded:)])
             [dele performSelector:@selector(onImageUploaded:) withObject:isUploaded];
     }
     
