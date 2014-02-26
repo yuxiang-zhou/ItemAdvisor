@@ -14,7 +14,7 @@
 
 -(void)requestUserInfo:(NSString *)userid;
 -(void)login:(NSString *)useremail password:(NSString *)password;
--(void)uploadImage:(UIImage *)image;
+-(void)uploadImage:(UIImage *)image forUser:(NSString *)email;
 -(void)registUser:(NSDictionary *)user_data;
 
 @end

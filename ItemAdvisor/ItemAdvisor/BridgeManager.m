@@ -37,14 +37,15 @@
 #pragma mark - UserManager Requests
 
 -(void)requestUserInfo:(NSString *)userid {
-    NSMutableURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
     [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].userinfoRH];
     
 }
 
 -(void)registUser:(NSDictionary *)user_data {
-    NSMutableURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:registerURL]];
-    NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@&firstname=%@&lastname=%@&desc=%@",@"123",@"123",@"123",@"123",@"123"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:registerURL]];
+//    NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@&firstname=%@&lastname=%@&desc=%@",@"123",@"123",@"123",@"123",@"123"];
+    NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@&firstname=%@&lastname=%@&desc=%@",[user_data objectForKey:@"email"],[user_data objectForKey:@"password"],[user_data objectForKey:@"firstname"],[user_data objectForKey:@"lastname"],[user_data objectForKey:@"desc"]];
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -62,7 +63,7 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].loginRH];
 }
 
--(void)uploadImage:(UIImage *)image {
+-(void)uploadImage:(UIImage *)image forUser:(NSString *)email{
     /*
      turning the image into a NSData object
      getting the image back out of the UIImageView
@@ -94,7 +95,7 @@
      */
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[@"Content-Disposition: form-data; name=\"file\"; filename=\"ipodfile.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%@.jpg\"\r\n",email] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[NSData dataWithData:imageData]];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
