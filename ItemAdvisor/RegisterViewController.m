@@ -10,7 +10,7 @@
 
 @interface RegisterViewController ()
 @property (strong,nonatomic) UIImagePickerController *picker;
-@property (strong, nonatomic) XWPhotoEditorViewController *photoEditor;
+@property (strong,nonatomic) XWPhotoEditorViewController *photoEditor;
 @end
 
 @implementation RegisterViewController
@@ -21,7 +21,7 @@
 
 - (IBAction)handInForm:(id)sender {
     
-    [self checkTable];
+    //[self checkTable];
 }
 
 
@@ -36,6 +36,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
+
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
@@ -53,15 +55,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    [textField resignFirstResponder];
-    
-    return NO;
-}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.view endEditing:YES];
+    [[self registerView] endEditing:YES];
 }
 - (IBAction)editProfileImage:(id)sender {
 
@@ -105,11 +101,26 @@
 - (void)finish:(UIImage *)image didCancel:(BOOL)cancel {
     if (!cancel) {
         _profileImage = image;
-        [_profilePicButton setBackgroundImage:_profileImage forState:UIControlStateNormal];
-        [_profilePicButton setTitle:@"" forState:UIControlStateNormal];
+        [_picker dismissViewControllerAnimated:NO completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [self presentfilter];
+        }];
+    }else{
+        [_picker dismissViewControllerAnimated:YES completion:nil];
     }
-    [_picker dismissViewControllerAnimated:YES completion:nil];
-    
+}
+
+-(void)presentfilter{
+    ImageFilterProcessViewController *fitler = [[ImageFilterProcessViewController alloc] init];
+    [fitler setDelegate:self];
+    fitler.currentImage = _profileImage;
+    [self presentViewController:fitler animated:YES completion:nil];
+}
+
+- (void)imageFitlerProcessDone:(UIImage *)image //图片处理完
+{
+    [_profilePicButton setBackgroundImage:image forState:UIControlStateNormal];
+    [_profilePicButton setTitle:@"" forState:UIControlStateNormal];
 }
 
 #pragma mark -
@@ -135,6 +146,32 @@
     }
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.5];
+    _registerView.frame = CGRectMake(_registerView.frame.origin.x, _registerView.frame.origin.y-50, _registerView.frame.size.width, _registerView.frame.size.height);
+    
+    [UIView commitAnimations];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.5];
+    _registerView.frame = CGRectMake(_registerView.frame.origin.x, _registerView.frame.origin.y+50, _registerView.frame.size.width, _registerView.frame.size.height);
+                           
+    [UIView commitAnimations];
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 - (void)checkTable
 {
@@ -151,7 +188,7 @@
 
 - (BOOL)checkPassword
 {
-    if (_createPassword.text == _confirmPassword.text) {
+    if (_createdPassword.text == _confirmedPassword.text) {
         return TRUE;
     }else{
         return FALSE;
