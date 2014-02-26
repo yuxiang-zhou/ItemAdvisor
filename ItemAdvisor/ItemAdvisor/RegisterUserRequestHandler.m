@@ -16,14 +16,14 @@
     NSNumber * isRegistered = [NSNumber numberWithBool:[[jsonData objectForKey:@"result"]  isEqual: @"YES"]];
     if(isRegistered) {
         [[UserManager getUserManager].uploadImageRH addObserver:self];
-        [[BridgeManager getBridgeManager] uploadImage:[UserManager getUserManager].profile];
+        [[BridgeManager getBridgeManager] uploadImage:[UserManager getUserManager].profile forUser:[jsonData objectForKey:@"useremail"]];
     } else {
-        if([self.delegate respondsToSelector:@selector(onRegistUser:)])
-            [self.delegate performSelector:@selector(onRegistUser:) withObject:isRegistered];
+        if([self.delegate respondsToSelector:@selector(onRegistUser:description:)])
+            [self.delegate performSelector:@selector(onRegistUser:description:) withObject:isRegistered withObject:[jsonData objectForKey:@"description"]];
         
         for (id dele in observers) {
             if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
-                [dele performSelector:@selector(onRegistUser:) withObject:isRegistered];
+                [dele performSelector:@selector(onRegistUser:description:) withObject:isRegistered withObject:[jsonData objectForKey:@"description"]];
         }
         
         [observers removeAllObjects];
@@ -31,12 +31,15 @@
 }
 
 -(void) onImageUploaded:(BOOL)isUploaded {
-    if([self.delegate respondsToSelector:@selector(onRegistUser:)])
-        [self.delegate performSelector:@selector(onRegistUser:) withObject:[NSNumber numberWithBool:isUploaded]];
+    NSString *errorMsg = @"Success";
+    if(!isUploaded)
+        errorMsg = @"Image failed to uplaod";
+    if([self.delegate respondsToSelector:@selector(onRegistUser:description:)])
+        [self.delegate performSelector:@selector(onRegistUser:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:errorMsg];
     
     for (id dele in observers) {
         if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
-            [dele performSelector:@selector(onRegistUser:) withObject:[NSNumber numberWithBool:isUploaded]];
+            [dele performSelector:@selector(onRegistUser:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:errorMsg];
     }
     
     [observers removeAllObjects];

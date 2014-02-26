@@ -50,9 +50,15 @@
     [[BridgeManager getBridgeManager] login:userLogin password:password];
 }
 
--(void)registerUser:(NSDictionary *)userData image:(UIImage *)image withDelegate:(id)delegate {
+-(void)registerUser:(NSString *)email password:(NSString *)password nickname:(NSString *)nickname image:(UIImage *)image withDelegate:(id)delegate {
     self.profile = image;
-    [[BridgeManager getBridgeManager] registUser:[NSMutableDictionary new]];
+    NSMutableDictionary *user_data = [NSMutableDictionary new];
+    [user_data setObject:email forKey:@"email"];
+    [user_data setObject:password forKey:@"password"];
+    [user_data setObject:nickname forKey:@"firstname"];
+    [user_data setObject:@" " forKey:@"lastname"];
+    [user_data setObject:@" " forKey:@"desc"];
+    [[BridgeManager getBridgeManager] registUser:user_data];
 }
 
 #pragma mark - RequestHandler
@@ -80,6 +86,10 @@
         authenticationState = NO;
     }
 
+}
+
+-(void)onRegistUser:(BOOL)isSuccess description:(NSString *)desc {
+    
 }
 
 @end

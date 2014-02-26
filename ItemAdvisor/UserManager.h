@@ -16,8 +16,7 @@
 @required
 - (void)onUserInfoReceived:(NSDictionary *)userData;
 - (void)onLogin:(NSDictionary *) response;
-- (void)onImageUploaded:(BOOL) isSuccess;
-- (void)onRegistUser:(BOOL) isSuccess;
+- (void)onRegistUser:(BOOL) isSuccess description:(NSString *)desc;
 @end
 
 @interface UserManager : NSObject <UserManagerDelegate>
@@ -40,7 +39,7 @@
 -(BOOL) isAuthenticated;
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate;
 -(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password withDelegate:(id) delegate;
--(void) registerUser:(NSDictionary *)userData image:(UIImage *)image withDelegate:(id)delegate;
+-(void) registerUser:(NSString *)email password:(NSString *)password nickname:(NSString *)nickname image:(UIImage *)image withDelegate:(id)delegate;
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BridgeManager.h"
+#import "UserManager.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation AppDelegate
@@ -39,7 +40,7 @@
     
     // test image uplaod
     UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://113.55.0.233/itemadvisor/img/profile/test.jpg"]]];
-    [[BridgeManager getBridgeManager] uploadImage:img];
+    [[UserManager getUserManager] registerUser:@"test" password:@"test" nickname:@"test" image:img withDelegate:nil];
     //
     
     // Override point for customization after application launch.
