@@ -20,9 +20,9 @@
 }
 
 - (IBAction)handInForm:(id)sender {
-    
-    [self checkLocal];
-    [self checkOnline];
+//    if ([self checkLocal]) {
+//        [self checkOnline];
+//    }
 }
 
 
@@ -174,7 +174,7 @@
     return YES;
 }
 
-- (void)checkLocal
+- (BOOL)checkLocal
 {
     NSString *passwordInValid = @"密码长度不对；";
     NSString *passwordNotMatched = @"密码不相同；";
@@ -197,8 +197,10 @@
     
     if (![self checkEmailAddress] || ![self checkFirstPassword] || ![self checkTwoPasswords] || ![self checkNickName]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"出错" message: errorContent delegate: _registerView cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert setTintColor:UIColorFromRGB(0xe69a9e)];
         [alert show];
+        return FALSE;
+    }else{
+        return TRUE;
     }
 }
 
@@ -257,10 +259,18 @@
 
 - (void)checkOnline
 {
-    NSString *sameNickname = @"昵称已被使用；";
-    NSString *sameEmail= @"邮箱地址已被使用；";
-    NSMutableString *errorContent = [NSMutableString stringWithFormat:@""];
-    
+    [[UserManager getUserManager] registerUser:_emailAddress.text password:_createdPassword.text nickname:_nickName.text image:_profileImage withDelegate:self];
+}
+
+- (void)onRegistUser:(BOOL) isSuccess description:(NSString *)desc
+{
+    if (!isSuccess) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"出错" message: desc delegate: _registerView cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }else{
+        [[UserManager getUserManager] loginAs:_emailAddress.text withPassword:_createdPassword.text withDelegate:self];
+        [self performSegueWithIdentifier:@"finishRegister" sender:self];
+    }
 }
 
 @end

@@ -29,8 +29,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.cancelButton setTintColor:UIColorFromRGB(0xe69a9e)];
-    [self.selectButton setTintColor:UIColorFromRGB(0xe69a9e)];
+    [self.cancelButton setTintColor:[UIColor blackColor]];
+    [self.selectButton setTintColor:[UIColor blackColor]];
     [self.view setBackgroundColor:[UIColor blackColor]];
 }
 

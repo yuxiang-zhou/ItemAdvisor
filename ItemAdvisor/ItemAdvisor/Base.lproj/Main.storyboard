@@ -683,6 +683,7 @@
                         <outlet property="nickName" destination="h6c-KV-AAA" id="K0v-aw-wDQ"/>
                         <outlet property="profilePicButton" destination="Ee6-2Z-t2O" id="Eys-O4-wwk"/>
                         <outlet property="registerView" destination="abL-1q-pU9" id="7OO-wY-i5l"/>
+                        <segue destination="8YX-ce-x5E" kind="modal" identifier="finishRegister" id="gjO-3O-nWN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1W-ro-fnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -819,23 +820,6 @@
             </objects>
             <point key="canvasLocation" x="-138" y="-44"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="3K6-yJ-iyw">
-            <objects>
-                <viewController id="oBI-x4-kt2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HW0-o5-Mvq"/>
-                        <viewControllerLayoutGuide type="bottom" id="aWL-YR-yoy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZHA-zU-QJy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="srF-vm-gka" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
@@ -848,7 +832,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="neP-75-t6e"/>
+        <segue reference="gjO-3O-nWN"/>
         <segue reference="ZZm-aj-jPa"/>
+        <segue reference="neP-75-t6e"/>
     </inferredMetricsTieBreakers>
 </document>

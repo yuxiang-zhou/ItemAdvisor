@@ -41,7 +41,7 @@
 }
 
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate {
-    [_userinfoRH addObserver:delegate];
+    [_registRH addObserver:delegate];
     [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
 }
 
