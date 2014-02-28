@@ -16,7 +16,7 @@
         [self.delegate performSelector:@selector(onUserInfoReceived:) withObject:jsonData];
     
     for (id dele in observers) {
-        if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
+        if([dele conformsToProtocol:@protocol(UserManagerDelegate)] && [dele respondsToSelector:@selector(onUserInfoReceived:)])
             [dele performSelector:@selector(onUserInfoReceived:) withObject:jsonData];
     }
     

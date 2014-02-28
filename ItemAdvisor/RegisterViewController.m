@@ -20,9 +20,9 @@
 }
 
 - (IBAction)handInForm:(id)sender {
-//    if ([self checkLocal]) {
-//        [self checkOnline];
-//    }
+    if ([self checkLocal]) {
+        [self checkOnline];
+    }
 }
 
 
@@ -293,13 +293,18 @@
     [[UserManager getUserManager] registerUser:_emailAddress.text password:_createdPassword.text nickname:_nickName.text image:_profileImage withDelegate:self];
 }
 
-- (void)onRegistUser:(BOOL) isSuccess description:(NSString *)desc
+- (void)onRegistUser:(NSNumber *) isSuccess description:(NSString *)desc
 {
-    if (!isSuccess) {
+    if (![isSuccess boolValue]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"出错" message: desc delegate: _registerView cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }else{
         [[UserManager getUserManager] loginAs:_emailAddress.text withPassword:_createdPassword.text withDelegate:self];
+    }
+}
+
+- (void)onLogin:(NSDictionary *)response {
+    if ([[UserManager getUserManager] isAuthenticated]) {
         [self performSegueWithIdentifier:@"finishRegister" sender:self];
     }
 }

@@ -41,7 +41,7 @@
 }
 
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate {
-    [_registRH addObserver:delegate];
+    [_userinfoRH addObserver:delegate];
     [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
 }
 
@@ -51,6 +51,7 @@
 }
 
 -(void)registerUser:(NSString *)email password:(NSString *)password nickname:(NSString *)nickname image:(UIImage *)image withDelegate:(id)delegate {
+    [_registRH addObserver:delegate];
     self.profile = image;
     NSMutableDictionary *user_data = [NSMutableDictionary new];
     [user_data setObject:email forKey:@"email"];
@@ -88,7 +89,7 @@
 
 }
 
--(void)onRegistUser:(BOOL)isSuccess description:(NSString *)desc {
+-(void)onRegistUser:(NSNumber *)isSuccess description:(NSString *)desc {
     
 }
 

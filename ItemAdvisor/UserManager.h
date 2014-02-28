@@ -16,9 +16,9 @@
 @required
 - (void)onUserInfoReceived:(NSDictionary *)userData;
 - (void)onLogin:(NSDictionary *) response;
-- (void)onRegistUser:(BOOL) isSuccess description:(NSString *)desc;
+- (void)onRegistUser:(NSNumber *) isSuccess description:(NSString *)desc;
 @optional
--(void) onImageUploaded:(BOOL)isUploaded;
+- (void)onImageUploaded:(NSNumber *)isUploaded description:(NSString *)desc;
 @end
 
 @interface UserManager : NSObject <UserManagerDelegate>

@@ -22,7 +22,7 @@
             [self.delegate performSelector:@selector(onRegistUser:description:) withObject:isRegistered withObject:[jsonData objectForKey:@"description"]];
         
         for (id dele in observers) {
-            if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
+            if([dele conformsToProtocol:@protocol(UserManagerDelegate)] && [dele respondsToSelector:@selector(onRegistUser:description:)])
                 [dele performSelector:@selector(onRegistUser:description:) withObject:isRegistered withObject:[jsonData objectForKey:@"description"]];
         }
         
@@ -30,16 +30,13 @@
     }
 }
 
--(void) onImageUploaded:(BOOL)isUploaded {
-    NSString *errorMsg = @"Success";
-    if(!isUploaded)
-        errorMsg = @"Image failed to uplaod";
+-(void) onImageUploaded:(NSNumber *)isUploaded description:(NSString *)desc{
     if([self.delegate respondsToSelector:@selector(onRegistUser:description:)])
-        [self.delegate performSelector:@selector(onRegistUser:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:errorMsg];
+        [self.delegate performSelector:@selector(onRegistUser:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:desc];
     
     for (id dele in observers) {
-        if([dele conformsToProtocol:@protocol(UserManagerDelegate)])
-            [dele performSelector:@selector(onRegistUser:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:errorMsg];
+        if([dele conformsToProtocol:@protocol(UserManagerDelegate)] && [dele respondsToSelector:@selector(onRegistUser:description:)])
+            [dele performSelector:@selector(onRegistUser:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:desc];
     }
     
     [observers removeAllObjects];
