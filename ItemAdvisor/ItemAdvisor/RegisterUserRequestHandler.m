@@ -14,7 +14,7 @@
 
 -(void)onSuccess:(NSDictionary *) jsonData{
     NSNumber * isRegistered = [NSNumber numberWithBool:[[jsonData objectForKey:@"result"]  isEqual: @"YES"]];
-    if(isRegistered) {
+    if([isRegistered boolValue]) {
         [[UserManager getUserManager].uploadImageRH addObserver:self];
         [[BridgeManager getBridgeManager] uploadImage:[UserManager getUserManager].profile forUser:[jsonData objectForKey:@"useremail"]];
     } else {

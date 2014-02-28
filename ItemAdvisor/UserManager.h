@@ -17,6 +17,8 @@
 - (void)onUserInfoReceived:(NSDictionary *)userData;
 - (void)onLogin:(NSDictionary *) response;
 - (void)onRegistUser:(BOOL) isSuccess description:(NSString *)desc;
+@optional
+-(void) onImageUploaded:(BOOL)isUploaded;
 @end
 
 @interface UserManager : NSObject <UserManagerDelegate>
