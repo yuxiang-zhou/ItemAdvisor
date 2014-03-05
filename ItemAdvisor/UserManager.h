@@ -29,6 +29,10 @@
 @property NSString*     description;
 @property NSString*     email;
 @property UIImage *     profile;
+@property NSInteger     noPost;
+@property NSInteger     noFollowing;
+@property NSInteger     noFollower;
+@property NSInteger     noItems;
 
 @property UserInfoRequestHandler* userinfoRH;
 @property LoginRequestHandler* loginRH;
