@@ -36,7 +36,7 @@
     [self.userIntroduction setFont:[UIFont systemFontOfSize:11]];
     
     //Initialise details(POST)
-    NSUInteger numOfpost = 88;
+    NSUInteger numOfpost = [UserManager getUserManager].noPost;
     NSString *postDetailTitle = [NSString stringWithFormat:@"日志\n%lu",(unsigned long)numOfpost];
     
     NSMutableAttributedString *postTitle = [[NSMutableAttributedString alloc] initWithString:postDetailTitle];
@@ -48,7 +48,7 @@
     [self.postDetail setAttributedTitle:postTitle forState:UIControlStateNormal];
 
     //Initialise details(FOLLOWING)
-    NSUInteger numOffollowing = 88;
+    NSUInteger numOffollowing = [UserManager getUserManager].noFollowing;
     NSString *followingDetailTitle = [NSString stringWithFormat:@"关注\n%lu",(unsigned long)numOffollowing];
     
     NSMutableAttributedString *followingTitle = [[NSMutableAttributedString alloc] initWithString:followingDetailTitle];
@@ -58,7 +58,7 @@
     [self.followingDetail setAttributedTitle:followingTitle forState:UIControlStateNormal];
     
     //Initialise details(FOLLOWER)
-    NSUInteger numOffollower = 88;
+    NSUInteger numOffollower = [UserManager getUserManager].noFollower;
     NSString *followerDetailTitle = [NSString stringWithFormat:@"粉丝\n%lu",(unsigned long)numOffollower];
     
     NSMutableAttributedString *followerTitle = [[NSMutableAttributedString alloc] initWithString:followerDetailTitle];
@@ -68,7 +68,7 @@
     [self.followerDetail setAttributedTitle:followerTitle forState:UIControlStateNormal];
     
     //Initialise details(STUFF)
-    NSUInteger numOfstuff = 88;
+    NSUInteger numOfstuff = [UserManager getUserManager].noItems;
     NSString *stuffDetailTitle = [NSString stringWithFormat:@"物品\n%lu",(unsigned long)numOfstuff];
     
     NSMutableAttributedString *stuffTitle = [[NSMutableAttributedString alloc] initWithString:stuffDetailTitle];
