@@ -38,11 +38,6 @@
     // Uncomment to change the color of buttons in tab bar
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     
-    // test image uplaod
-    UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://113.55.0.233/itemadvisor/img/profile/test.jpg"]]];
-    [[UserManager getUserManager] registerUser:@"test" password:@"test" nickname:@"test" image:img withDelegate:self];
-    //
-    
     // Override point for customization after application launch.
     return YES;
 }
