@@ -38,13 +38,16 @@
 
 -(void)requestUserInfo:(NSString *)userid {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:gerUserURL]];
+    NSString *postString = [NSString stringWithFormat:@"userid=%@",userid];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].userinfoRH];
     
 }
 
 -(void)registUser:(NSDictionary *)user_data {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:registerURL]];
-//    NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@&firstname=%@&lastname=%@&desc=%@",@"123",@"123",@"123",@"123",@"123"];
     NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@&firstname=%@&lastname=%@&desc=%@",[user_data objectForKey:@"email"],[user_data objectForKey:@"password"],[user_data objectForKey:@"firstname"],[user_data objectForKey:@"lastname"],[user_data objectForKey:@"desc"]];
     
     [request setHTTPMethod:@"POST"];
