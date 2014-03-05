@@ -30,6 +30,11 @@
         _loginRH = [[LoginRequestHandler alloc] initWithDelegate:self];
         _registRH = [[RegisterUserRequestHandler alloc] initWithDelegate:self];
         _uploadImageRH = [[UploadImageRequestHandler alloc] initWithDelegate:_registRH];
+        
+        _noFollower = 0;
+        _noFollowing = 0;
+        _noItems = 0;
+        _noPost = 0;
     }
     return self;
 }
@@ -42,7 +47,7 @@
 
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate {
     [_userinfoRH addObserver:delegate];
-    [[BridgeManager getBridgeManager] requestUserInfo:@"1"];
+    [[BridgeManager getBridgeManager] requestUserInfo:[NSString stringWithFormat:@"%ld",userid]];
 }
 
 -(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password withDelegate:(id) delegate{
@@ -71,6 +76,13 @@
     self.lastName = [user_data objectForKey:@"lastname"];
     self.description = [user_data objectForKey:@"description"];
     self.email = [user_data objectForKey:@"email"];
+    self.noFollower = [[user_data objectForKey:@"no_follower"] intValue];
+    self.noFollowing = [[user_data objectForKey:@"no_following"] intValue];
+    self.noItems = [[user_data objectForKey:@"no_items"] intValue];
+    self.noPost = [[user_data objectForKey:@"no_post"] intValue];
+    NSString *url_image = [NSString stringWithFormat:@"http://113.55.0.233/itemadvisor/img/profile/%@.jpg", self.email];
+    self.profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url_image]]];
+    
 }
 
 - (void)onLogin:(NSDictionary *)response {
@@ -82,6 +94,12 @@
         self.lastName = [user_data objectForKey:@"lastname"];
         self.description = [user_data objectForKey:@"description"];
         self.email = [user_data objectForKey:@"email"];
+        self.noFollower = [[user_data objectForKey:@"no_follower"] intValue];
+        self.noFollowing = [[user_data objectForKey:@"no_following"] intValue];
+        self.noItems = [[user_data objectForKey:@"no_items"] intValue];
+        self.noPost = [[user_data objectForKey:@"no_post"] intValue];
+        NSString *url_image = [NSString stringWithFormat:@"http://113.55.0.233/itemadvisor/img/profile/%@.jpg", self.email];
+        self.profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url_image]]];
         authenticationState = YES;
     } else {
         authenticationState = NO;
