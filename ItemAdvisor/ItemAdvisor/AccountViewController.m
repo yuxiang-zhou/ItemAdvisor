@@ -14,15 +14,16 @@
 @end
 
 @implementation AccountViewController
-@synthesize profileImage;
+//@synthesize profileImage;
 - (IBAction)editProfile:(UIButton *)sender {
 }
 
 - (void)viewDidLoad
 {
     //Initialise profile image
-    UIImage *image = [UIImage imageNamed:@"haha.jpeg"];
-    [profileImage setImage:image];
+    //_profileImage.image = [UIImage imageNamed:@"haha.jpeg"];
+    //[profileImage setImage:image];
+    _profileImage.image = [UserManager getUserManager].profile;
     
     //Initialise username
     NSString *name = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];

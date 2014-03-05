@@ -153,6 +153,7 @@
 {
     [_profilePicButton setBackgroundImage:image forState:UIControlStateNormal];
     [_profilePicButton setTitle:@"" forState:UIControlStateNormal];
+    _profileImage = image;
 }
 
 #pragma mark -

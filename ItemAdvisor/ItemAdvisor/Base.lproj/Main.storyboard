@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LGu-vc-wI8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LGu-vc-wI8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -129,29 +129,6 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ly9-Ct-7Bh">
-                                <rect key="frame" x="0.0" y="108" width="320" height="420"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iZP-45-GZZ">
-                                    <size key="itemSize" width="90" height="90"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lvr-Uy-Tmj">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -195,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nv5-5O-x6k">
-                                <rect key="frame" x="0.0" y="64" width="160" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="160" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -205,13 +182,8 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tBJ-wo-6eI">
-                                <rect key="frame" x="0.0" y="100" width="320" height="419"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7cq-Ko-FQV">
-                                <rect key="frame" x="160" y="64" width="160" height="36"/>
+                                <rect key="frame" x="160" y="64" width="160" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -245,86 +217,31 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="va3-ri-Lo8" kind="relationship" relationship="rootViewController" id="ksL-jS-OR4"/>
+                        <segue destination="Ofj-bo-zxU" kind="relationship" relationship="rootViewController" id="nkj-3F-MQJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="No0-Vn-0dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="-143"/>
+            <point key="canvasLocation" x="1881" y="-143"/>
         </scene>
-        <!--Make Post View Controller - 写日志-->
-        <scene sceneID="V72-iB-xDO">
+        <!--View Controller-->
+        <scene sceneID="f7d-ge-DI0">
             <objects>
-                <viewController id="va3-ri-Lo8" customClass="MakePostViewController" sceneMemberID="viewController">
+                <viewController id="Ofj-bo-zxU" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q12-Fy-0ay"/>
-                        <viewControllerLayoutGuide type="bottom" id="yC8-P2-ZbI"/>
+                        <viewControllerLayoutGuide type="top" id="pjO-Zv-Olu"/>
+                        <viewControllerLayoutGuide type="bottom" id="kYs-Uq-Vqw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tTZ-On-foD">
+                    <view key="view" contentMode="scaleToFill" id="Ofw-SV-VPF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfh-OC-ZCw">
-                                <rect key="frame" x="0.0" y="522" width="106" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.44313725490196076" green="0.53725490196078429" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="加文字">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addText:" destination="va3-ri-Lo8" eventType="touchUpInside" id="Ond-xI-dZk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D70-81-4ZK">
-                                <rect key="frame" x="214" y="522" width="106" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.4431372549" green="0.53725490200000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="加图片">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addPic:" destination="va3-ri-Lo8" eventType="touchUpInside" id="GOt-pV-PXe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wO-aF-h4T">
-                                <rect key="frame" x="106" y="522" width="108" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.44313725490196076" green="0.53725490196078429" blue="0.41176470588235292" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="加标签">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addTag:" destination="va3-ri-Lo8" eventType="touchUpInside" id="tFf-2e-ct1"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ANY-o8-ctI">
-                                <rect key="frame" x="0.0" y="65" width="320" height="458"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="写日志" id="3K4-6w-GsV">
-                        <barButtonItem key="leftBarButtonItem" title="取消/草稿" id="Ymg-q3-DhA">
-                            <connections>
-                                <action selector="CancelOrDraft:" destination="va3-ri-Lo8" id="Mhe-XW-Q0V"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="发表" id="Nmx-Qe-Swb"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="addImage" destination="D70-81-4ZK" id="QQ9-Zp-DUn"/>
-                        <outlet property="addTag" destination="6wO-aF-h4T" id="pMg-RH-Aga"/>
-                        <outlet property="addText" destination="dfh-OC-ZCw" id="UcE-L0-5GN"/>
-                        <outlet property="scrollView" destination="ANY-o8-ctI" id="GDZ-XC-YiY"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="Ohq-Og-Ezx"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gxq-mf-kSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="emz-Nu-Ukw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376" y="-143"/>
+            <point key="canvasLocation" x="2387" y="-148"/>
         </scene>
         <!--Navigation Controller - 信息-->
         <scene sceneID="LTj-0v-Qhd">
@@ -387,7 +304,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-QL-wzF">
-                                <rect key="frame" x="0.0" y="64" width="80" height="33"/>
+                                <rect key="frame" x="0.0" y="64" width="80" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="0.95000000000000007" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -395,12 +312,12 @@
                                 <state key="normal" title=""/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CMS-vL-8q0">
-                                <rect key="frame" x="0.0" y="256" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="276" width="320" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.31372549019607843" green="0.1764705882352941" blue="0.14509803921568626" alpha="0.95000000000000007" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="编辑">
+                                <state key="normal" title="编 辑">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -409,7 +326,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ODH-hY-bMI">
-                                <rect key="frame" x="80" y="64" width="80" height="33"/>
+                                <rect key="frame" x="80" y="64" width="80" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="0.94999999999999996" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -420,7 +337,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BiH-Cd-HqV">
-                                <rect key="frame" x="160" y="64" width="80" height="33"/>
+                                <rect key="frame" x="160" y="64" width="80" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="0.94999999999999996" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -431,7 +348,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mkh-4c-a52">
-                                <rect key="frame" x="240" y="64" width="80" height="33"/>
+                                <rect key="frame" x="240" y="64" width="80" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="0.94999999999999996" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -442,25 +359,25 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PgX-Tg-6yQ">
-                                <rect key="frame" x="0.0" y="97" width="160" height="160"/>
+                                <rect key="frame" x="0.0" y="116" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-uk-eO3">
-                                <rect key="frame" x="160" y="164" width="160" height="41"/>
+                                <rect key="frame" x="160" y="174" width="160" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CF-DG-ZVP">
-                                <rect key="frame" x="160" y="202" width="160" height="55"/>
+                                <rect key="frame" x="160" y="218" width="160" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WhI-dU-WpW">
-                                <rect key="frame" x="0.0" y="300" width="320" height="220"/>
+                                <rect key="frame" x="0.0" y="345" width="320" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIQ-n3-HcV">
@@ -832,8 +749,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="qxO-kZ-Rqz"/>
         <segue reference="gjO-3O-nWN"/>
-        <segue reference="ZZm-aj-jPa"/>
         <segue reference="neP-75-t6e"/>
     </inferredMetricsTieBreakers>
 </document>
