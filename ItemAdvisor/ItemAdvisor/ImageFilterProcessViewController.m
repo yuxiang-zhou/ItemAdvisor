@@ -89,8 +89,8 @@
         [bgImageView setTag:i];
         [bgImageView addGestureRecognizer:recognizer];
         [bgImageView setUserInteractionEnabled:YES];
-        UIImage *bgImage = [self changeImage:i imageView:nil];
-        bgImageView.image = bgImage;
+        //UIImage *bgImage = [self changeImage:i imageView:nil];
+        bgImageView.image = [UIImage imageNamed:@"second"];
         [scrollerView addSubview:bgImageView];
         //[bgImageView release];
         

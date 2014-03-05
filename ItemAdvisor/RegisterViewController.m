@@ -92,7 +92,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    self.photoEditor.sourceImage = [self resizeImage:image toSize:CGSizeMake(320, 480)];
+    self.photoEditor.sourceImage = [self resizeImage:image toSize:CGSizeMake(900, 1200)];
     
         [picker pushViewController:self.photoEditor animated:YES];
         [picker setNavigationBarHidden:YES animated:NO];
