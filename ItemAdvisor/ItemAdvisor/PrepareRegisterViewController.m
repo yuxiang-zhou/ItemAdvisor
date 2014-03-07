@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad
 {
-    [self.navigationBar setBarTintColor:UIColorFromRGB(0xe69a9e)];
+    [self.navigationBar setBarTintColor:UIColorFromRGB(0xc7e6e8)];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }

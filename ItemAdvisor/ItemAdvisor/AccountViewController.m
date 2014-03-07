@@ -14,68 +14,128 @@
 @end
 
 @implementation AccountViewController
-//@synthesize profileImage;
-- (IBAction)editProfile:(UIButton *)sender {
-}
+
 
 - (void)viewDidLoad
 {
-    //Initialise profile image
-    //_profileImage.image = [UIImage imageNamed:@"haha.jpeg"];
-    //[profileImage setImage:image];
-    _profileImage.image = [UserManager getUserManager].profile;
+    //Create scroll view
+    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 460)];
+    scrollview.showsVerticalScrollIndicator=YES;
+    scrollview.scrollEnabled=YES;
+    scrollview.userInteractionEnabled=YES;
+    [self.view addSubview:scrollview];
+    scrollview.contentSize = CGSizeMake(320,960);
     
-    //Initialise username
-    NSString *name = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];
-    self.userName.text = [NSString stringWithFormat:@"%@", name];
-    [self.userName setFont:[UIFont systemFontOfSize:20]];
+    //Create 4 buttons switching contents in scroll view
+    //日志
+    UIButton *post = [UIButton buttonWithType:UIButtonTypeCustom];
+    [post setBackgroundColor:[UIColor blackColor]];
+    post.frame = CGRectMake(0, 0, 80, 20);
+    [post setTitle:@"日志" forState:UIControlStateNormal];
+    [post.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [self.view addSubview: post];
     
-    //Initialise introduction
+    NSUInteger numOfpost = [UserManager getUserManager].noPost;
+    NSString *postDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfpost];
+    
+    UIButton *postNum = [UIButton buttonWithType:UIButtonTypeCustom];
+    [postNum setBackgroundColor:[UIColor blackColor]];
+    postNum.frame = CGRectMake(0, 20, 80, 20);
+    [postNum setTitle:postDetailTitle forState:UIControlStateNormal];
+    [postNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    [self.view addSubview: postNum];
+    
+    //关注
+    UIButton *follow = [UIButton buttonWithType:UIButtonTypeCustom];
+    [follow setBackgroundColor:[UIColor blackColor]];
+    follow.frame = CGRectMake(80, 0, 80, 20);
+    [follow setTitle:@"关注" forState:UIControlStateNormal];
+    [follow.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [self.view addSubview: follow];
+    
+    NSUInteger numOfFollow = [UserManager getUserManager].noFollowing;
+    NSString *followDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfFollow];
+    
+    UIButton *followNum = [UIButton buttonWithType:UIButtonTypeCustom];
+    [followNum setBackgroundColor:[UIColor blackColor]];
+    followNum.frame = CGRectMake(80, 20, 80, 20);
+    [followNum setTitle:followDetailTitle forState:UIControlStateNormal];
+    [followNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    [self.view addSubview: followNum];
+    
+    //粉丝
+    UIButton *follower = [UIButton buttonWithType:UIButtonTypeCustom];
+    [follower setBackgroundColor:[UIColor blackColor]];
+    follower.frame = CGRectMake(160, 0, 80, 20);
+    [follower setTitle:@"粉丝" forState:UIControlStateNormal];
+    [follower.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [self.view addSubview: follower];
+    
+    NSUInteger numOfFollower = [UserManager getUserManager].noFollower;
+    NSString *followerDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfFollower];
+    
+    UIButton *followerNum = [UIButton buttonWithType:UIButtonTypeCustom];
+    [followerNum setBackgroundColor:[UIColor blackColor]];
+    followerNum.frame = CGRectMake(160, 20, 80, 20);
+    [followerNum setTitle:followerDetailTitle forState:UIControlStateNormal];
+    [followerNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    [self.view addSubview: followerNum];
+    
+    //物品
+    UIButton *things = [UIButton buttonWithType:UIButtonTypeCustom];
+    [things setBackgroundColor:[UIColor blackColor]];
+    things.frame = CGRectMake(240, 0, 80, 20);
+    [things setTitle:@"物品" forState:UIControlStateNormal];
+    [things.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [self.view addSubview: things];
+    
+    NSUInteger numOfThings = [UserManager getUserManager].noItems;
+    NSString *thingsDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfThings];
+    
+    UIButton *thingsNum = [UIButton buttonWithType:UIButtonTypeCustom];
+    [thingsNum setBackgroundColor:[UIColor blackColor]];
+    thingsNum.frame = CGRectMake(240, 20, 80, 20);
+    [thingsNum setTitle:thingsDetailTitle forState:UIControlStateNormal];
+    [thingsNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    [self.view addSubview: thingsNum];
+    
+    //Create profile pic
+    UIImageView *myProfile = [[UIImageView alloc] init];
+    if (![UserManager getUserManager].profile) {
+        myProfile.image = [UIImage imageNamed:@"haha.jpeg"];
+    }else{
+        myProfile.image = [UserManager getUserManager].profile;
+    }
+    myProfile.frame = CGRectMake(0, 0, 160, 160);
+    [scrollview addSubview:myProfile];
+    
+    
+    //Create and Initialise username
+    NSString *nameString = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];
+    UITextView *tfn = [[UITextView alloc] initWithFrame:CGRectMake(165, 60, 150, 30)];
+    tfn.textColor = [UIColor blackColor];
+    tfn.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
+    tfn.text = nameString;
+    tfn.editable = NO;
+    [scrollview addSubview:tfn];
+    
+    //Create and Initialise introduction
     NSString *intro = [NSString stringWithFormat:@"%@", [UserManager getUserManager].description];
-    self.userIntroduction.text = [NSString stringWithFormat:@"%@", intro];
-    [self.userIntroduction setFont:[UIFont systemFontOfSize:11]];
+    UITextView *tf = [[UITextView alloc] initWithFrame:CGRectMake(165, 90, 150, 65)];
+    tf.textColor = [UIColor blackColor];
+    tf.font = [UIFont fontWithName:@"Trebuchet MS" size:11];
+    tf.text = intro;
+    tf.editable = NO;
+    [scrollview addSubview:tf];
     
-    //Initialise details(POST)
-    NSUInteger numOfpost = 88;
-    NSString *postDetailTitle = [NSString stringWithFormat:@"日志\n%lu",(unsigned long)numOfpost];
+    //Create edit button
+    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [editButton setBackgroundColor:UIColorFromRGB(0x502d25)];
+    editButton.frame = CGRectMake(0, 160, 320, 60);
+    [editButton setTitle:@"编  辑" forState:UIControlStateNormal];
+    [editButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:22]];
+    [scrollview addSubview: editButton];
     
-    NSMutableAttributedString *postTitle = [[NSMutableAttributedString alloc] initWithString:postDetailTitle];
-
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setAlignment:NSTextAlignmentCenter];
-    [postTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, postTitle.length)];
-    
-    [self.postDetail setAttributedTitle:postTitle forState:UIControlStateNormal];
-
-    //Initialise details(FOLLOWING)
-    NSUInteger numOffollowing = 88;
-    NSString *followingDetailTitle = [NSString stringWithFormat:@"关注\n%lu",(unsigned long)numOffollowing];
-    
-    NSMutableAttributedString *followingTitle = [[NSMutableAttributedString alloc] initWithString:followingDetailTitle];
-    
-    [followingTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, followingTitle.length)];
-    
-    [self.followingDetail setAttributedTitle:followingTitle forState:UIControlStateNormal];
-    
-    //Initialise details(FOLLOWER)
-    NSUInteger numOffollower = 88;
-    NSString *followerDetailTitle = [NSString stringWithFormat:@"粉丝\n%lu",(unsigned long)numOffollower];
-    
-    NSMutableAttributedString *followerTitle = [[NSMutableAttributedString alloc] initWithString:followerDetailTitle];
-    
-    [followerTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, followerTitle.length)];
-    
-    [self.followerDetail setAttributedTitle:followerTitle forState:UIControlStateNormal];
-    
-    //Initialise details(STUFF)
-    NSUInteger numOfstuff = 88;
-    NSString *stuffDetailTitle = [NSString stringWithFormat:@"物品\n%lu",(unsigned long)numOfstuff];
-    
-    NSMutableAttributedString *stuffTitle = [[NSMutableAttributedString alloc] initWithString:stuffDetailTitle];
-    
-    [stuffTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, stuffTitle.length)];
-    
-    [self.stuffDetail setAttributedTitle:stuffTitle forState:UIControlStateNormal];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }

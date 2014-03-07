@@ -51,6 +51,12 @@
 		D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D546E18A96A770074C182 /* TabBarViewController.m */; };
 		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
 		D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */; };
+		D44C974C18CA15F50078DA34 /* ocean_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D44C974A18CA15F50078DA34 /* ocean_1.jpg */; };
+		D44C974D18CA15F50078DA34 /* ocean_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D44C974B18CA15F50078DA34 /* ocean_2.jpg */; };
+		D46C6A0818C7BECE001151D5 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D46C6A0718C7BECE001151D5 /* sky.jpg */; };
+		D46C6A0A18C7C817001151D5 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = D46C6A0918C7C817001151D5 /* car.png */; };
+		D46C6A0C18C7C8F6001151D5 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = D46C6A0B18C7C8F6001151D5 /* camera.png */; };
+		D46C6A0E18C7D3CB001151D5 /* ocean.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D46C6A0D18C7D3CB001151D5 /* ocean.jpeg */; };
 		D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */; };
 		D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C06418AE20C300D7DEC2 /* TLAlertView.m */; };
 		D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D472C06718AE228200D7DEC2 /* QuartzCore.framework */; };
@@ -145,6 +151,12 @@
 		D41D547318A98C350074C182 /* haha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haha.jpeg; sourceTree = "<group>"; };
 		D4297D5A18B69EEF002CFC8E /* PrepareRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRegisterViewController.h; sourceTree = "<group>"; };
 		D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRegisterViewController.m; sourceTree = "<group>"; };
+		D44C974A18CA15F50078DA34 /* ocean_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean_1.jpg; sourceTree = "<group>"; };
+		D44C974B18CA15F50078DA34 /* ocean_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean_2.jpg; sourceTree = "<group>"; };
+		D46C6A0718C7BECE001151D5 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
+		D46C6A0918C7C817001151D5 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		D46C6A0B18C7C8F6001151D5 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		D46C6A0D18C7D3CB001151D5 /* ocean.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean.jpeg; sourceTree = "<group>"; };
 		D472C05E18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareMakePostNavigationViewController.h; sourceTree = "<group>"; };
 		D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareMakePostNavigationViewController.m; sourceTree = "<group>"; };
 		D472C06318AE20C300D7DEC2 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLAlertView.h; path = ../TLAlertView.h; sourceTree = "<group>"; };
@@ -286,6 +298,12 @@
 		7FC1DBC318A257CA005C216C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D44C974A18CA15F50078DA34 /* ocean_1.jpg */,
+				D44C974B18CA15F50078DA34 /* ocean_2.jpg */,
+				D46C6A0D18C7D3CB001151D5 /* ocean.jpeg */,
+				D46C6A0B18C7C8F6001151D5 /* camera.png */,
+				D46C6A0918C7C817001151D5 /* car.png */,
+				D46C6A0718C7BECE001151D5 /* sky.jpg */,
 				D41AE6C818BDFF6300D282FC /* btn_back.png */,
 				D41AE6C918BDFF6300D282FC /* btn_back@2x.png */,
 				D41AE6CA18BDFF6300D282FC /* camera_btn_ok.png */,
@@ -483,16 +501,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44C974C18CA15F50078DA34 /* ocean_1.jpg in Resources */,
 				D41AE6CD18BDFF6300D282FC /* btn_back@2x.png in Resources */,
+				D44C974D18CA15F50078DA34 /* ocean_2.jpg in Resources */,
 				D41AE6CF18BDFF6300D282FC /* camera_btn_ok@2x.png in Resources */,
+				D46C6A0C18C7C8F6001151D5 /* camera.png in Resources */,
+				D46C6A0E18C7D3CB001151D5 /* ocean.jpeg in Resources */,
 				7FC1DBD818A257CA005C216C /* Images.xcassets in Resources */,
 				7FC1DBC718A257CA005C216C /* InfoPlist.strings in Resources */,
 				D40897C818B95AE20015D954 /* XWPhotoEditorViewController.xib in Resources */,
 				D41AE6CC18BDFF6300D282FC /* btn_back.png in Resources */,
 				D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */,
+				D46C6A0A18C7C817001151D5 /* car.png in Resources */,
 				7FC1DBD018A257CA005C216C /* Main.storyboard in Resources */,
 				D41AE6CE18BDFF6300D282FC /* camera_btn_ok.png in Resources */,
 				D41D547418A98C350074C182 /* haha.jpeg in Resources */,
+				D46C6A0818C7BECE001151D5 /* sky.jpg in Resources */,
 				D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
