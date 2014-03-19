@@ -85,8 +85,8 @@
     
     //-----------Tag
     addedTagArray = [[NSMutableArray alloc]init];
-    [addedTagArray addObject:[UIImage imageNamed:@"camera.png"]];
-    [addedTagArray addObject:[UIImage imageNamed:@"camera.png"]];
+    [addedTagArray addObject:[NSNumber numberWithInt:1]];
+    [addedTagArray addObject:[NSNumber numberWithInt:2]];
     
     [self initTags];
     
@@ -411,7 +411,7 @@
 
 - (void)addTag
 {
-    [addedTagArray addObject:[UIImage imageNamed:@"camera.png"]];
+    [addedTagArray addObject:[NSNumber numberWithInt:3]];
     //--Change the ex-last tag
     //textfield
     UITextField *textField = (UITextField *)[scrollview viewWithTag:200+[addedTagArray count]-2];
