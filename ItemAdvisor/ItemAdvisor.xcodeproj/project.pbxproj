@@ -38,6 +38,7 @@
 		7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF918A27AAC005C216C /* MsgViewController.m */; };
 		7FD29CED18D8E221004723D7 /* AddPostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD29CEC18D8E221004723D7 /* AddPostRequestHandler.m */; };
 		7FD29CF018D8FB9F004723D7 /* GetPostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */; };
+		7FD29CF418D9F452004723D7 /* UploadPostImageRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD29CF318D9F452004723D7 /* UploadPostImageRequestHandler.m */; };
 		D40897C618B95AE20015D954 /* XWEditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40897C018B95AE20015D954 /* XWEditPhotoViewController.m */; };
 		D40897C718B95AE20015D954 /* XWPhotoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40897C218B95AE20015D954 /* XWPhotoEditorViewController.m */; };
 		D40897C818B95AE20015D954 /* XWPhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D40897C318B95AE20015D954 /* XWPhotoEditorViewController.xib */; };
@@ -127,6 +128,8 @@
 		7FD29CEC18D8E221004723D7 /* AddPostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostRequestHandler.m; sourceTree = "<group>"; };
 		7FD29CEE18D8FB9F004723D7 /* GetPostRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPostRequestHandler.h; sourceTree = "<group>"; };
 		7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPostRequestHandler.m; sourceTree = "<group>"; };
+		7FD29CF218D9F452004723D7 /* UploadPostImageRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadPostImageRequestHandler.h; sourceTree = "<group>"; };
+		7FD29CF318D9F452004723D7 /* UploadPostImageRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadPostImageRequestHandler.m; sourceTree = "<group>"; };
 		D40897BF18B95AE20015D954 /* XWEditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWEditPhotoViewController.h; sourceTree = "<group>"; };
 		D40897C018B95AE20015D954 /* XWEditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWEditPhotoViewController.m; sourceTree = "<group>"; };
 		D40897C118B95AE20015D954 /* XWPhotoEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPhotoEditorViewController.h; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				7FD29CEC18D8E221004723D7 /* AddPostRequestHandler.m */,
 				7FD29CEE18D8FB9F004723D7 /* GetPostRequestHandler.h */,
 				7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */,
+				7FD29CF218D9F452004723D7 /* UploadPostImageRequestHandler.h */,
+				7FD29CF318D9F452004723D7 /* UploadPostImageRequestHandler.m */,
 			);
 			name = RequestHandlers;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				7F24547C18ABB7D300896C81 /* UserManager.m in Sources */,
 				D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */,
 				7F198FE018ABD59700FC5E61 /* BridgeManager.m in Sources */,
+				7FD29CF418D9F452004723D7 /* UploadPostImageRequestHandler.m in Sources */,
 				D40897CC18B9623B0015D954 /* XWCropWindow.m in Sources */,
 				7FD29CED18D8E221004723D7 /* AddPostRequestHandler.m in Sources */,
 				7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */,

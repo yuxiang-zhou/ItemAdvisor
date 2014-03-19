@@ -10,6 +10,7 @@
 #import "PostTag.h"
 #import "AddPostRequestHandler.h"
 #import "GetPostRequestHandler.h"
+#import "UploadPostImageRequestHandler.h"
 
 @protocol PostManagerDelegate
 @required
@@ -23,6 +24,7 @@
 
 @property AddPostRequestHandler* addPostRH;
 @property GetPostRequestHandler* getPostRH;
+@property UploadPostImageRequestHandler *uploadPostImageRH;
 
 +(instancetype) getPostManager;
 
