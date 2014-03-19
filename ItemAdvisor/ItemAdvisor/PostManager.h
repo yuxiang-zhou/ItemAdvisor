@@ -27,5 +27,7 @@
 +(instancetype) getPostManager;
 
 -(void)newPost:(NSInteger)userID tagList:(NSArray *)tags imageList:(NSArray *)images contents:(NSString *)text withDelegate:(id)delegate;
+-(void)getUserPost:(NSInteger)userID range:(NSRange)range withDelegate:(id)delegate;
+-(void)getPublicPostwithDelegate:(id)delegate;
 
 @end

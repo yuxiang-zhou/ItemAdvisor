@@ -33,4 +33,14 @@
     [[BridgeManager getBridgeManager] newPost:userID tagList:tags imageList:images contents:text];
 }
 
+-(void)getPublicPostwithDelegate:(id)delegate {
+    [_getPostRH addObserver:delegate];
+    [[BridgeManager getBridgeManager] getPublicPost];
+}
+
+-(void)getUserPost:(NSInteger)userID range:(NSRange)range withDelegate:(id)delegate {
+    [_getPostRH addObserver:delegate];
+    [[BridgeManager getBridgeManager] getUserPost:userID range:range];
+}
+
 @end
