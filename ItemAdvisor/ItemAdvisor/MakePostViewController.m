@@ -121,8 +121,9 @@
     [scrollview addSubview:photoScroll];
     
     //Create photo arrays
+    UIImage *picOne = [self resizeImage:[UIImage imageNamed:@"grass1.jpg"] toSize:CGSizeMake(900, 900)];
     addedPicArray = [[NSMutableArray alloc]init];
-    [addedPicArray addObject:[UIImage imageNamed:@"grass1.jpg"]];
+    [addedPicArray addObject:picOne];
     //[addedPicArray addObject:@"grass2.jpg"];
     //[addedPicArray addObject:@"grass3.jpg"];
     //[addedPicArray addObject:@"grass4.jpg"];
