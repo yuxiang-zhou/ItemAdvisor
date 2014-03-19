@@ -19,7 +19,7 @@
 -(void)registUser:(NSDictionary *)user_data;
 
 // Post Related Requests
--(void)newPost:(NSInteger)userID tagList:(NSArray *)tags imageList:(NSArray *)images contents:(NSString *)text;
+-(void)newPost:(NSInteger)userID tagList:(NSArray *)tags contents:(NSString *)text;
 -(void)uploadPostImage:(UIImage *)image forPost:(NSInteger)postid;
 -(void)getUserPost:(NSInteger)userID range:(NSRange)range;
 -(void)getPublicPost;

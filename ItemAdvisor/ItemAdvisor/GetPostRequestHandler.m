@@ -7,7 +7,21 @@
 //
 
 #import "GetPostRequestHandler.h"
+#import "PostManager.h"
 
 @implementation GetPostRequestHandler
+
+-(void)onSuccess:(NSDictionary *) jsonData{
+    NSNumber *isSuccess = [NSNumber numberWithBool:[[jsonData objectForKey:@"result"]  isEqual: @"YES"]];;
+    if([self.delegate respondsToSelector:@selector(onPost:description:)])
+        [self.delegate performSelector:@selector(onPost:description:) withObject:isSuccess withObject:[jsonData objectForKey:@"description"]];
+    
+    for (id dele in observers) {
+        if([dele conformsToProtocol:@protocol(PostManagerDelegate)] && [dele respondsToSelector:@selector(onPost:description:)])
+            [dele performSelector:@selector(onPost:description:) withObject:isSuccess withObject:[jsonData objectForKey:@"description"]];
+    }
+    
+    [observers removeAllObjects];
+}
 
 @end

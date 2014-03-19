@@ -24,13 +24,15 @@
         // init propertise
         _addPostRH = [[AddPostRequestHandler alloc] initWithDelegate:self];
         _getPostRH = [[GetPostRequestHandler alloc] initWithDelegate:self];
+        _uploadPostImageRH = [[UploadPostImageRequestHandler alloc] initWithDelegate:_addPostRH];
     }
     return self;
 }
 
 -(void)newPost:(NSInteger)userID tagList:(NSArray *)tags imageList:(NSArray *)images contents:(NSString *)text withDelegate:(id)delegate{
     [_addPostRH addObserver:delegate];
-    [[BridgeManager getBridgeManager] newPost:userID tagList:tags imageList:images contents:text];
+    _addPostRH.images = [NSMutableArray arrayWithArray:images];
+    [[BridgeManager getBridgeManager] newPost:userID tagList:tags contents:text];
 }
 
 -(void)getPublicPostwithDelegate:(id)delegate {

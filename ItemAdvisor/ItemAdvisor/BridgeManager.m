@@ -151,7 +151,7 @@
      */
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%ld.jpg\"\r\n",postid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%ld\"\r\n",postid] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[NSData dataWithData:imageData]];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -160,7 +160,7 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].uploadImageRH];
 }
 
--(void)newPost:(NSInteger)userID tagList:(NSArray *)tags imageList:(NSArray *)images contents:(NSString *)text {
+-(void)newPost:(NSInteger)userID tagList:(NSArray *)tags contents:(NSString *)text {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:addPostURL]];
     NSString *postString = [NSString stringWithFormat:@"userid=%ld&content=%@&tags=%@",userID,text,[tags componentsJoinedByString:@","]];
     
