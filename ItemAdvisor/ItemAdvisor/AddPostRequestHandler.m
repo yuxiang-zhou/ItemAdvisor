@@ -42,11 +42,11 @@
         [[BridgeManager getBridgeManager] uploadPostImage:image forPost:postid];
     } else {
         if([self.delegate respondsToSelector:@selector(onPost:description:)])
-            [self.delegate performSelector:@selector(onPost:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:desc];
+            [self.delegate performSelector:@selector(onPost:description:) withObject:isUploaded withObject:desc];
         
         for (id dele in observers) {
             if([dele conformsToProtocol:@protocol(PostManagerDelegate)] && [dele respondsToSelector:@selector(onPost:description:)])
-                [dele performSelector:@selector(onPost:description:) withObject:[NSNumber numberWithBool:isUploaded] withObject:desc];
+                [dele performSelector:@selector(onPost:description:) withObject:isUploaded withObject:desc];
         }
         
         [observers removeAllObjects];
