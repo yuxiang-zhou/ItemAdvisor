@@ -35,6 +35,11 @@
     _picker = [[UIImagePickerController alloc] init];
     _picker.delegate = self;
 }
+- (IBAction)sendPost:(id)sender {
+    if ([addedPicArray count] != 0 || _tf.textStorage != nil) {
+        nil;
+    }
+}
 
 - (void)viewDidLoad
 {

@@ -546,7 +546,11 @@
                                 <action selector="CancelOrDraft:" destination="qzl-xL-xWo" id="gGu-TS-Je1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="发表" id="YSw-Xf-Aw1"/>
+                        <barButtonItem key="rightBarButtonItem" title="发表" id="YSw-Xf-Aw1">
+                            <connections>
+                                <action selector="sendPost:" destination="qzl-xL-xWo" id="bCm-Hu-TT9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
