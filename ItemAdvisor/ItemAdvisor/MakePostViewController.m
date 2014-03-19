@@ -36,8 +36,11 @@
     _picker.delegate = self;
 }
 - (IBAction)sendPost:(id)sender {
+    NSMutableArray *tags = [NSMutableArray array];
+    [tags addObject:[NSNumber numberWithInt:2]];
+    [tags addObject:[NSNumber numberWithInt:3]];
     if ([addedPicArray count] != 0 || _tf.textStorage != nil) {
-        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:addedTagArray imageList:addedPicArray contents:[_tf.textStorage string] withDelegate:self];
+        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:tags imageList:addedPicArray contents:[_tf.textStorage string] withDelegate:self];
     }
 }
 
@@ -122,7 +125,7 @@
     
     //Create photo arrays
     addedPicArray = [[NSMutableArray alloc]init];
-    [addedPicArray addObject:@"grass1.jpg"];
+    [addedPicArray addObject:[UIImage imageNamed:@"grass1.jpg"]];
     //[addedPicArray addObject:@"grass2.jpg"];
     //[addedPicArray addObject:@"grass3.jpg"];
     //[addedPicArray addObject:@"grass4.jpg"];
@@ -158,7 +161,7 @@
 {
     for (int i = 0;i<[addedPicArray count];i++)
     {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[addedPicArray objectAtIndex:i]]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[addedPicArray objectAtIndex:i]];
         [imageView setUserInteractionEnabled:YES];
         UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(102, -2, 21, 21)];
         [deleteView setBackgroundImage:[UIImage imageNamed:@"deleteIcon.png"] forState:UIControlStateNormal];

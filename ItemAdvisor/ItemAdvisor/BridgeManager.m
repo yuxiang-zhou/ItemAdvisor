@@ -38,6 +38,7 @@
         loginURL = @"http://113.55.0.233/itemadvisor/login.php";
         registerURL = @"http://113.55.0.233/itemadvisor/register.php";
         uploadProfileURL = @"http://113.55.0.233/itemadvisor/uploadImg.php";
+        uploadPostURL = @"http://113.55.0.233/itemadvisor/uploadPost.php";
         addPostURL = @"http://113.55.0.233/itemadvisor/addPost.php";
         getPostURL = @"http://113.55.0.233/itemadvisor/getPost.php";
     }
@@ -131,7 +132,7 @@
     
     // setting up the request object now
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:uploadProfileURL]];
+    [request setURL:[NSURL URLWithString:uploadPostURL]];
     [request setHTTPMethod:@"POST"];
     
     /*
@@ -151,13 +152,13 @@
      */
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%ld\"\r\n",postid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%d.jpg\"\r\n",postid] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[NSData dataWithData:imageData]];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     // setting the body of the post to the reqeust
     [request setHTTPBody:body];
-    [[NSURLConnection alloc] initWithRequest:request delegate:[UserManager getUserManager].uploadImageRH];
+    [[NSURLConnection alloc] initWithRequest:request delegate:[PostManager getPostManager].uploadPostImageRH];
 }
 
 -(void)newPost:(NSInteger)userID tagList:(NSArray *)tags contents:(NSString *)text {
