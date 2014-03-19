@@ -122,7 +122,7 @@
     
     //Create photo arrays
     addedPicArray = [[NSMutableArray alloc]init];
-    [addedPicArray addObject:@"grass1.jpg"];
+    [addedPicArray addObject:[UIImage imageNamed:@"grass1.jpg"]];
     //[addedPicArray addObject:@"grass2.jpg"];
     //[addedPicArray addObject:@"grass3.jpg"];
     //[addedPicArray addObject:@"grass4.jpg"];
@@ -158,7 +158,7 @@
 {
     for (int i = 0;i<[addedPicArray count];i++)
     {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[addedPicArray objectAtIndex:i]]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[addedPicArray objectAtIndex:i]];
         [imageView setUserInteractionEnabled:YES];
         UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(102, -2, 21, 21)];
         [deleteView setBackgroundImage:[UIImage imageNamed:@"deleteIcon.png"] forState:UIControlStateNormal];
@@ -240,11 +240,16 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     ImageFilterProcessViewController *fitler = [[ImageFilterProcessViewController alloc] init];
     [fitler setDelegate:self];
-    fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 1200)];
+    if (image.size.height > image.size.width) {
+        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 1200)];
+    } else if ((image.size.height == image.size.width)){
+        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 900)];
+    } else {
+        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(1200, 900)];
+    }
     [_picker pushViewController:fitler animated:YES];
     [_picker setNavigationBarHidden:YES animated:NO];
     
