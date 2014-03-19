@@ -8,27 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "PostTag.h"
+#import "AddPostRequestHandler.h"
+#import "GetPostRequestHandler.h"
+
+@protocol PostManagerDelegate
+@required
+- (void)onPost:(NSNumber *) isSuccess description:(NSString *)desc;
+- (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list;
+@optional
+- (void)onPostImageUploaded:(NSNumber *)isUploaded description:(NSString *)desc;
+@end
+
 @interface PostManager : NSObject
 
-//managing the post
--(void) makingAPost;
--(void) deleteAPost;
--(void) saveAPost;
+@property AddPostRequestHandler* addPostRH;
+@property GetPostRequestHandler* getPostRH;
 
--(void) getMostRatedPost;
--(void) getMostRatedPostFrom:(PostTag*)tag;
++(instancetype) getPostManager;
 
-
-//managing the comment;
--(void)makeComment:(NSString*)comment;
--(void)deleteCommentwith;
-
-//managing the tags
--(void) addATag;
--(void) deleteATag;
-
-
-
-
+-(void)newPost:(NSInteger)userID tagList:(NSArray *)tags imageList:(NSArray *)images contents:(NSString *)text withDelegate:(id)delegate;
+-(void)getUserPost:(NSInteger)userID range:(NSRange)range withDelegate:(id)delegate;
+-(void)getPublicPostwithDelegate:(id)delegate;
 
 @end

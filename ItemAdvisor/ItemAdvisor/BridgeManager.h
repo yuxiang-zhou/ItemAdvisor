@@ -12,9 +12,16 @@
 
 +(instancetype) getBridgeManager;
 
+// User Related Requests
 -(void)requestUserInfo:(NSString *)userid;
 -(void)login:(NSString *)useremail password:(NSString *)password;
 -(void)uploadImage:(UIImage *)image forUser:(NSString *)email;
 -(void)registUser:(NSDictionary *)user_data;
+
+// Post Related Requests
+-(void)newPost:(NSInteger)userID tagList:(NSArray *)tags imageList:(NSArray *)images contents:(NSString *)text;
+-(void)uploadPostImage:(UIImage *)image forPost:(NSInteger)postid;
+-(void)getUserPost:(NSInteger)userID range:(NSRange)range;
+-(void)getPublicPost;
 
 @end

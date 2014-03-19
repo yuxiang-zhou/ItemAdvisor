@@ -36,6 +36,8 @@
 		7FC1DBEB18A257CA005C216C /* ItemAdvisorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBEA18A257CA005C216C /* ItemAdvisorTests.m */; };
 		7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF718A27AAC005C216C /* AccountViewController.m */; };
 		7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1DBF918A27AAC005C216C /* MsgViewController.m */; };
+		7FD29CED18D8E221004723D7 /* AddPostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD29CEC18D8E221004723D7 /* AddPostRequestHandler.m */; };
+		7FD29CF018D8FB9F004723D7 /* GetPostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */; };
 		D40897C618B95AE20015D954 /* XWEditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40897C018B95AE20015D954 /* XWEditPhotoViewController.m */; };
 		D40897C718B95AE20015D954 /* XWPhotoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40897C218B95AE20015D954 /* XWPhotoEditorViewController.m */; };
 		D40897C818B95AE20015D954 /* XWPhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D40897C318B95AE20015D954 /* XWPhotoEditorViewController.xib */; };
@@ -51,6 +53,7 @@
 		D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D546E18A96A770074C182 /* TabBarViewController.m */; };
 		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
 		D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */; };
+		D43DC73118D9FA4300C454C0 /* AllocManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D43DC73018D9FA4300C454C0 /* AllocManager.m */; };
 		D44C451518D881A7005488C0 /* addPicCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = D44C451418D881A7005488C0 /* addPicCamera.png */; };
 		D44C974C18CA15F50078DA34 /* ocean_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D44C974A18CA15F50078DA34 /* ocean_1.jpg */; };
 		D44C974D18CA15F50078DA34 /* ocean_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D44C974B18CA15F50078DA34 /* ocean_2.jpg */; };
@@ -136,6 +139,10 @@
 		7FC1DBF718A27AAC005C216C /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		7FC1DBF818A27AAC005C216C /* MsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgViewController.h; sourceTree = "<group>"; };
 		7FC1DBF918A27AAC005C216C /* MsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgViewController.m; sourceTree = "<group>"; };
+		7FD29CEB18D8E221004723D7 /* AddPostRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostRequestHandler.h; sourceTree = "<group>"; };
+		7FD29CEC18D8E221004723D7 /* AddPostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostRequestHandler.m; sourceTree = "<group>"; };
+		7FD29CEE18D8FB9F004723D7 /* GetPostRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPostRequestHandler.h; sourceTree = "<group>"; };
+		7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPostRequestHandler.m; sourceTree = "<group>"; };
 		D40897BF18B95AE20015D954 /* XWEditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWEditPhotoViewController.h; sourceTree = "<group>"; };
 		D40897C018B95AE20015D954 /* XWEditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWEditPhotoViewController.m; sourceTree = "<group>"; };
 		D40897C118B95AE20015D954 /* XWPhotoEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPhotoEditorViewController.h; sourceTree = "<group>"; };
@@ -160,6 +167,8 @@
 		D41D547318A98C350074C182 /* haha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haha.jpeg; sourceTree = "<group>"; };
 		D4297D5A18B69EEF002CFC8E /* PrepareRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRegisterViewController.h; sourceTree = "<group>"; };
 		D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRegisterViewController.m; sourceTree = "<group>"; };
+		D43DC72F18D9FA4300C454C0 /* AllocManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllocManager.h; sourceTree = "<group>"; };
+		D43DC73018D9FA4300C454C0 /* AllocManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllocManager.m; sourceTree = "<group>"; };
 		D44C451418D881A7005488C0 /* addPicCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addPicCamera.png; sourceTree = "<group>"; };
 		D44C974A18CA15F50078DA34 /* ocean_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean_1.jpg; sourceTree = "<group>"; };
 		D44C974B18CA15F50078DA34 /* ocean_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean_2.jpg; sourceTree = "<group>"; };
@@ -263,6 +272,10 @@
 				7F9C0FD218B5128F00D022FE /* UserInfoRequestHandler.m */,
 				7F9C0FD418B5362C00D022FE /* LoginRequestHandler.h */,
 				7F9C0FD518B5362C00D022FE /* LoginRequestHandler.m */,
+				7FD29CEB18D8E221004723D7 /* AddPostRequestHandler.h */,
+				7FD29CEC18D8E221004723D7 /* AddPostRequestHandler.m */,
+				7FD29CEE18D8FB9F004723D7 /* GetPostRequestHandler.h */,
+				7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */,
 			);
 			name = RequestHandlers;
 			sourceTree = "<group>";
@@ -369,6 +382,8 @@
 		7FC1DBFC18A28AE2005C216C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D43DC72F18D9FA4300C454C0 /* AllocManager.h */,
+				D43DC73018D9FA4300C454C0 /* AllocManager.m */,
 				D49E119118B69776004F2F7D /* Login */,
 				D472C06918AE276800D7DEC2 /* Setting */,
 				D472C06218AE1BDA00D7DEC2 /* Make Post */,
@@ -577,9 +592,11 @@
 				D40897C618B95AE20015D954 /* XWEditPhotoViewController.m in Sources */,
 				7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */,
 				7F24547C18ABB7D300896C81 /* UserManager.m in Sources */,
+				D43DC73118D9FA4300C454C0 /* AllocManager.m in Sources */,
 				D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */,
 				7F198FE018ABD59700FC5E61 /* BridgeManager.m in Sources */,
 				D40897CC18B9623B0015D954 /* XWCropWindow.m in Sources */,
+				7FD29CED18D8E221004723D7 /* AddPostRequestHandler.m in Sources */,
 				7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */,
 				2737229918ABD89D00D94103 /* PostCommemts.m in Sources */,
 				2737229018ABC6F200D94103 /* PostManager.m in Sources */,
@@ -597,6 +614,7 @@
 				7FC1DBCD18A257CA005C216C /* AppDelegate.m in Sources */,
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
 				7FC1DBC918A257CA005C216C /* main.m in Sources */,
+				7FD29CF018D8FB9F004723D7 /* GetPostRequestHandler.m in Sources */,
 				D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */,
 				D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */,
 				7FC1DBFA18A27AAC005C216C /* AccountViewController.m in Sources */,

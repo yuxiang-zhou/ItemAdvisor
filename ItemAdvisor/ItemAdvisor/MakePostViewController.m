@@ -37,14 +37,35 @@
 }
 - (IBAction)sendPost:(id)sender {
     if ([addedPicArray count] != 0 || _tf.textStorage != nil) {
-        nil;
+        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:addedTagArray imageList:addedPicArray contents:[_tf.textStorage string] withDelegate:self];
     }
 }
+
+- (void)onPost:(NSNumber *) isSuccess description:(NSString *)desc
+{
+    if ([isSuccess boolValue]) {
+        UIAlertView *postDidSent = [[UIAlertView alloc]initWithTitle:@"" message:desc delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        [postDidSent show];
+        [self performSelector:@selector(dismiss:) withObject:postDidSent afterDelay:0.8];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        UIAlertView *postDidSent = [[UIAlertView alloc]initWithTitle:@"" message:desc delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+        [postDidSent show];
+        [self performSelector:@selector(dismiss:) withObject:postDidSent afterDelay:0.8];
+    }
+}
+
+-(void)dismiss:(UIAlertView*)alert
+{
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    // fake tag list
     
     //Create scroll view
     scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 504)];
