@@ -15,7 +15,8 @@
 
 
 @interface RegisterViewController : UIViewController <UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,XWFinishEditPhoto,ImageFitlerProcessDelegate,UserManagerDelegate>
-
+{
+}
 @property (weak, nonatomic) IBOutlet UIButton *profilePicButton;
 @property (strong, nonatomic) IBOutlet UIView *registerView;
 @property (weak,nonatomic) UIImage *profileImage;

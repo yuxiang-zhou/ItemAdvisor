@@ -51,6 +51,7 @@
 		D41D546F18A96A770074C182 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D546E18A96A770074C182 /* TabBarViewController.m */; };
 		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
 		D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */; };
+		D44C451518D881A7005488C0 /* addPicCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = D44C451418D881A7005488C0 /* addPicCamera.png */; };
 		D44C974C18CA15F50078DA34 /* ocean_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D44C974A18CA15F50078DA34 /* ocean_1.jpg */; };
 		D44C974D18CA15F50078DA34 /* ocean_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D44C974B18CA15F50078DA34 /* ocean_2.jpg */; };
 		D46C6A0818C7BECE001151D5 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D46C6A0718C7BECE001151D5 /* sky.jpg */; };
@@ -60,8 +61,16 @@
 		D472C06018AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C05F18AE1A2B00D7DEC2 /* PrepareMakePostNavigationViewController.m */; };
 		D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D472C06418AE20C300D7DEC2 /* TLAlertView.m */; };
 		D472C06818AE228200D7DEC2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D472C06718AE228200D7DEC2 /* QuartzCore.framework */; };
+		D4766C8118D73BED000550BB /* renren.png in Resources */ = {isa = PBXBuildFile; fileRef = D4766C7E18D73BED000550BB /* renren.png */; };
+		D4766C8218D73BED000550BB /* wechat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4766C7F18D73BED000550BB /* wechat.jpg */; };
+		D4766C8318D73BED000550BB /* weibo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4766C8018D73BED000550BB /* weibo.jpg */; };
 		D49E119718B69ACD004F2F7D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E119618B69ACD004F2F7D /* RegisterViewController.m */; };
 		D49E119A18B69C00004F2F7D /* DetailPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E119918B69C00004F2F7D /* DetailPostViewController.m */; };
+		D4C4141418D07AA100B8DE90 /* grass1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C4141018D07AA100B8DE90 /* grass1.jpg */; };
+		D4C4141518D07AA100B8DE90 /* grass2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C4141118D07AA100B8DE90 /* grass2.jpg */; };
+		D4C4141618D07AA100B8DE90 /* grass3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C4141218D07AA100B8DE90 /* grass3.jpg */; };
+		D4C4141718D07AA100B8DE90 /* grass4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C4141318D07AA100B8DE90 /* grass4.jpg */; };
+		D4C4141918D09BE600B8DE90 /* gray_rect.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4C4141818D09BE600B8DE90 /* gray_rect.jpg */; };
 		D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC418B4E3AE00D27DB3 /* delete.png */; };
 		D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */; };
 		D4E63DD318B50B9800D27DB3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E63DD218B50B9800D27DB3 /* LoginViewController.m */; };
@@ -151,6 +160,7 @@
 		D41D547318A98C350074C182 /* haha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haha.jpeg; sourceTree = "<group>"; };
 		D4297D5A18B69EEF002CFC8E /* PrepareRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRegisterViewController.h; sourceTree = "<group>"; };
 		D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRegisterViewController.m; sourceTree = "<group>"; };
+		D44C451418D881A7005488C0 /* addPicCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addPicCamera.png; sourceTree = "<group>"; };
 		D44C974A18CA15F50078DA34 /* ocean_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean_1.jpg; sourceTree = "<group>"; };
 		D44C974B18CA15F50078DA34 /* ocean_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ocean_2.jpg; sourceTree = "<group>"; };
 		D46C6A0718C7BECE001151D5 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
@@ -162,10 +172,18 @@
 		D472C06318AE20C300D7DEC2 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLAlertView.h; path = ../TLAlertView.h; sourceTree = "<group>"; };
 		D472C06418AE20C300D7DEC2 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TLAlertView.m; path = ../TLAlertView.m; sourceTree = "<group>"; };
 		D472C06718AE228200D7DEC2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D4766C7E18D73BED000550BB /* renren.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renren.png; sourceTree = "<group>"; };
+		D4766C7F18D73BED000550BB /* wechat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wechat.jpg; sourceTree = "<group>"; };
+		D4766C8018D73BED000550BB /* weibo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weibo.jpg; sourceTree = "<group>"; };
 		D49E119518B69ACD004F2F7D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ../RegisterViewController.h; sourceTree = "<group>"; };
 		D49E119618B69ACD004F2F7D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ../RegisterViewController.m; sourceTree = "<group>"; };
 		D49E119818B69C00004F2F7D /* DetailPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPostViewController.h; sourceTree = "<group>"; };
 		D49E119918B69C00004F2F7D /* DetailPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPostViewController.m; sourceTree = "<group>"; };
+		D4C4141018D07AA100B8DE90 /* grass1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass1.jpg; sourceTree = "<group>"; };
+		D4C4141118D07AA100B8DE90 /* grass2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass2.jpg; sourceTree = "<group>"; };
+		D4C4141218D07AA100B8DE90 /* grass3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass3.jpg; sourceTree = "<group>"; };
+		D4C4141318D07AA100B8DE90 /* grass4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass4.jpg; sourceTree = "<group>"; };
+		D4C4141818D09BE600B8DE90 /* gray_rect.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gray_rect.jpg; sourceTree = "<group>"; };
 		D4E63DC418B4E3AE00D27DB3 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		D4E63DC618B4EF5A00D27DB3 /* deleteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteIcon.png; sourceTree = "<group>"; };
 		D4E63DD118B50B9800D27DB3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
@@ -298,6 +316,15 @@
 		7FC1DBC318A257CA005C216C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D44C451418D881A7005488C0 /* addPicCamera.png */,
+				D4766C7E18D73BED000550BB /* renren.png */,
+				D4766C7F18D73BED000550BB /* wechat.jpg */,
+				D4766C8018D73BED000550BB /* weibo.jpg */,
+				D4C4141818D09BE600B8DE90 /* gray_rect.jpg */,
+				D4C4141018D07AA100B8DE90 /* grass1.jpg */,
+				D4C4141118D07AA100B8DE90 /* grass2.jpg */,
+				D4C4141218D07AA100B8DE90 /* grass3.jpg */,
+				D4C4141318D07AA100B8DE90 /* grass4.jpg */,
 				D44C974A18CA15F50078DA34 /* ocean_1.jpg */,
 				D44C974B18CA15F50078DA34 /* ocean_2.jpg */,
 				D46C6A0D18C7D3CB001151D5 /* ocean.jpeg */,
@@ -469,7 +496,7 @@
 		7FC1DBB118A257CA005C216C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = ia;
 				TargetAttributes = {
 					7FC1DBDC18A257CA005C216C = {
@@ -501,23 +528,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C4141618D07AA100B8DE90 /* grass3.jpg in Resources */,
 				D44C974C18CA15F50078DA34 /* ocean_1.jpg in Resources */,
+				D4766C8118D73BED000550BB /* renren.png in Resources */,
 				D41AE6CD18BDFF6300D282FC /* btn_back@2x.png in Resources */,
 				D44C974D18CA15F50078DA34 /* ocean_2.jpg in Resources */,
+				D4C4141918D09BE600B8DE90 /* gray_rect.jpg in Resources */,
 				D41AE6CF18BDFF6300D282FC /* camera_btn_ok@2x.png in Resources */,
+				D4C4141718D07AA100B8DE90 /* grass4.jpg in Resources */,
 				D46C6A0C18C7C8F6001151D5 /* camera.png in Resources */,
 				D46C6A0E18C7D3CB001151D5 /* ocean.jpeg in Resources */,
+				D4766C8318D73BED000550BB /* weibo.jpg in Resources */,
 				7FC1DBD818A257CA005C216C /* Images.xcassets in Resources */,
 				7FC1DBC718A257CA005C216C /* InfoPlist.strings in Resources */,
+				D4C4141418D07AA100B8DE90 /* grass1.jpg in Resources */,
 				D40897C818B95AE20015D954 /* XWPhotoEditorViewController.xib in Resources */,
 				D41AE6CC18BDFF6300D282FC /* btn_back.png in Resources */,
 				D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */,
 				D46C6A0A18C7C817001151D5 /* car.png in Resources */,
 				7FC1DBD018A257CA005C216C /* Main.storyboard in Resources */,
 				D41AE6CE18BDFF6300D282FC /* camera_btn_ok.png in Resources */,
+				D44C451518D881A7005488C0 /* addPicCamera.png in Resources */,
 				D41D547418A98C350074C182 /* haha.jpeg in Resources */,
 				D46C6A0818C7BECE001151D5 /* sky.jpg in Resources */,
+				D4766C8218D73BED000550BB /* wechat.jpg in Resources */,
 				D4E63DC718B4EF5A00D27DB3 /* deleteIcon.png in Resources */,
+				D4C4141518D07AA100B8DE90 /* grass2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +656,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -659,7 +694,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -718,7 +752,6 @@
 		7FC1DBF218A257CA005C216C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ItemAdvisor.app/ItemAdvisor";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -741,7 +774,6 @@
 		7FC1DBF318A257CA005C216C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ItemAdvisor.app/ItemAdvisor";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

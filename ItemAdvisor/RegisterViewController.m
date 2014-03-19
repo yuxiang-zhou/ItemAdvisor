@@ -40,15 +40,15 @@
 
 
 
-- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
-{
-    for (UIView *subview in actionSheet.subviews) {
-        if ([subview isKindOfClass:[UIButton class]]) {
-            UIButton *button = (UIButton *)subview;
-            [button setTitleColor:UIColorFromRGB(0xe69a9e) forState:UIControlStateNormal];
-        }
-    }
-}
+//- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+//{
+//    for (UIView *subview in actionSheet.subviews) {
+//        if ([subview isKindOfClass:[UIButton class]]) {
+//            UIButton *button = (UIButton *)subview;
+//            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        }
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -151,6 +151,9 @@
 
 - (void)imageFitlerProcessDone:(UIImage *)image //图片处理完
 {
+    //make status bar reappear
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     [_profilePicButton setBackgroundImage:image forState:UIControlStateNormal];
     [_profilePicButton setTitle:@"" forState:UIControlStateNormal];
     _profileImage = image;

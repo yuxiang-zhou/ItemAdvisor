@@ -19,84 +19,88 @@
 - (void)viewDidLoad
 {
     //Create scroll view
-    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 460)];
+    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 50, 320, 460)];
     scrollview.showsVerticalScrollIndicator=YES;
     scrollview.scrollEnabled=YES;
     scrollview.userInteractionEnabled=YES;
     [self.view addSubview:scrollview];
     scrollview.contentSize = CGSizeMake(320,960);
     
-    //Create 4 buttons switching contents in scroll view
+    //Create 4 buttons switching contents in view
     //日志
     UIButton *post = [UIButton buttonWithType:UIButtonTypeCustom];
-    [post setBackgroundColor:[UIColor blackColor]];
-    post.frame = CGRectMake(0, 0, 80, 20);
+    [post setBackgroundColor:UIColorFromRGB(0x333333)];
+    post.frame = CGRectMake(0, 25, 80, 25);
     [post setTitle:@"日志" forState:UIControlStateNormal];
-    [post.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [post.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: post];
     
     NSUInteger numOfpost = [UserManager getUserManager].noPost;
     NSString *postDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfpost];
     
     UIButton *postNum = [UIButton buttonWithType:UIButtonTypeCustom];
-    [postNum setBackgroundColor:[UIColor blackColor]];
-    postNum.frame = CGRectMake(0, 20, 80, 20);
+    [postNum setBackgroundColor:UIColorFromRGB(0x333333)];
+    postNum.frame = CGRectMake(0, 0, 80, 25);
     [postNum setTitle:postDetailTitle forState:UIControlStateNormal];
-    [postNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    postNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    [postNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
     [self.view addSubview: postNum];
     
     //关注
     UIButton *follow = [UIButton buttonWithType:UIButtonTypeCustom];
-    [follow setBackgroundColor:[UIColor blackColor]];
-    follow.frame = CGRectMake(80, 0, 80, 20);
+    [follow setBackgroundColor:UIColorFromRGB(0x333333)];
+    follow.frame = CGRectMake(80, 25, 80, 25);
     [follow setTitle:@"关注" forState:UIControlStateNormal];
-    [follow.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [follow.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: follow];
     
     NSUInteger numOfFollow = [UserManager getUserManager].noFollowing;
     NSString *followDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfFollow];
     
     UIButton *followNum = [UIButton buttonWithType:UIButtonTypeCustom];
-    [followNum setBackgroundColor:[UIColor blackColor]];
-    followNum.frame = CGRectMake(80, 20, 80, 20);
+    [followNum setBackgroundColor:UIColorFromRGB(0x333333)];
+    followNum.frame = CGRectMake(80, 0, 80, 25);
     [followNum setTitle:followDetailTitle forState:UIControlStateNormal];
-    [followNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    followNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    [followNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
     [self.view addSubview: followNum];
     
     //粉丝
     UIButton *follower = [UIButton buttonWithType:UIButtonTypeCustom];
-    [follower setBackgroundColor:[UIColor blackColor]];
-    follower.frame = CGRectMake(160, 0, 80, 20);
+    [follower setBackgroundColor:UIColorFromRGB(0x333333)];
+    follower.frame = CGRectMake(160, 25, 80, 25);
     [follower setTitle:@"粉丝" forState:UIControlStateNormal];
-    [follower.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [follower.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: follower];
     
     NSUInteger numOfFollower = [UserManager getUserManager].noFollower;
     NSString *followerDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfFollower];
     
     UIButton *followerNum = [UIButton buttonWithType:UIButtonTypeCustom];
-    [followerNum setBackgroundColor:[UIColor blackColor]];
-    followerNum.frame = CGRectMake(160, 20, 80, 20);
+    [followerNum setBackgroundColor:UIColorFromRGB(0x333333)];
+    followerNum.frame = CGRectMake(160, 0, 80, 25);
     [followerNum setTitle:followerDetailTitle forState:UIControlStateNormal];
-    [followerNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    followerNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    [followerNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
     [self.view addSubview: followerNum];
     
     //物品
     UIButton *things = [UIButton buttonWithType:UIButtonTypeCustom];
-    [things setBackgroundColor:[UIColor blackColor]];
-    things.frame = CGRectMake(240, 0, 80, 20);
+    [things setBackgroundColor:UIColorFromRGB(0x333333)];
+    things.frame = CGRectMake(240, 25, 80, 25);
     [things setTitle:@"物品" forState:UIControlStateNormal];
-    [things.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+    [things.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: things];
     
     NSUInteger numOfThings = [UserManager getUserManager].noItems;
     NSString *thingsDetailTitle = [NSString stringWithFormat:@"%lu",(unsigned long)numOfThings];
     
     UIButton *thingsNum = [UIButton buttonWithType:UIButtonTypeCustom];
-    [thingsNum setBackgroundColor:[UIColor blackColor]];
-    thingsNum.frame = CGRectMake(240, 20, 80, 20);
+    [thingsNum setBackgroundColor:UIColorFromRGB(0x333333)];
+    thingsNum.frame = CGRectMake(240, 0, 80, 25);
     [thingsNum setTitle:thingsDetailTitle forState:UIControlStateNormal];
-    [thingsNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
+    thingsNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    [thingsNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
     [self.view addSubview: thingsNum];
     
     //Create profile pic

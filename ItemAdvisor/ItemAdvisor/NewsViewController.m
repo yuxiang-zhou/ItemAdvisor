@@ -142,7 +142,7 @@
     [slideImages addObject:@"ocean_1.jpg"];
     [slideImages addObject:@"ocean_2.jpg"];
     //Create page control
-    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(112,445,100,18)]; // 初始化mypagecontrol
+    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(108,440,100,18)]; // 初始化mypagecontrol
     [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
     [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
     _pageControl.numberOfPages = [slideImages count];
@@ -182,29 +182,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

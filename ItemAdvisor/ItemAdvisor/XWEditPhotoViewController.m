@@ -15,8 +15,8 @@ static const CGFloat kMaxUIImageSize = 1024*2;
 // no idea why set it to 120...
 static const CGFloat kPreviewImageSize = 120*2;
 
-static const CGFloat kDefaultCropWidth = 320;
-static const CGFloat kDefaultCropHeight = 320;
+//static const CGFloat kDefaultCropWidth = 320;
+//static const CGFloat kDefaultCropHeight = 320;
 
 @interface XWEditPhotoViewController (){
     // handle the gesture count. sometimes handle more than one gesture
