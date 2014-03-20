@@ -239,6 +239,12 @@
     }
 }
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    [_picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -253,6 +259,8 @@
     }
     [_picker pushViewController:fitler animated:YES];
     [_picker setNavigationBarHidden:YES animated:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
 }
 
@@ -286,10 +294,17 @@
     return smallImage;
 }
 
+- (void)imageFitlerProcessCancel{
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+}
+
 - (void)imageFitlerProcessDone:(UIImage *)image //图片处理完
 {
     //make status bar reappear
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     [addedPicArray addObject:image];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -314,6 +329,8 @@
     [photoScroll setContentOffset:CGPointMake(0, 0)];
     [photoScroll scrollRectToVisible:CGRectMake(0,0,320,155) animated:NO];
     [_picker setNavigationBarHidden:NO animated:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 //Methods for add or delete tag

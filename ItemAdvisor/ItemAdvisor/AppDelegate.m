@@ -16,7 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     // Uncomment to change the background color of navigation bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x2a477a)];
     

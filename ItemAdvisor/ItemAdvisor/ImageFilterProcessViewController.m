@@ -28,11 +28,12 @@
 - (IBAction)backView:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [delegate imageFitlerProcessCancel];
 }
 - (IBAction)fitlerDone:(id)sender
 {
     [self dismissViewControllerAnimated:NO completion:^{
-        [delegate imageFitlerProcessDone:rootImageView.image];
+    [delegate imageFitlerProcessDone:rootImageView.image];
     }];
 }
 - (void)viewDidLoad

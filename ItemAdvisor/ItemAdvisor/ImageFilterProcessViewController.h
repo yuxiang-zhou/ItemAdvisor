@@ -22,4 +22,6 @@
 @protocol ImageFitlerProcessDelegate <NSObject>
 
 - (void)imageFitlerProcessDone:(UIImage *)image;
+- (void)imageFitlerProcessCancel;
+
 @end
