@@ -10,9 +10,6 @@
 
 @interface MakePostViewController ()
 
-@property (strong,nonatomic)UITextView *tf;
-@property (strong,nonatomic) UIImagePickerController *picker;
-
 @end
 
 @implementation MakePostViewController
@@ -28,16 +25,25 @@
     
     alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
     [alertView show];
-    alertView.buttonColor = UIColorFromRGB(0x718969);
+    alertView.buttonColor = UIColorFromRGB(0xc60BAEB);
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    _picker = [[UIImagePickerController alloc] init];
-    _picker.delegate = self;
+    if (_picker ==nil) {
+        _picker = [[UIImagePickerController alloc] init];
+        _picker.delegate = self;
+    }
+    if (_elcPicker==nil) {
+        _elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+        _elcPicker.maximumImagesCount = 9-[_addedPicArray count];
+        _elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+        _elcPicker.imagePickerDelegate = self;
+    }
 }
 - (IBAction)sendPost:(id)sender {
-    if ([addedPicArray count] != 0 || _tf.textStorage != nil) {
-        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:addedTagArray imageList:addedPicArray contents:[_tf.textStorage string] withDelegate:self];
+    [self checkCover];
+    if ([_addedPicArray count] != 0 || _tf.textStorage != nil) {
+        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:_addedTagArray imageList:_addedPicArray contents:[_tf.textStorage string] withDelegate:self];
     }
 }
 
@@ -65,7 +71,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    // fake tag list
+    // call the choose tag view first
     
     //Create scroll view
     scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 504)];
@@ -73,7 +79,7 @@
     scrollview.scrollEnabled=YES;
     scrollview.userInteractionEnabled=YES;
     [self.view addSubview:scrollview];
-    scrollview.contentSize = CGSizeMake(320,960);
+    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295+100);
     
     //Create gesture for scroll view to dismiss keyboard
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -84,36 +90,37 @@
     [scrollview addGestureRecognizer:tapGesture];
     
     //-----------Tag
-    addedTagArray = [[NSMutableArray alloc]init];
-    [addedTagArray addObject:[NSNumber numberWithInt:1]];
-    [addedTagArray addObject:[NSNumber numberWithInt:2]];
     
     [self initTags];
     
     //---------------Text
     //Create textview
-    _tf = [[UITextView alloc] initWithFrame:CGRectMake(10, [addedTagArray count]*50+10, 300, 110)];
-    //tf.borderStyle = UITextBorderStyleNone;
-    _tf.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
-    _tf.text = @"物品描述、使用心得、看法...";
-    _tf.textColor = UIColorFromRGB(0xd3d3d3);
-    _tf.autocorrectionType = UITextAutocorrectionTypeNo;
-    _tf.keyboardType = UIKeyboardTypeDefault;
-    _tf.returnKeyType = UIReturnKeyDefault;
-    //tf.clearButtonMode = UITextFieldViewModeWhileEditing;
-    //tf.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
-    _tf.delegate = self;
-    [scrollview addSubview:_tf];
+    if (_desc == nil) {
+        _tf = [[UITextView alloc] initWithFrame:CGRectMake(10, [_addedTagArray count]*50+10, 300, 110)];
+        //tf.borderStyle = UITextBorderStyleNone;
+        _tf.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
+        _tf.text = @"物品描述、使用心得、看法...";
+        _tf.textColor = UIColorFromRGB(0xd3d3d3);
+        _tf.autocorrectionType = UITextAutocorrectionTypeNo;
+        _tf.keyboardType = UIKeyboardTypeDefault;
+        _tf.returnKeyType = UIReturnKeyDefault;
+        //tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+        //tf.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
+        _tf.delegate = self;
+        [scrollview addSubview:_tf];
+    }else{
+        [scrollview addSubview:_desc];
+    }
     
     //Create a line below textview
-    line = [[UILabel alloc]initWithFrame:CGRectMake(10, [addedTagArray count]*50+10+88+30, 300, 2)];
+    line = [[UILabel alloc]initWithFrame:CGRectMake(10, [_addedTagArray count]*50+10+88+30, 300, 2)];
     line.text = [NSString stringWithFormat:@""];
     line.backgroundColor = UIColorFromRGB(0xd3d3d3);
     [scrollview addSubview:line];
     
     //-------------Photo
     //Create photo horizontal scroll view
-    photoScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, [addedTagArray count]*50+10+100+30, 320, 155)];
+    photoScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, [_addedTagArray count]*50+10+100+30, 320, 155)];
     photoScroll.bounces = YES;
     photoScroll.delegate = self;
     photoScroll.userInteractionEnabled = YES;
@@ -121,9 +128,11 @@
     [scrollview addSubview:photoScroll];
     
     //Create photo arrays
-    UIImage *picOne = [self resizeImage:[UIImage imageNamed:@"grass1.jpg"] toSize:CGSizeMake(900, 900)];
-    addedPicArray = [[NSMutableArray alloc]init];
-    [addedPicArray addObject:picOne];
+    UIImage *picOne = [self resizeImageFrom:[UIImage imageNamed:@"ocean_0.jpeg"]];
+    UIImage *pic2 = [self resizeImageFrom:[UIImage imageNamed:@"ocean_1.jpg"]];
+    _addedPicArray = [[NSMutableArray alloc]init];
+    [_addedPicArray addObject:picOne];
+    [_addedPicArray addObject:pic2];
     //[addedPicArray addObject:@"grass2.jpg"];
     //[addedPicArray addObject:@"grass3.jpg"];
     //[addedPicArray addObject:@"grass4.jpg"];
@@ -131,37 +140,58 @@
     //Create image views
     [self initPhotos];
     
-    [photoScroll setContentSize:CGSizeMake(([addedPicArray count]+1)*160 , 155)];
+    [photoScroll setContentSize:CGSizeMake(([_addedPicArray count]+1)*160 , 155)];
     [photoScroll setContentOffset:CGPointMake(0, 0)];
     [photoScroll scrollRectToVisible:CGRectMake(0,0,320,155) animated:NO];
 
     
     //---------------ShareToOthers
-    weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [weiboButton setBackgroundImage:[UIImage imageNamed:@"weibo.jpg"] forState:UIControlStateNormal];
-    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
-    [scrollview addSubview: weiboButton];
-    
-    wechatButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [wechatButton setBackgroundImage:[UIImage imageNamed:@"wechat.jpg"] forState:UIControlStateNormal];
-    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
-    [scrollview addSubview: wechatButton];
-    
-    renrenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [renrenButton setBackgroundImage:[UIImage imageNamed:@"renren.png"] forState:UIControlStateNormal];
-    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
-    [scrollview addSubview: renrenButton];
+//    weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [weiboButton setBackgroundImage:[UIImage imageNamed:@"weibo.jpg"] forState:UIControlStateNormal];
+//    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
+//    [scrollview addSubview: weiboButton];
+//    
+//    wechatButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [wechatButton setBackgroundImage:[UIImage imageNamed:@"wechat.jpg"] forState:UIControlStateNormal];
+//    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
+//    [scrollview addSubview: wechatButton];
+//    
+//    renrenButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [renrenButton setBackgroundImage:[UIImage imageNamed:@"renren.png"] forState:UIControlStateNormal];
+//    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
+//    [scrollview addSubview: renrenButton];
     
 }
 
 //Methods for photos in horizontal scrollview
+- (void)imageTapped:(UIGestureRecognizer *)gesture{
+    
+        [isCoverPic removeFromSuperview];
+        [gesture.view addSubview:isCoverPic];
+
+}
+
+- (void)checkCover{
+    if (isCoverPic.superview.tag != 1000) {
+        [_addedPicArray exchangeObjectAtIndex:0 withObjectAtIndex:isCoverPic.superview.tag-1000];
+    }
+}
+
 - (void)initPhotos
 {
-    for (int i = 0;i<[addedPicArray count];i++)
+    for (int i = 0;i<[_addedPicArray count];i++)
     {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[addedPicArray objectAtIndex:i]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[_addedPicArray objectAtIndex:i]];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        
         [imageView setUserInteractionEnabled:YES];
-        UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(102, -2, 21, 21)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        tap.numberOfTapsRequired = 1;
+        tap.cancelsTouchesInView=YES;
+        [imageView addGestureRecognizer:tap];
+        
+        UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(100, 0, 20, 20)];
         [deleteView setBackgroundImage:[UIImage imageNamed:@"deleteIcon.png"] forState:UIControlStateNormal];
         [deleteView addTarget:self action:@selector(removePhoto:) forControlEvents:UIControlEventTouchDown];
         [deleteView setTag:2000+i];
@@ -169,18 +199,31 @@
         if (i == 0) {
             imageView.frame = CGRectMake(20, 20, 120, 120);
             [imageView setTag:1000+i];
+            [self initPhotoCover:imageView];
         }else{
             imageView.frame = CGRectMake(160+(140 * (i-1)), 20, 120, 120);
             [imageView setTag:1000+i];
         }
         [imageView addSubview:deleteView];
         [photoScroll addSubview:imageView];
+        
     }
-    addPic = [[UIButton alloc]initWithFrame:CGRectMake(160+(140 * ([addedPicArray count]-1)), 20, 120, 120)];
+    
+    addPic = [[UIButton alloc]initWithFrame:CGRectMake(160+(140 * ([_addedPicArray count]-1)), 20, 120, 120)];
     [addPic setBackgroundImage:[UIImage imageNamed:@"addPicCamera.png"] forState:UIControlStateNormal];
     [addPic addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
     [photoScroll addSubview:addPic];
     
+}
+
+- (void)initPhotoCover:(UIImageView *)firstPic{
+    isCoverPic = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, 40, 20)];
+    isCoverPic.text = [NSString stringWithFormat:@"封面"];
+    isCoverPic.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
+    isCoverPic.textColor = [UIColor whiteColor];
+    isCoverPic.backgroundColor = [UIColor blackColor];
+    isCoverPic.textAlignment = NSTextAlignmentCenter;
+    [firstPic addSubview:isCoverPic];
 }
 
 - (void)addPhoto{
@@ -202,26 +245,39 @@
 {
     NSInteger i = sender.tag - 2000;
     UIImageView *imageView = (UIImageView *)[photoScroll viewWithTag:1000+i];
-    [addedPicArray removeObjectAtIndex:i];
+    if ([imageView.subviews containsObject:isCoverPic]) {
+        if ([_addedPicArray count] != 0) {
+            UIImageView *firstPic = (UIImageView *)[photoScroll viewWithTag:1000];
+            [self initPhotoCover:firstPic];
+        }
+    }
+    [_addedPicArray removeObjectAtIndex:i];
     [imageView removeFromSuperview];
-    for (NSInteger j = i+1; j<([addedPicArray count]+1); j++) {
+    for (NSInteger j = i+1; j<([_addedPicArray count]+1); j++) {
         UIImageView *imageView = (UIImageView *)[photoScroll viewWithTag:1000+j];
         UIButton *deleteView = (UIButton *)[photoScroll viewWithTag:2000+j];
         [deleteView setTag:2000+j-1];
-        if (i == 0) {
+        if (i == 0 && j == 1) {
             imageView.frame = CGRectMake(20, 20, 120, 120);
             [imageView setTag:1000+j-1];
+            [self initPhotoCover:imageView];
         }else{
             imageView.frame = CGRectMake(160+(140 * (j-2)), 20, 120, 120);
             [imageView setTag:1000+j-1];
         }
     }
-    [addPic setFrame:CGRectMake(160+(140 * ([addedPicArray count]-1)), 20, 120, 120)];
+    
+    //set album picker limit
+    _elcPicker.maximumImagesCount = 9-[_addedPicArray count];
+    
+    //set addpic button
+    [addPic setFrame:CGRectMake(160+(140 * ([_addedPicArray count]-1)), 20, 120, 120)];
 }
+
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
-        [self showImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
+        [self presentViewController:_elcPicker animated:YES completion:nil];
     } else if (buttonIndex == 1) {
         [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
     }
@@ -250,13 +306,16 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     ImageFilterProcessViewController *fitler = [[ImageFilterProcessViewController alloc] init];
     [fitler setDelegate:self];
-    if (image.size.height > image.size.width) {
-        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 1200)];
-    } else if ((image.size.height == image.size.width)){
-        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 900)];
-    } else {
-        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(1200, 900)];
-    }
+//    if (image.size.height > image.size.width) {
+//        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 1200)];
+//    } else if ((image.size.height == image.size.width)){
+//        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 900)];
+//    } else {
+//        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(1200, 900)];
+//    }
+
+    fitler.currentImage = [self resizeImageFrom:image];
+    
     [_picker pushViewController:fitler animated:YES];
     [_picker setNavigationBarHidden:YES animated:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -264,34 +323,23 @@
     
 }
 
--(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)size
-{
-    float width = size.width;
-    float height = size.height;
-    
-    UIGraphicsBeginImageContext(size);
-    CGRect rect = CGRectMake(0, 0, width, height);
-    
-    float widthRatio = image.size.width / width;
-    float heightRatio = image.size.height / height;
-    float divisor = widthRatio > heightRatio ? widthRatio : heightRatio;
-    
-    width = image.size.width / divisor;
-    height = image.size.height / divisor;
-    
-    rect.size.width  = width;
-    rect.size.height = height;
-    
-    if(height < width)
-        rect.origin.y = height / 3;
-    
-    [image drawInRect: rect];
-    
+- (UIImage *)resizeImageFrom:(UIImage *)image{
+    if (image.size.height > image.size.width) {
+        UIGraphicsBeginImageContext(CGSizeMake(320,480));
+        [image drawInRect: CGRectMake(0, 0, 320,480)];
+
+    }else if (image.size.height == image.size.width){
+        UIGraphicsBeginImageContext(CGSizeMake(320,320));
+        [image drawInRect: CGRectMake(0, 0, 320,320)];
+
+    }else if (image.size.height < image.size.width){
+        UIGraphicsBeginImageContext(CGSizeMake(480,320));
+        [image drawInRect: CGRectMake(0, 0, 480,320)];
+    }
     UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
-    
     UIGraphicsEndImageContext();
-    
     return smallImage;
+
 }
 
 - (void)imageFitlerProcessCancel{
@@ -306,38 +354,107 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-    [addedPicArray addObject:image];
+    [_addedPicArray addObject:image];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [imageView setUserInteractionEnabled:YES];
-    UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(102, -2, 21, 21)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+    tap.numberOfTapsRequired = 1;
+    tap.cancelsTouchesInView=YES;
+    [imageView addGestureRecognizer:tap];
+    
+    UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(100, 0, 20, 20)];
     [deleteView setBackgroundImage:[UIImage imageNamed:@"deleteIcon.png"] forState:UIControlStateNormal];
     [deleteView addTarget:self action:@selector(removePhoto:) forControlEvents:UIControlEventTouchDown];
-    [deleteView setTag:2000+[addedPicArray count]-1];
-    if ([addedPicArray count] == 1) {
+    [deleteView setTag:2000+[_addedPicArray count]-1];
+    
+    if ([_addedPicArray count] == 1) {
         imageView.frame = CGRectMake(20, 20, 120, 120);
-        [imageView setTag:1000+[addedPicArray count]-1];
+        [imageView setTag:1000+[_addedPicArray count]-1];
+        [self initPhotoCover:imageView];
     }else{
-        imageView.frame = CGRectMake(160+(140 * ([addedPicArray count]-2)), 20, 120, 120);
-        [imageView setTag:1000+[addedPicArray count]-1];
+        imageView.frame = CGRectMake(160+(140 * ([_addedPicArray count]-2)), 20, 120, 120);
+        [imageView setTag:1000+[_addedPicArray count]-1];
     }
+    
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
     [imageView addSubview:deleteView];
     [photoScroll addSubview:imageView];
-    [addPic setFrame:CGRectMake(160+(140 * ([addedPicArray count]-1)), 20, 120, 120)];
+    [addPic setFrame:CGRectMake(160+(140 * ([_addedPicArray count]-1)), 20, 120, 120)];
     
     //reset the photoscroll
-    [photoScroll setContentSize:CGSizeMake(([addedPicArray count]+1)*160 , 155)];
+    [photoScroll setContentSize:CGSizeMake(([_addedPicArray count]+1)*160 , 155)];
     [photoScroll setContentOffset:CGPointMake(0, 0)];
     [photoScroll scrollRectToVisible:CGRectMake(0,0,320,155) animated:NO];
     [_picker setNavigationBarHidden:NO animated:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
+    //set album picker limit
+    _elcPicker.maximumImagesCount = 9-[_addedPicArray count];
+
+}
+
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+	
+	for (NSDictionary *dict in info) {
+        
+        UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
+        [_addedPicArray addObject:image];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        [imageView setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        tap.numberOfTapsRequired = 1;
+        tap.cancelsTouchesInView=YES;
+        [imageView addGestureRecognizer:tap];
+        
+        UIButton *deleteView =[[UIButton alloc] initWithFrame:CGRectMake(100, 0, 20, 20)];
+        [deleteView setBackgroundImage:[UIImage imageNamed:@"deleteIcon.png"] forState:UIControlStateNormal];
+        [deleteView addTarget:self action:@selector(removePhoto:) forControlEvents:UIControlEventTouchDown];
+        [deleteView setTag:2000+[_addedPicArray count]-1];
+        
+        if ([_addedPicArray count] == 1) {
+            imageView.frame = CGRectMake(20, 20, 120, 120);
+            [imageView setTag:1000+[_addedPicArray count]-1];
+            [self initPhotoCover:imageView];
+        }else{
+            imageView.frame = CGRectMake(160+(140 * ([_addedPicArray count]-2)), 20, 120, 120);
+            [imageView setTag:1000+[_addedPicArray count]-1];
+        }
+        
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        [imageView addSubview:deleteView];
+        [photoScroll addSubview:imageView];
+    
+	}
+    
+    //set album picker limit
+    _elcPicker.maximumImagesCount = 9-[_addedPicArray count];
+    
+    //reset the photoscroll
+    [addPic setFrame:CGRectMake(160+(140 * ([_addedPicArray count]-1)), 20, 120, 120)];
+    [photoScroll setContentSize:CGSizeMake(([_addedPicArray count]+1)*160 , 155)];
+    [photoScroll setContentOffset:CGPointMake(0, 0)];
+    [photoScroll scrollRectToVisible:CGRectMake(0,0,320,155) animated:NO];
+    
+}
+
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 //Methods for add or delete tag
 - (void)initTags
 {
-    for (int u = 0; u <[addedTagArray count]; u++) {
-        if (u+1 == [addedTagArray count]){
+    for (int u = 0; u <[_addedTagArray count]; u++) {
+        if (u+1 == [_addedTagArray count]){
             //Create the last tag
             //label
             UILabel *Views = [[UILabel alloc]initWithFrame:CGRectMake(10, 10+u*50, 40, 40)];
@@ -361,7 +478,12 @@
             textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
             textField.delegate = self;
             [textField setTag:200+u];
+            if ([_addedTagContentArray objectAtIndex:u]!=nil) {
+                textField.text = [_addedTagContentArray objectAtIndex:u];
+            }
             [scrollview addSubview:textField];
+            
+            
             //add underline
             UILabel *aline = [[UILabel alloc]initWithFrame:CGRectMake(60, (u+1)*50-2, 150, 2)];
             aline.text = [NSString stringWithFormat:@""];
@@ -375,7 +497,7 @@
             addTag.frame = CGRectMake(220, 10+u*50, 40, 40);
             [addTag setTitle:@"+" forState:UIControlStateNormal];
             [addTag.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:20]];
-            [addTag addTarget:self action:@selector(addTag) forControlEvents:UIControlEventTouchUpInside];
+            [addTag addTarget:self action:@selector(addTags) forControlEvents:UIControlEventTouchUpInside];
             [scrollview addSubview: addTag];
             UIButton *cutTagButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [cutTagButton setBackgroundColor:UIColorFromRGB(0xd3d3d3)];
@@ -410,7 +532,11 @@
             textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
             textField.delegate = self;
             [textField setTag:200+u];
+            if ([_addedTagContentArray objectAtIndex:u]!=nil) {
+                textField.text = [_addedTagContentArray objectAtIndex:u];
+            }
             [scrollview addSubview:textField];
+            
             //add underline
             UILabel *aline = [[UILabel alloc]initWithFrame:CGRectMake(60, (u+1)*50-2, 200, 2)];
             aline.text = [NSString stringWithFormat:@""];
@@ -432,31 +558,51 @@
 
 }
 
-- (void)addTag
+-(void)addTags{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    if (_addedTagContentArray==nil) {
+        _addedTagContentArray = [[NSMutableArray alloc]init];
+    }
+    if (_desc == nil) {
+        _desc = [[UITextView alloc]init];
+    }
+    if (![_tf.text isEqualToString:[NSString stringWithFormat:@"物品描述、使用心得、看法..."]]) {
+        _desc = _tf;
+    }
+    for (int i=0; i<[_addedTagArray count]; i++) {
+        UITextField *tagContent = (UITextField *)[self.view viewWithTag:200+i];
+        [_addedTagContentArray addObject:tagContent.text];
+    }
+}
+
+- (void)addTagWithNum:(NSNumber *)num
 {
-    [addedTagArray addObject:[NSNumber numberWithInt:3]];
+    [_addedTagArray addObject:num];
     //--Change the ex-last tag
     //textfield
-    UITextField *textField = (UITextField *)[scrollview viewWithTag:200+[addedTagArray count]-2];
-    [textField setFrame:CGRectMake(60, 10+([addedTagArray count]-2)*50+3, 200, 40)];
+    UITextField *textField = (UITextField *)[scrollview viewWithTag:200+[_addedTagArray count]-2];
+    [textField setFrame:CGRectMake(60, 10+([_addedTagArray count]-2)*50+3, 200, 40)];
     //add underline
-    UILabel *aline = (UILabel *)[scrollview viewWithTag:300+[addedTagArray count]-2];
-    [aline setFrame:CGRectMake(60, (([addedTagArray count]-2)+1)*50-2, 200, 2)];
+    UILabel *aline = (UILabel *)[scrollview viewWithTag:300+[_addedTagArray count]-2];
+    [aline setFrame:CGRectMake(60, (([_addedTagArray count]-2)+1)*50-2, 200, 2)];
     [scrollview addSubview:aline];
     
     //--Create the last tag
     //label
-    UILabel *nViews = [[UILabel alloc]initWithFrame:CGRectMake(10, 10+([addedTagArray count]-1)*50, 40, 40)];
+    UILabel *nViews = [[UILabel alloc]initWithFrame:CGRectMake(10, 10+([_addedTagArray count]-1)*50, 40, 40)];
     nViews.text = [NSString stringWithFormat:@"J"];
     nViews.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
     nViews.textColor = [UIColor whiteColor];
     nViews.backgroundColor = [UIColor grayColor];
     nViews.textAlignment = NSTextAlignmentCenter;
-    [nViews setTag:100+[addedTagArray count]-1];
+    [nViews setTag:100+[_addedTagArray count]-1];
     [scrollview addSubview:nViews];
     
     //textfield
-    UITextField *ntextField = [[UITextField alloc] initWithFrame:CGRectMake(60, 10+([addedTagArray count]-1)*50+3, 150, 40)];
+    UITextField *ntextField = [[UITextField alloc] initWithFrame:CGRectMake(60, 10+([_addedTagArray count]-1)*50+3, 150, 40)];
     ntextField.borderStyle = UITextBorderStyleNone;
     ntextField.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
     ntextField.placeholder = @"品牌、型号...";
@@ -466,26 +612,26 @@
     ntextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     ntextField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
     ntextField.delegate = self;
-    [ntextField setTag:200+[addedTagArray count]-1];
+    [ntextField setTag:200+[_addedTagArray count]-1];
     [scrollview addSubview:ntextField];
     //add underline
-    UILabel *naline = [[UILabel alloc]initWithFrame:CGRectMake(60, (([addedTagArray count]-1)+1)*50-2, 150, 2)];
+    UILabel *naline = [[UILabel alloc]initWithFrame:CGRectMake(60, (([_addedTagArray count]-1)+1)*50-2, 150, 2)];
     naline.text = [NSString stringWithFormat:@""];
     naline.backgroundColor = UIColorFromRGB(0xd3d3d3);
-    [naline setTag:300+[addedTagArray count]-1];
+    [naline setTag:300+[_addedTagArray count]-1];
     [scrollview addSubview:naline];
     
     //add tag button
 
-    addTag.frame = CGRectMake(220, 10+([addedTagArray count]-1)*50, 40, 40);
+    addTag.frame = CGRectMake(220, 10+([_addedTagArray count]-1)*50, 40, 40);
 
     UIButton *ncutTagButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [ncutTagButton setBackgroundColor:UIColorFromRGB(0xd3d3d3)];
-    ncutTagButton.frame = CGRectMake(270, 10+([addedTagArray count]-1)*50, 40, 40);
+    ncutTagButton.frame = CGRectMake(270, 10+([_addedTagArray count]-1)*50, 40, 40);
     [ncutTagButton setTitle:@"-" forState:UIControlStateNormal];
     [ncutTagButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:20]];
     [ncutTagButton addTarget:self action:@selector(deleteTag:) forControlEvents:UIControlEventTouchUpInside];
-    [ncutTagButton setTag:400+[addedTagArray count]-1];
+    [ncutTagButton setTag:400+[_addedTagArray count]-1];
     [scrollview addSubview: ncutTagButton];
 
     [self updateUI];
@@ -493,20 +639,21 @@
 
 - (void)updateUI
 {
-    _tf.frame = CGRectMake(10, [addedTagArray count]*50+10, 300, 80+30);
-    line.frame = CGRectMake(10, [addedTagArray count]*50+10+88+30, 300, 2);
-    photoScroll.frame = CGRectMake(0, [addedTagArray count]*50+10+100+30, 320, 155);
-    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
-    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
-    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
+    _tf.frame = CGRectMake(10, [_addedTagArray count]*50+10, 300, 80+30);
+    line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30, 300, 2);
+    photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30, 320, 155);
+    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295);
+//    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
+//    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
+//    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
 }
 
 - (void)deleteTag:(UIButton *) sender{
     NSInteger u = (sender.frame.origin.y - 10)/50;
-    if ([addedTagArray count]!=1) {
-        if (u+1 == [addedTagArray count]) {
+    if ([_addedTagArray count]!=1) {
+        if (u+1 == [_addedTagArray count]) {
         //delete last object and its components
-        [addedTagArray removeLastObject];
+        [_addedTagArray removeLastObject];
         UILabel *Views = (UILabel *)[scrollview viewWithTag:100+u];
         [Views removeFromSuperview];
         UITextField *textField = (UITextField *)[scrollview viewWithTag:200+u];
@@ -523,7 +670,7 @@
         [addTag setFrame:CGRectMake(220, 10+(u-1)*50, 40, 40)];
     }else{
         //delete the object and its components
-        [addedTagArray removeObjectAtIndex:u];
+        [_addedTagArray removeObjectAtIndex:u];
         UILabel *Views = (UILabel *)[scrollview viewWithTag:100+u];
         [Views removeFromSuperview];
         UITextField *textField = (UITextField *)[scrollview viewWithTag:200+u];
@@ -532,7 +679,7 @@
         [aline removeFromSuperview];
         UIButton *cutTagButton = (UIButton *)[scrollview viewWithTag:400+u];
         [cutTagButton  removeFromSuperview];
-        for (NSInteger i = u+1; i<([addedTagArray count]+1); i++) {
+        for (NSInteger i = u+1; i<([_addedTagArray count]+1); i++) {
             UILabel *Views = (UILabel *)[scrollview viewWithTag:100+i];
             [Views setFrame:CGRectMake(10, 10+(i-1)*50, 40, 40)];
             [Views setTag:100+i-1];
@@ -544,7 +691,7 @@
             UILabel *aline = (UILabel *)[scrollview viewWithTag:300+i];
             [aline setTag:300+i-1];
             [addTag setFrame:CGRectMake(220, 10+(i-1)*50, 40, 40)];
-            if (i==[addedTagArray count]) {
+            if (i==[_addedTagArray count]) {
                 [textField setFrame:CGRectMake(60, 10+(i-1)*50+3, 150, 40)];
                 [aline setFrame:CGRectMake(60, i*50-2, 150, 2)];
             }else{
@@ -562,12 +709,13 @@
 //Override function to make placeholder for UITextView
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    _tf.frame = CGRectMake(10, [addedTagArray count]*50+10, 300, 110);
-    line.frame = CGRectMake(10, [addedTagArray count]*50+10+88+30, 300, 2);
-    photoScroll.frame = CGRectMake(0, [addedTagArray count]*50+10+100+30, 320, 155);
-    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
-    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
-    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
+    _tf.frame = CGRectMake(10, [_addedTagArray count]*50+10, 300, 110);
+    line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30, 300, 2);
+    photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30, 320, 155);
+    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295);
+//    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
+//    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
+//    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
     if(textView.tag == 0) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
@@ -575,7 +723,7 @@
     }
     photoScroll.userInteractionEnabled = NO;
     scrollview.scrollEnabled = false;
-    CGRect toVisible = CGRectMake(0, [addedTagArray count]*50, 320, 504);
+    CGRect toVisible = CGRectMake(0, [_addedTagArray count]*50, 320, 504);
     [scrollview scrollRectToVisible:toVisible animated:YES];
     
     return YES;
@@ -584,12 +732,12 @@
 - (void)textViewDidEndEditing:(UITextView *)textView;
 {
     if(_tf.contentSize.height > _tf.frame.size.height){
-        _tf.frame = CGRectMake(10, [addedTagArray count]*50, 300, _tf.contentSize.height);
-        line.frame = CGRectMake(10, [addedTagArray count]*50+10+88+30+_tf.contentSize.height-110-20, 300, 2);
-        photoScroll.frame = CGRectMake(0, [addedTagArray count]*50+10+100+30+_tf.contentSize.height-110-20, 320, 155);
-        weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30, 30);
-        wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30-10, 30);
-        renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30-10, 30);
+        _tf.frame = CGRectMake(10, [_addedTagArray count]*50, 300, _tf.contentSize.height);
+        line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30+_tf.contentSize.height-110-20, 300, 2);
+        photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30+_tf.contentSize.height-110-20, 320, 155);
+        weiboButton.frame = CGRectMake(10, [_addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30, 30);
+        wechatButton.frame = CGRectMake(50, [_addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30-10, 30);
+        renrenButton.frame = CGRectMake(90, [_addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30-10, 30);
     }
     if([textView.text length] == 0)
     {

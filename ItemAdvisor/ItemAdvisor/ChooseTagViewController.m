@@ -34,7 +34,6 @@
 - (IBAction)goToPreview:(id)sender {
     if ([_addedTagArray count]>0) {
         [self performSegueWithIdentifier:[NSString stringWithFormat:@"Choose Tag"] sender:self];
-
     }
 }
 

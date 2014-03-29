@@ -11,8 +11,8 @@
 
 @interface NewsViewController ()
 
-@property (strong,nonatomic)UIScrollView *photoScroll;
-@property (strong,nonatomic)UIPageControl *pageControl;
+//@property (strong,nonatomic)UIScrollView *photoScroll;
+//@property (strong,nonatomic)UIPageControl *pageControl;
 
 @end
 
@@ -24,9 +24,6 @@
         
     }
 }
-
-
-
 
 - (void)viewDidLoad
 {
@@ -77,105 +74,147 @@
     [leftButton setTitle:@"" forState:UIControlStateNormal];
     [scrollview addSubview: leftButton];
     
-    //Create labels in left button of post
-    UILabel *Views = [[UILabel alloc]initWithFrame:CGRectMake(10, 8, 10, 12)];
-    Views.text = [NSString stringWithFormat:@""];
-    Views.backgroundColor = [UIColor grayColor];
-    Views.textAlignment = NSTextAlignmentLeft;
-    [leftButton addSubview:Views];
-    
-    UILabel *noOfViews = [[UILabel alloc]initWithFrame:CGRectMake(25, 8, 35, 13)];
-    noOfViews.text = [NSString stringWithFormat:@"88"];
-    noOfViews.backgroundColor = [UIColor clearColor];
-    noOfViews.textColor = [UIColor grayColor];
-    noOfViews.textAlignment = NSTextAlignmentLeft;
-    [noOfViews setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
-    [leftButton addSubview:noOfViews];
-    
-    UILabel *Likes = [[UILabel alloc]initWithFrame:CGRectMake(60, 8, 10, 12)];
-    Likes.text = [NSString stringWithFormat:@""];
-    Likes.backgroundColor = [UIColor grayColor];
-    Likes.textAlignment = NSTextAlignmentLeft;
-    [leftButton addSubview:Likes];
-    
-    UILabel *noOfLikes = [[UILabel alloc]initWithFrame:CGRectMake(75, 8, 35, 13)];
-    noOfLikes.text = [NSString stringWithFormat:@"88"];
-    noOfLikes.backgroundColor = [UIColor clearColor];
-    noOfLikes.textColor = [UIColor grayColor];
-    noOfLikes.textAlignment = NSTextAlignmentLeft;
-    [noOfLikes setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
-    [leftButton addSubview:noOfLikes];
-    
-    UILabel *Comments = [[UILabel alloc]initWithFrame:CGRectMake(110, 8, 10, 12)];
-    Comments.text = [NSString stringWithFormat:@""];
-    Comments.backgroundColor = [UIColor grayColor];
-    Comments.textAlignment = NSTextAlignmentLeft;
-    [leftButton addSubview:Comments];
-    
-    UILabel *noOfComments = [[UILabel alloc]initWithFrame:CGRectMake(125, 8, 35, 13)];
-    noOfComments.text = [NSString stringWithFormat:@"88"];
-    noOfComments.backgroundColor = [UIColor clearColor];
-    noOfComments.textColor = [UIColor grayColor];
-    noOfComments.textAlignment = NSTextAlignmentLeft;
-    [noOfComments setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
-    [leftButton addSubview:noOfComments];
-    
-    UIImageView *tagOne = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"car.png"]];
-    tagOne.frame = CGRectMake(10, 80, 32, 32);
+    UILabel *tagOne = [[UILabel alloc]initWithFrame:CGRectMake(10, 85, 24, 24)];
+    tagOne.backgroundColor = [UIColor lightGrayColor];
+    tagOne.layer.cornerRadius = 10.0;
     [leftButton addSubview:tagOne];
     
-    UIImageView *tagTwo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera.png"]];
-    tagTwo.frame = CGRectMake(50, 80, 32, 32);
+    UILabel *tagTwo = [[UILabel alloc]initWithFrame:CGRectMake(44, 85, 24, 24)];
+    tagTwo.backgroundColor = [UIColor lightGrayColor];
+    tagTwo.layer.cornerRadius = 10.0;
     [leftButton addSubview:tagTwo];
     
     //Create photo horizontal scroll view
-    _photoScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 120, 320, 320)];
-    _photoScroll.bounces = YES;
-    _photoScroll.pagingEnabled = YES;
-    _photoScroll.delegate = self;
-    _photoScroll.userInteractionEnabled = YES;
-    _photoScroll.showsHorizontalScrollIndicator = NO;
-    [scrollview addSubview:_photoScroll];
+//    _photoScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 120, 320, 320)];
+//    _photoScroll.bounces = YES;
+//    _photoScroll.pagingEnabled = YES;
+//    _photoScroll.delegate = self;
+//    _photoScroll.userInteractionEnabled = YES;
+//    _photoScroll.showsHorizontalScrollIndicator = NO;
+//    [scrollview addSubview:_photoScroll];
     //Create photo arrays
-    NSMutableArray *slideImages = [[NSMutableArray alloc] init];
-    [slideImages addObject:@"ocean.jpeg"];
-    [slideImages addObject:@"ocean_1.jpg"];
-    [slideImages addObject:@"ocean_2.jpg"];
-    //Create page control
-    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(108,440,100,18)]; // 初始化mypagecontrol
-    [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
-    [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
-    _pageControl.numberOfPages = [slideImages count];
-    _pageControl.currentPage = 0;
-    [scrollview addSubview:_pageControl];
-    //Create image views
-    for (int i = 0;i<[slideImages count];i++)
-    {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[slideImages objectAtIndex:i]]];
-        imageView.frame = CGRectMake((320 * i), 0, 320, 320);
-        [_photoScroll addSubview:imageView];
-    }
+    slideImages = [[NSMutableArray alloc] init];
+    [slideImages addObject:[UIImage imageNamed:@"ocean_0.jpeg"]];
+    [slideImages addObject:[UIImage imageNamed:@"ocean_1.jpg"]];
+    [slideImages addObject:[UIImage imageNamed:@"ocean_2.jpg"]];
     
-    [_photoScroll setContentSize:CGSizeMake(320 * [slideImages count], 320)]; //  //+上第1页和第4页  原理：4-[1-2-3-4]-1
-    [_photoScroll setContentOffset:CGPointMake(0, 0)];
-    [_photoScroll scrollRectToVisible:CGRectMake(0,0,320,320) animated:NO];
+    //Create page control
+//    _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(108,439,100,18)]; // 初始化mypagecontrol
+//    [_pageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
+//    [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
+//    _pageControl.numberOfPages = [slideImages count];
+//    _pageControl.currentPage = 0;
+//    [scrollview addSubview:_pageControl];
+    
+    //Create image views
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[slideImages objectAtIndex:0]];
+    imageView.frame = CGRectMake(0, 120, 320, 320);
+    [scrollview addSubview:imageView];
+    
+//    for (int i = 0;i<[slideImages count];i++)
+//    {
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[slideImages objectAtIndex:i]];
+//        [imageView setupImageViewerWithDatasource:self initialIndex:i onOpen:nil onClose:nil];
+//        imageView.frame = CGRectMake((320 * i), 0, 320, 320);
+//        [_photoScroll addSubview:imageView];
+//    }
+//    
+//    [_photoScroll setContentSize:CGSizeMake(320 * [slideImages count], 320)]; //  //+上第1页和第4页  原理：4-[1-2-3-4]-1
+//    [_photoScroll setContentOffset:CGPointMake(0, 0)];
+//    [_photoScroll scrollRectToVisible:CGRectMake(0,0,320,320) animated:NO];
     
     //Create text in the post
-    UITextView *tf = [[UITextView alloc] initWithFrame:CGRectMake(5, 463, 320, 40)];
-    tf.textColor = [UIColor blackColor];
-    tf.font = [UIFont fontWithName:@"Trebuchet MS" size:12];
-    tf.text=@"Hello World!!!";
-    tf.editable = NO;
-    [scrollview addSubview:tf];
+    
+    UILabel *desc = [[UILabel alloc]initWithFrame:CGRectMake(10, 445, 320, 0)];
+    desc.text = [NSString stringWithFormat:@"(Descriptions)"];
+    desc.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
+    desc.textColor = [UIColor blackColor];
+    desc.backgroundColor = [UIColor clearColor];
+    desc.textAlignment = NSTextAlignmentLeft;
+    [desc sizeToFit];
+    desc.numberOfLines = 0;
+    [scrollview addSubview:desc];
+    
+    //Create like list in the post
+    UILabel *likeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 465, 10, 10)];
+    likeLabel.backgroundColor = [UIColor lightGrayColor];
+    likeLabel.layer.cornerRadius = 10.0;
+    [scrollview addSubview:likeLabel];
+    
+    UILabel *likes = [[UILabel alloc]initWithFrame:CGRectMake(25, 462, 320, 0)];
+    likes.text = [NSString stringWithFormat:@"(List of Likes)"];
+    likes.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
+    likes.textColor = [UIColor blackColor];
+    likes.backgroundColor = [UIColor clearColor];
+    likes.textAlignment = NSTextAlignmentLeft;
+    [likes sizeToFit];
+    likes.numberOfLines = 0;
+    [scrollview addSubview:likes];
+    
+    //Create like list in the post
+    UILabel *oneCommentLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 482, 10, 10)];
+    oneCommentLabel.backgroundColor = [UIColor lightGrayColor];
+    oneCommentLabel.layer.cornerRadius = 10.0;
+    [scrollview addSubview:oneCommentLabel];
+    
+    UILabel *recentCommment = [[UILabel alloc]initWithFrame:CGRectMake(25, 479, 320, 0)];
+    recentCommment.text = [NSString stringWithFormat:@"(Show one comment, and the num of comments)"];
+    recentCommment.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
+    recentCommment.textColor = [UIColor blackColor];
+    recentCommment.backgroundColor = [UIColor clearColor];
+    recentCommment.textAlignment = NSTextAlignmentLeft;
+    [recentCommment sizeToFit];
+    recentCommment.numberOfLines = 0;
+    [scrollview addSubview:recentCommment];
+    
+    //--Create buttons in the bottom
+    UIButton *makeCommentButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 500, 60, 25)];
+    [makeCommentButton setBackgroundColor:UIColorFromRGB(0xd2d2d2)];
+    [scrollview addSubview:makeCommentButton];
+    
+    UILabel * commentLogo= [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 15, 15)];
+    commentLogo.backgroundColor = [UIColor grayColor];
+    commentLogo.layer.cornerRadius = 10.0;
+    [makeCommentButton addSubview:commentLogo];
+    
+    UILabel *commentLogoText = [[UILabel alloc]initWithFrame:CGRectMake(25, 5, 35, 15)];
+    commentLogoText.text = [NSString stringWithFormat:@"评论"];
+    commentLogoText.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
+    commentLogoText.textColor = [UIColor grayColor];
+    commentLogoText.backgroundColor = [UIColor clearColor];
+    commentLogoText.textAlignment = NSTextAlignmentLeft;
+    [commentLogoText sizeToFit];
+    commentLogoText.numberOfLines = 0;
+    [makeCommentButton addSubview:commentLogoText];
+    
+    UIButton *toLikeButton = [[UIButton alloc]initWithFrame:CGRectMake(80, 500, 60, 25)];
+    [toLikeButton setBackgroundColor:UIColorFromRGB(0xd2d2d2)];
+    [scrollview addSubview:toLikeButton];
+    
+    UILabel * likeLogo= [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 15, 15)];
+    likeLogo.backgroundColor = [UIColor grayColor];
+    likeLogo.layer.cornerRadius = 10.0;
+    [toLikeButton addSubview:likeLogo];
+    
+    UILabel *likeLogoText = [[UILabel alloc]initWithFrame:CGRectMake(25, 5, 35, 15)];
+    likeLogoText.text = [NSString stringWithFormat:@"赞"];
+    likeLogoText.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
+    likeLogoText.textColor = [UIColor grayColor];
+    likeLogoText.backgroundColor = [UIColor clearColor];
+    likeLogoText.textAlignment = NSTextAlignmentLeft;
+    [likeLogoText sizeToFit];
+    likeLogoText.numberOfLines = 0;
+    [toLikeButton addSubview:likeLogoText];
     
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)sender
-{
-    CGFloat pagewidth = 320;
-    int page = (_photoScroll.contentOffset.x)/pagewidth;
-    _pageControl.currentPage = page;
-}
+//Methods for pagecontrol scrollview
+//- (void)scrollViewDidScroll:(UIScrollView *)sender
+//{
+//    CGFloat pagewidth = 320;
+//    int page = (_photoScroll.contentOffset.x)/pagewidth;
+//    _pageControl.currentPage = page;
+//}
 
 - (void)didReceiveMemoryWarning
 {
