@@ -10,16 +10,14 @@
 
 @interface PostEntity : NSObject
 
-@property (weak,nonatomic) NSString *words;
-@property (weak,nonatomic) UIImage *images;
-@property (weak,nonatomic) NSString *tags;
-@property (weak,nonatomic) NSDate *timeStamp;
-
-@property (nonatomic) NSInteger NumberOfThumbUp;
-@property (nonatomic) NSInteger NumberOfThumbDown;
-@property (nonatomic) NSInteger NumberOfViews;
-
--(void)putAThumbUpFor:(PostEntity*)post;
--(void)putAThumbDownFor:(PostEntity*)post;
+@property NSString *content;
+@property NSMutableArray *images; // store URL, not UIImage
+@property NSMutableArray *tags;   // store NSNumber
+@property NSDate *timeStamp;
+@property NSInteger postID;
+@property NSInteger userID;
+@property NSInteger NumberOfThumbUp;
+@property NSInteger NumberOfThumbDown;
+@property NSInteger NumberOfViews;
 
 @end

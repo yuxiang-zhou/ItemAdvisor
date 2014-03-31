@@ -172,7 +172,7 @@
 
 -(void)getUserPost:(NSInteger)userID range:(NSRange)range {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:getPostURL]];
-    NSString *postString = [NSString stringWithFormat:@""];
+    NSString *postString = [NSString stringWithFormat:@"userid=%d&location=%d&range=%d", userID, range.location, range.length];
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];

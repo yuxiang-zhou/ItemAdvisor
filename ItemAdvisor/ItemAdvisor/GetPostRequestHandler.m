@@ -12,13 +12,14 @@
 @implementation GetPostRequestHandler
 
 -(void)onSuccess:(NSDictionary *) jsonData{
-    NSNumber *isSuccess = [NSNumber numberWithBool:[[jsonData objectForKey:@"result"]  isEqual: @"YES"]];;
-    if([self.delegate respondsToSelector:@selector(onPost:description:)])
-        [self.delegate performSelector:@selector(onPost:description:) withObject:isSuccess withObject:[jsonData objectForKey:@"description"]];
+    NSNumber *isSuccess = [NSNumber numberWithBool:[[jsonData objectForKey:@"result"]  isEqual: @"YES"]];
+    NSMutableArray *posts = [NSMutableArray new];
+    if([self.delegate respondsToSelector:@selector(onGetPost:content:)])
+        [self.delegate performSelector:@selector(onGetPost:content:) withObject:isSuccess withObject:posts];
     
     for (id dele in observers) {
-        if([dele conformsToProtocol:@protocol(PostManagerDelegate)] && [dele respondsToSelector:@selector(onPost:description:)])
-            [dele performSelector:@selector(onPost:description:) withObject:isSuccess withObject:[jsonData objectForKey:@"description"]];
+        if([dele conformsToProtocol:@protocol(PostManagerDelegate)] && [dele respondsToSelector:@selector(onGetPost:content:)])
+            [dele performSelector:@selector(onGetPost:content:) withObject:isSuccess withObject:posts];
     }
     
     [observers removeAllObjects];
