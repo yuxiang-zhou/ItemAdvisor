@@ -16,30 +16,20 @@
 
 @implementation PostEntity
 
--(id)initAPost
-{
-    self = [super init];
-    
-
-    
+-(id)init {
+    if(self = [super init]) {
+        _content = @"";
+        _images = [NSMutableArray new]; // store URL, not UIImage
+        _tags = [NSMutableArray new];   // store NSNumber
+//        _timeStamp;
+        _postID = 0;
+        _userID = 0;
+        _NumberOfThumbUp = 0;
+        _NumberOfThumbDown = 0;
+        _NumberOfViews = 0;
+    }
     return self;
 }
-
-
-
-
-
-
--(void)putAThumbUpFor:(PostEntity*)post
-{
-    self.NumberOfThumbUp++;
-}
-
--(void)putAThumbDownFor:(PostEntity *)post
-{
-    self.NumberOfThumbDown++;
-}
-
 
 
 @end
