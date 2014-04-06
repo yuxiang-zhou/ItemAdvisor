@@ -56,7 +56,7 @@
 }
 
 - (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list {
-    
+    NSLog(@"get post test");
 }
 
 
