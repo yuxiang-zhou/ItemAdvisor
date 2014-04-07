@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BridgeManager.h"
+#import "PostManager.h"
 #import "UserManager.h"
 #import "AllocManager.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -40,8 +41,26 @@
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     
     // Override point for customization after application launch.
+    
+    //[self testCases]; // comment out when finish
+    
     return YES;
 }
+
+- (void) testCases {
+    NSRange range;
+    range.length = 10;
+    range.location = 0;
+    [[PostManager getPostManager] getUserPost:4 range:range withDelegate:self];
+}
+
+- (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list {
+    NSLog(@"get post test");
+}
+
+
+
+
 					
 - (void)applicationWillResignActive:(UIApplication *)application
 {

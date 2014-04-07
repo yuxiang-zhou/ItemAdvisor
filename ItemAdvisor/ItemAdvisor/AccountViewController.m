@@ -20,12 +20,14 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (void)viewDidLoad
 {
     //Create scroll view
-    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 470)];
+    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 415)];
     scrollview.showsVerticalScrollIndicator=YES;
     scrollview.scrollEnabled=YES;
     scrollview.userInteractionEnabled=YES;
     [self.view addSubview:scrollview];
-    scrollview.contentSize = CGSizeMake(320,220+(5)*530);
+    scrollview.contentSize = CGSizeMake(320,220+([UserManager getUserManager].noPost)*530);
+    //create post arrays
+    _postList = [[NSMutableArray alloc]init];
     
     //Create 4 buttons switching contents in view
     //日志
@@ -143,6 +145,9 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[PostManager getPostManager]getUserPost:[UserManager getUserManager].userId range:NSMakeRange(1, [UserManager getUserManager].noPost) withDelegate:self];
+    
     _nameArray = [[NSMutableArray alloc]init];
     [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
     [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
@@ -162,16 +167,22 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     
-    _postTable = [self createTableViewWithHeight:(5)*530];
+    _postTable = [self createTableViewWithHeight:([UserManager getUserManager].noPost)*530];
     _postTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_postTable registerClass:[PostCell class] forCellReuseIdentifier:CellIdentifier];
     [scrollview addSubview:_postTable];
     
 }
 
+- (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list{
+    if (isSuccess.boolValue) {
+        [_postList addObjectsFromArray:list];
+    }
+}
+
 - (UITableView *)createTableViewWithHeight:(CGFloat)height{
     CGFloat x = 0;
-    CGFloat y = 220;
+    CGFloat y = 221;
     CGFloat width = self.view.frame.size.width;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
@@ -189,7 +200,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return [_postList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -205,12 +216,16 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     cell.addedTagArray = _addedTagArray;
     cell.color = UIColorFromRGB(0x502d25);
-    //cell.profilePic.image = [UIImage imageNamed:@"haha.jpeg"];
-    cell.name.text = [_nameArray objectAtIndex:indexPath.row];
+    cell.name.text = [UserManager getUserManager].firstName;
     cell.firstPic.image = [UIImage imageNamed:@"choco_1.jpg"];
-    cell.desc.text = [_dataArray objectAtIndex:indexPath.row];
+    [self putLabelTextInCell:cell withOrder:indexPath.row];
     
     return cell;
+}
+
+-(void)putLabelTextInCell:(PostCell *)cell withOrder:(NSInteger)order{
+    [cell.desc setText:((PostEntity *)[_postList objectAtIndex:order]).content];
+    [cell.desc sizeToFit];
 }
 
 - (void)didReceiveMemoryWarning
