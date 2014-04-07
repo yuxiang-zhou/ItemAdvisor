@@ -9,6 +9,7 @@
 #import "BridgeManager.h"
 #import "UserManager.h"
 #import "PostManager.h"
+#import "TagEntity.h"
 
 @implementation BridgeManager
 {
@@ -162,8 +163,12 @@
 }
 
 -(void)newPost:(NSInteger)userID tagList:(NSArray *)tags contents:(NSString *)text {
+    NSMutableArray* tagstring = [NSMutableArray array];
+    for(TagEntity* te in tags) {
+        [tagstring addObject:[NSString stringWithFormat:@"%d;%@", te.TagType, te.description]];
+    }
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:addPostURL]];
-    NSString *postString = [NSString stringWithFormat:@"userid=%d&content=%@&tags=%@",userID,text,[tags componentsJoinedByString:@","]];
+    NSString *postString = [NSString stringWithFormat:@"userid=%d&content=%@&tags=%@",userID,text,[tagstring componentsJoinedByString:@","]];
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
