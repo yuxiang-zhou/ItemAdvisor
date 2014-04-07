@@ -42,7 +42,7 @@
     
     // Override point for customization after application launch.
     
-    //[self testCases]; // comment out when finish
+    [self testCases]; // comment out when finish
     
     return YES;
 }
@@ -57,10 +57,6 @@
 - (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list {
     NSLog(@"get post test");
 }
-
-
-
-
 					
 - (void)applicationWillResignActive:(UIApplication *)application
 {

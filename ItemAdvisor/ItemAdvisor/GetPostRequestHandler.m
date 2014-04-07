@@ -24,7 +24,8 @@
             postEntity.NumberOfViews = [[post objectForKey:@"no_view"] integerValue];
             postEntity.content = [post objectForKey:@"content"];
             postEntity.timeStamp = [NSDate dateWithTimeIntervalSince1970:[[post objectForKey:@"time_stamp"] integerValue]];
-            
+            postEntity.username = [post objectForKey:@"firstname"];
+            postEntity.profileURL = [NSString stringWithFormat:@"http://113.55.0.233/itemadvisor/img/profile/%@.jpg", [post objectForKey:@"email"]];
             NSMutableArray *images = [NSMutableArray new];
             NSMutableArray *tags = [NSMutableArray new];
             

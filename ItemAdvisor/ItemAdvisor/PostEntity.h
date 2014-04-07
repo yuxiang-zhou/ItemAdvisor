@@ -14,6 +14,8 @@
 @property NSMutableArray *images; // store URL, not UIImage
 @property NSMutableArray *tags;   // store NSNumber
 @property NSDate *timeStamp;
+@property NSString *username;
+@property NSString *profileURL;
 @property NSInteger postID;
 @property NSInteger userID;
 @property NSInteger NumberOfThumbUp;
