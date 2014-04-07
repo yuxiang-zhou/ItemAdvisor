@@ -19,6 +19,7 @@
 		7F9C0FD618B5362C00D022FE /* LoginRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FD518B5362C00D022FE /* LoginRequestHandler.m */; };
 		7F9C0FDB18B7C93900D022FE /* UploadImageRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FDA18B7C93900D022FE /* UploadImageRequestHandler.m */; };
 		7F9C0FDE18B7CFDF00D022FE /* RegisterUserRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FDD18B7CFDF00D022FE /* RegisterUserRequestHandler.m */; };
+		7FBD686518F1EBBB00C5923C /* TagEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD686418F1EBBB00C5923C /* TagEntity.m */; };
 		7FC1DBBD18A257CA005C216C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBC18A257CA005C216C /* Foundation.framework */; };
 		7FC1DBBF18A257CA005C216C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */; };
 		7FC1DBC118A257CA005C216C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC1DBC018A257CA005C216C /* UIKit.framework */; };
@@ -115,6 +116,8 @@
 		7F9C0FDA18B7C93900D022FE /* UploadImageRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageRequestHandler.m; sourceTree = "<group>"; };
 		7F9C0FDC18B7CFDF00D022FE /* RegisterUserRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserRequestHandler.h; sourceTree = "<group>"; };
 		7F9C0FDD18B7CFDF00D022FE /* RegisterUserRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserRequestHandler.m; sourceTree = "<group>"; };
+		7FBD686318F1EBBB00C5923C /* TagEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagEntity.h; sourceTree = "<group>"; };
+		7FBD686418F1EBBB00C5923C /* TagEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagEntity.m; sourceTree = "<group>"; };
 		7FC1DBB918A257CA005C216C /* ItemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC1DBBC18A257CA005C216C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FC1DBBE18A257CA005C216C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -247,6 +250,8 @@
 				2737229218ABCAD000D94103 /* PostEntity.m */,
 				2737229718ABD89D00D94103 /* PostCommemts.h */,
 				2737229818ABD89D00D94103 /* PostCommemts.m */,
+				7FBD686318F1EBBB00C5923C /* TagEntity.h */,
+				7FBD686418F1EBBB00C5923C /* TagEntity.m */,
 			);
 			name = PostModel;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				2737229918ABD89D00D94103 /* PostCommemts.m in Sources */,
 				2737229018ABC6F200D94103 /* PostManager.m in Sources */,
 				D41AE6F418BE323200D282FC /* IphoneScreen.m in Sources */,
+				7FBD686518F1EBBB00C5923C /* TagEntity.m in Sources */,
 				D41AE6F318BE323200D282FC /* ImageUtil.m in Sources */,
 				7F9C0FD618B5362C00D022FE /* LoginRequestHandler.m in Sources */,
 				7FC1DBD618A257CA005C216C /* SearchViewController.m in Sources */,
