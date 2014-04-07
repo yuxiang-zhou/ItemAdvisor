@@ -15,6 +15,7 @@
 
 @implementation AccountViewController
 
+static NSString *CellIdentifier = @"CellIdentifier";
 
 - (void)viewDidLoad
 {
@@ -24,7 +25,7 @@
     scrollview.scrollEnabled=YES;
     scrollview.userInteractionEnabled=YES;
     [self.view addSubview:scrollview];
-    scrollview.contentSize = CGSizeMake(320,960);
+    scrollview.contentSize = CGSizeMake(320,220+(5)*530);
     
     //Create 4 buttons switching contents in view
     //日志
@@ -142,6 +143,74 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _nameArray = [[NSMutableArray alloc]init];
+    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+    
+    _dataArray = [[NSMutableArray alloc]init];
+    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+    
+    _addedTagArray = [[NSMutableArray alloc]init];
+    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
+    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
+    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
+    
+    _postTable = [self createTableViewWithHeight:(5)*530];
+    _postTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_postTable registerClass:[PostCell class] forCellReuseIdentifier:CellIdentifier];
+    [scrollview addSubview:_postTable];
+    
+}
+
+- (UITableView *)createTableViewWithHeight:(CGFloat)height{
+    CGFloat x = 0;
+    CGFloat y = 220;
+    CGFloat width = self.view.frame.size.width;
+    CGRect tableFrame = CGRectMake(x, y, width, height);
+    
+    UITableView * tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
+    
+    tableView.scrollEnabled = NO;
+    tableView.showsVerticalScrollIndicator = NO;
+    tableView.userInteractionEnabled = YES;
+    tableView.bounces = YES;
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    return tableView;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [PostCell cellHeight];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.addedTagArray = _addedTagArray;
+    cell.color = UIColorFromRGB(0x502d25);
+    cell.profilePic.image = [UIImage imageNamed:@"haha.jpg"];
+    cell.name.text = [_nameArray objectAtIndex:indexPath.row];
+    cell.firstPic.image = [UIImage imageNamed:@"choco_1.jpg"];
+    cell.desc.text = [_dataArray objectAtIndex:indexPath.row];
+    
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning

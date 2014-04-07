@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
+#import "PostCell.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface AccountViewController : UIViewController
+@interface AccountViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UITextView *userName;
-@property (weak, nonatomic) IBOutlet UITextView *userIntroduction;
-@property (weak, nonatomic) IBOutlet UIButton *postDetail;
-@property (weak, nonatomic) IBOutlet UIButton *followingDetail;
-@property (weak, nonatomic) IBOutlet UIButton *followerDetail;
-@property (weak, nonatomic) IBOutlet UIButton *stuffDetail;
+@property (strong,nonatomic)UITableView *postTable;
+@property (strong,nonatomic)NSMutableArray *nameArray;
+@property (strong,nonatomic)NSMutableArray *dataArray;
+@property (strong,nonatomic)NSMutableArray *addedTagArray;
 
 @end

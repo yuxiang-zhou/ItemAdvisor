@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "MHFacebookImageViewer.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PostCell.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface NewsViewController : UIViewController<UIScrollViewDelegate>
+@interface NewsViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray* slideImages;
 }
+
+@property (strong,nonatomic)UITableView *postTable;
+@property (strong,nonatomic)NSMutableArray *nameArray;
+@property (strong,nonatomic)NSMutableArray *dataArray;
+@property (strong,nonatomic)NSMutableArray *addedTagArray;
 
 @end
