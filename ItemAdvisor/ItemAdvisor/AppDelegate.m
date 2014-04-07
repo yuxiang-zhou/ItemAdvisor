@@ -42,7 +42,7 @@
     
     // Override point for customization after application launch.
     
-    [self testCases]; // comment out when finish
+    //[self testCases]; // comment out when finish
     
     return YES;
 }
