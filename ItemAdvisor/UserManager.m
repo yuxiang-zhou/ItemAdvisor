@@ -47,7 +47,7 @@
 
 -(void) getCurrentUserInfoAsync:(NSInteger)userid withDelegate:(id) delegate {
     [_userinfoRH addObserver:delegate];
-    [[BridgeManager getBridgeManager] requestUserInfo:[NSString stringWithFormat:@"%ld",userid]];
+    [[BridgeManager getBridgeManager] requestUserInfo:[NSString stringWithFormat:@"%ld",(long)userid]];
 }
 
 -(void) loginAs:(NSString *)userLogin withPassword:(NSString *)password withDelegate:(id) delegate{

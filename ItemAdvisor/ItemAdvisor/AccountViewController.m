@@ -20,7 +20,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (void)viewDidLoad
 {
     //Create scroll view
-    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 50, 320, 460)];
+    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 470)];
     scrollview.showsVerticalScrollIndicator=YES;
     scrollview.scrollEnabled=YES;
     scrollview.userInteractionEnabled=YES;
@@ -31,7 +31,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     //日志
     UIButton *post = [UIButton buttonWithType:UIButtonTypeCustom];
     [post setBackgroundColor:UIColorFromRGB(0x333333)];
-    post.frame = CGRectMake(0, 25, 80, 25);
+    post.frame = CGRectMake(0, 20, 80, 20);
     [post setTitle:@"日志" forState:UIControlStateNormal];
     [post.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: post];
@@ -41,7 +41,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     UIButton *postNum = [UIButton buttonWithType:UIButtonTypeCustom];
     [postNum setBackgroundColor:UIColorFromRGB(0x333333)];
-    postNum.frame = CGRectMake(0, 0, 80, 25);
+    postNum.frame = CGRectMake(0, 0, 80, 20);
     [postNum setTitle:postDetailTitle forState:UIControlStateNormal];
     postNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     [postNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
@@ -50,7 +50,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     //关注
     UIButton *follow = [UIButton buttonWithType:UIButtonTypeCustom];
     [follow setBackgroundColor:UIColorFromRGB(0x333333)];
-    follow.frame = CGRectMake(80, 25, 80, 25);
+    follow.frame = CGRectMake(80, 20, 80, 20);
     [follow setTitle:@"关注" forState:UIControlStateNormal];
     [follow.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: follow];
@@ -60,7 +60,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     UIButton *followNum = [UIButton buttonWithType:UIButtonTypeCustom];
     [followNum setBackgroundColor:UIColorFromRGB(0x333333)];
-    followNum.frame = CGRectMake(80, 0, 80, 25);
+    followNum.frame = CGRectMake(80, 0, 80, 20);
     [followNum setTitle:followDetailTitle forState:UIControlStateNormal];
     followNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     [followNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
@@ -69,7 +69,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     //粉丝
     UIButton *follower = [UIButton buttonWithType:UIButtonTypeCustom];
     [follower setBackgroundColor:UIColorFromRGB(0x333333)];
-    follower.frame = CGRectMake(160, 25, 80, 25);
+    follower.frame = CGRectMake(160, 20, 80, 20);
     [follower setTitle:@"粉丝" forState:UIControlStateNormal];
     [follower.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: follower];
@@ -79,7 +79,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     UIButton *followerNum = [UIButton buttonWithType:UIButtonTypeCustom];
     [followerNum setBackgroundColor:UIColorFromRGB(0x333333)];
-    followerNum.frame = CGRectMake(160, 0, 80, 25);
+    followerNum.frame = CGRectMake(160, 0, 80, 20);
     [followerNum setTitle:followerDetailTitle forState:UIControlStateNormal];
     followerNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     [followerNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
@@ -88,7 +88,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     //物品
     UIButton *things = [UIButton buttonWithType:UIButtonTypeCustom];
     [things setBackgroundColor:UIColorFromRGB(0x333333)];
-    things.frame = CGRectMake(240, 25, 80, 25);
+    things.frame = CGRectMake(240, 20, 80, 20);
     [things setTitle:@"物品" forState:UIControlStateNormal];
     [things.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:11]];
     [self.view addSubview: things];
@@ -98,7 +98,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     UIButton *thingsNum = [UIButton buttonWithType:UIButtonTypeCustom];
     [thingsNum setBackgroundColor:UIColorFromRGB(0x333333)];
-    thingsNum.frame = CGRectMake(240, 0, 80, 25);
+    thingsNum.frame = CGRectMake(240, 0, 80, 20);
     [thingsNum setTitle:thingsDetailTitle forState:UIControlStateNormal];
     thingsNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     [thingsNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
@@ -205,7 +205,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     cell.addedTagArray = _addedTagArray;
     cell.color = UIColorFromRGB(0x502d25);
-    cell.profilePic.image = [UIImage imageNamed:@"haha.jpg"];
+    //cell.profilePic.image = [UIImage imageNamed:@"haha.jpeg"];
     cell.name.text = [_nameArray objectAtIndex:indexPath.row];
     cell.firstPic.image = [UIImage imageNamed:@"choco_1.jpg"];
     cell.desc.text = [_dataArray objectAtIndex:indexPath.row];

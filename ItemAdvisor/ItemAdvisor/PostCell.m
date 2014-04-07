@@ -16,6 +16,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        _color = UIColorFromRGB(0x2a477a);
         [self createContentInCell];
     }
     return self;

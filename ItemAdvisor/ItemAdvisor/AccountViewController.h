@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
 #import "PostCell.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface AccountViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface AccountViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UserManagerDelegate>
 
 @property (strong,nonatomic)UITableView *postTable;
 @property (strong,nonatomic)NSMutableArray *nameArray;
