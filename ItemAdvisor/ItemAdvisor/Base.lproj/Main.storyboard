@@ -145,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="hpR-90-EfO" kind="relationship" relationship="rootViewController" id="UcG-da-dAh"/>
+                        <segue destination="qzl-xL-xWo" kind="relationship" relationship="rootViewController" id="qmh-zD-dCF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="No0-Vn-0dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,7 +486,7 @@
         <scene sceneID="Vex-rW-GRa">
             <objects>
                 <tabBarController id="8YX-ce-x5E" customClass="TabBarViewController" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -526,12 +526,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="NextStepButton" destination="smM-7b-lyP" id="jrC-YL-ARn"/>
-                        <segue destination="qzl-xL-xWo" kind="push" identifier="Choose Tag" id="sNS-Hw-N6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqM-id-7Ty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2413" y="-143"/>
+            <point key="canvasLocation" x="2817" y="-137"/>
         </scene>
         <!--Make Post View Controller - 编辑日志-->
         <scene sceneID="5bi-QH-W6f">
@@ -556,10 +555,13 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="hpR-90-EfO" kind="push" identifier="ChooseTag" id="WUN-GC-etj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqY-j6-yem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2875" y="-143"/>
+            <point key="canvasLocation" x="2351" y="-137"/>
         </scene>
     </scenes>
     <resources>

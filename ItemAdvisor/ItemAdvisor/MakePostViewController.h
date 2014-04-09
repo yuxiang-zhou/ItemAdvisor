@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLAlertView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "XWPhotoEditorViewController.h"
 #import "ImageFilterProcessViewController.h"
@@ -24,15 +23,12 @@
 #define  INSETS 10
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface MakePostViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, ImageFitlerProcessDelegate, UITextViewDelegate, PostManagerDelegate, UserManagerDelegate, UIAlertViewDelegate, ELCImagePickerControllerDelegate>
+@interface MakePostViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, ImageFitlerProcessDelegate, UITextViewDelegate, PostManagerDelegate, UserManagerDelegate, UIAlertViewDelegate, ELCImagePickerControllerDelegate,ChooseTagViewControllerDelegate>
 {
     UIScrollView *scrollview;
     UIButton *addTag;
     UILabel *line;
     UIScrollView *photoScroll;
-    UIButton *weiboButton;
-    UIButton *wechatButton;
-    UIButton *renrenButton;
     UIButton *addPic;
     UIImage *newPic;
     UILabel *isCoverPic;
@@ -41,12 +37,12 @@
 
 
 @property (strong,nonatomic)NSMutableArray *addedTagArray;
-@property (strong,nonatomic)NSMutableArray *addedTagContentArray;
 @property (strong,nonatomic)NSMutableArray *addedPicArray;
 @property (strong,nonatomic)UIImagePickerController *picker;
 @property (strong,nonatomic)ELCImagePickerController *elcPicker;
 @property (strong,nonatomic)UITextView *tf;
 @property (strong,nonatomic)UITextView *desc;
+@property NSUInteger numOfAddTag;
 
 
 @end

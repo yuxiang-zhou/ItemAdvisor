@@ -20,6 +20,8 @@
 
 @implementation ChooseTagViewController
 
+@synthesize delegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,7 +35,9 @@
 }
 - (IBAction)goToPreview:(id)sender {
     if ([_addedTagArray count]>0) {
-        [self performSegueWithIdentifier:[NSString stringWithFormat:@"Choose Tag"] sender:self];
+        [self.delegate addItemViewController:self didFinishEnteringItems:_addedTagArray];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
     }
 }
 
@@ -63,10 +67,6 @@
     [self setUpScrollView:_catalogList with:UIColorFromRGB(0x54B547)];
     [self initialCatalogList];
     [self.view addSubview:_catalogList];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -541,15 +541,15 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"Choose Tag"]){
-         MakePostViewController *controller = (MakePostViewController *)segue.destinationViewController;
-        controller.addedTagArray = [[NSMutableArray alloc]initWithArray:_addedTagArray];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    if([segue.identifier isEqualToString:@"ChooseTag"]){
+//         MakePostViewController *controller = (MakePostViewController *)segue.destinationViewController;
+//        controller.addedTagArray = [[NSMutableArray alloc]initWithArray:_addedTagArray];
+//    }
+//}
 
 @end
 

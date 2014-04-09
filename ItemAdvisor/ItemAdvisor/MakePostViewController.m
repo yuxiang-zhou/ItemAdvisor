@@ -15,18 +15,34 @@
 @implementation MakePostViewController
 //set cancel button pop up
 - (IBAction)CancelOrDraft:(id)sender {
-    TLAlertView *alertView = [TLAlertView showInView:self.view withTitle:@"即将返回" message:@"要保存草稿吗？" confirmButtonTitle:@"不保存" cancelButtonTitle:@"要"];
+    NSString *draftTitle = @"保存";
+    NSString *dontDraftTitle = @"不保存";
+    NSString *cancelTitle = @"取消";
+    NSString *contentTitle = @"要将内容放入草稿箱吗?";
     
-    [alertView handleCancel:^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }         handleConfirm:^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
-    [alertView show];
-    alertView.buttonColor = UIColorFromRGB(0xc60BAEB);
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:contentTitle
+                                  delegate:self
+                                  cancelButtonTitle:cancelTitle
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:draftTitle,dontDraftTitle, nil];
+    actionSheet.tag = 2;
+    [actionSheet showInView:self.view];
 }
+
+-(void)addItemViewController:(ChooseTagViewController *)controller didFinishEnteringItems:(NSMutableArray *)items{
+    if (!_addedTagArray) {
+        _addedTagArray = [[NSMutableArray alloc]initWithArray:items];
+        [self initTags];
+        [self updateUI];
+    }else{
+        [_addedTagArray addObjectsFromArray:items];
+        _numOfAddTag = [items count];
+        [self updateTags];
+        [self updateUI];
+    }
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
     if (_picker ==nil) {
@@ -61,9 +77,17 @@
     }
 }
 
+
 -(void)dismiss:(UIAlertView*)alert
 {
     [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"ChooseTag"]){
+        ChooseTagViewController *vc = [segue destinationViewController];
+        vc.delegate = self;
+    }
 }
 
 
@@ -72,6 +96,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     // call the choose tag view first
+    
+    //Go to choose tag for 1st time
+    if (!_addedTagArray) {
+        [self performSegueWithIdentifier:[NSString stringWithFormat:@"ChooseTag"] sender:self];
+    }
     
     //Create scroll view
     scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 504)];
@@ -91,21 +120,18 @@
     
     //-----------Tag
     
-    [self initTags];
+    //[self initTags];
     
     //---------------Text
     //Create textview
     if (_desc == nil) {
         _tf = [[UITextView alloc] initWithFrame:CGRectMake(10, [_addedTagArray count]*50+10, 300, 110)];
-        //tf.borderStyle = UITextBorderStyleNone;
         _tf.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
         _tf.text = @"物品描述、使用心得、看法...";
         _tf.textColor = UIColorFromRGB(0xd3d3d3);
         _tf.autocorrectionType = UITextAutocorrectionTypeNo;
         _tf.keyboardType = UIKeyboardTypeDefault;
         _tf.returnKeyType = UIReturnKeyDefault;
-        //tf.clearButtonMode = UITextFieldViewModeWhileEditing;
-        //tf.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
         _tf.delegate = self;
         [scrollview addSubview:_tf];
     }else{
@@ -133,9 +159,6 @@
     _addedPicArray = [[NSMutableArray alloc]init];
     [_addedPicArray addObject:picOne];
     [_addedPicArray addObject:pic2];
-    //[addedPicArray addObject:@"grass2.jpg"];
-    //[addedPicArray addObject:@"grass3.jpg"];
-    //[addedPicArray addObject:@"grass4.jpg"];
     
     //Create image views
     [self initPhotos];
@@ -143,23 +166,6 @@
     [photoScroll setContentSize:CGSizeMake(([_addedPicArray count]+1)*160 , 155)];
     [photoScroll setContentOffset:CGPointMake(0, 0)];
     [photoScroll scrollRectToVisible:CGRectMake(0,0,320,155) animated:NO];
-
-    
-    //---------------ShareToOthers
-//    weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [weiboButton setBackgroundImage:[UIImage imageNamed:@"weibo.jpg"] forState:UIControlStateNormal];
-//    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
-//    [scrollview addSubview: weiboButton];
-//    
-//    wechatButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [wechatButton setBackgroundImage:[UIImage imageNamed:@"wechat.jpg"] forState:UIControlStateNormal];
-//    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
-//    [scrollview addSubview: wechatButton];
-//    
-//    renrenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [renrenButton setBackgroundImage:[UIImage imageNamed:@"renren.png"] forState:UIControlStateNormal];
-//    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
-//    [scrollview addSubview: renrenButton];
     
 }
 
@@ -238,6 +244,7 @@
                                   cancelButtonTitle:cancelTitle
                                   destructiveButtonTitle:nil
                                   otherButtonTitles:libraryTitle,takePhotoTitle, nil];
+    actionSheet.tag = 1;
     [actionSheet showInView:self.view];
 }
 
@@ -276,11 +283,20 @@
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0) {
-        [self presentViewController:_elcPicker animated:YES completion:nil];
-    } else if (buttonIndex == 1) {
-        [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
+    if (actionSheet.tag == 1) {
+        if (buttonIndex == 0) {
+            [self presentViewController:_elcPicker animated:YES completion:nil];
+        } else if (buttonIndex == 1) {
+            [self showImagePicker:UIImagePickerControllerSourceTypeCamera];
+        }
+    }else{
+        if (buttonIndex == 0) {
+            [self dismissViewControllerAnimated:self completion:nil];
+        } else if (buttonIndex == 1) {
+            [self dismissViewControllerAnimated:self completion:nil];
+        }
     }
+    
 }
 
 - (void)showImagePicker:(UIImagePickerControllerSourceType) sourceType {
@@ -306,13 +322,6 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     ImageFilterProcessViewController *fitler = [[ImageFilterProcessViewController alloc] init];
     [fitler setDelegate:self];
-//    if (image.size.height > image.size.width) {
-//        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 1200)];
-//    } else if ((image.size.height == image.size.width)){
-//        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(900, 900)];
-//    } else {
-//        fitler.currentImage = [self resizeImage:image toSize:CGSizeMake(1200, 900)];
-//    }
 
     fitler.currentImage = [self resizeImageFrom:image];
     
@@ -478,9 +487,6 @@
             textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
             textField.delegate = self;
             [textField setTag:200+u];
-            if ([_addedTagContentArray objectAtIndex:u]!=nil) {
-                textField.text = [_addedTagContentArray objectAtIndex:u];
-            }
             [scrollview addSubview:textField];
             
             
@@ -532,9 +538,7 @@
             textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
             textField.delegate = self;
             [textField setTag:200+u];
-            if ([_addedTagContentArray objectAtIndex:u]!=nil) {
-                textField.text = [_addedTagContentArray objectAtIndex:u];
-            }
+
             [scrollview addSubview:textField];
             
             //add underline
@@ -559,82 +563,112 @@
 }
 
 -(void)addTags{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:[NSString stringWithFormat:@"ChooseTag"] sender:self];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    if (_addedTagContentArray==nil) {
-        _addedTagContentArray = [[NSMutableArray alloc]init];
-    }
-    if (_desc == nil) {
-        _desc = [[UITextView alloc]init];
-    }
-    if (![_tf.text isEqualToString:[NSString stringWithFormat:@"物品描述、使用心得、看法..."]]) {
-        _desc = _tf;
-    }
-    for (int i=0; i<[_addedTagArray count]; i++) {
-        UITextField *tagContent = (UITextField *)[self.view viewWithTag:200+i];
-        [_addedTagContentArray addObject:tagContent.text];
-    }
-}
-
-- (void)addTagWithNum:(NSNumber *)num
+- (void)updateTags
 {
-    [_addedTagArray addObject:num];
     //--Change the ex-last tag
     //textfield
-    UITextField *textField = (UITextField *)[scrollview viewWithTag:200+[_addedTagArray count]-2];
-    [textField setFrame:CGRectMake(60, 10+([_addedTagArray count]-2)*50+3, 200, 40)];
-    //add underline
-    UILabel *aline = (UILabel *)[scrollview viewWithTag:300+[_addedTagArray count]-2];
-    [aline setFrame:CGRectMake(60, (([_addedTagArray count]-2)+1)*50-2, 200, 2)];
-    [scrollview addSubview:aline];
+    UITextField *textField = (UITextField *)[scrollview viewWithTag:200+[_addedTagArray count]-(1+_numOfAddTag)];
+    [textField setFrame:CGRectMake(60, 10+([_addedTagArray count]-(1+_numOfAddTag))*50+3, 200, 40)];
+    //change underline
+    UILabel *aline = (UILabel *)[scrollview viewWithTag:300+[_addedTagArray count]-(1+_numOfAddTag)];
+    [aline setFrame:CGRectMake(60, (([_addedTagArray count]-(1+_numOfAddTag))+1)*50-2, 200, 2)];
     
-    //--Create the last tag
-    //label
-    UILabel *nViews = [[UILabel alloc]initWithFrame:CGRectMake(10, 10+([_addedTagArray count]-1)*50, 40, 40)];
-    nViews.text = [NSString stringWithFormat:@"J"];
-    nViews.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
-    nViews.textColor = [UIColor whiteColor];
-    nViews.backgroundColor = [UIColor grayColor];
-    nViews.textAlignment = NSTextAlignmentCenter;
-    [nViews setTag:100+[_addedTagArray count]-1];
-    [scrollview addSubview:nViews];
+    //--Create new tags
+    for (int u = 1+(int)([_addedTagArray count]-(1+_numOfAddTag)); u <[_addedTagArray count]; u++) {
+        if (u+1 == [_addedTagArray count]){
+            //Create the last tag
+            //label
+            UILabel *Views = [[UILabel alloc]initWithFrame:CGRectMake(10, 10+u*50, 40, 40)];
+            Views.text = [NSString stringWithFormat:@"J"];
+            Views.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
+            Views.textColor = [UIColor whiteColor];
+            Views.backgroundColor = [UIColor grayColor];
+            Views.textAlignment = NSTextAlignmentCenter;
+            [Views setTag:100+u];
+            [scrollview addSubview:Views];
+            
+            //textfield
+            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(60, 10+u*50+3, 150, 40)];
+            textField.borderStyle = UITextBorderStyleNone;
+            textField.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
+            textField.placeholder = @"品牌、型号...";
+            textField.autocorrectionType = UITextAutocorrectionTypeNo;
+            textField.keyboardType = UIKeyboardTypeDefault;
+            textField.returnKeyType = UIReturnKeyDone;
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
+            textField.delegate = self;
+            [textField setTag:200+u];
+            [scrollview addSubview:textField];
+            
+            
+            //add underline
+            UILabel *aline = [[UILabel alloc]initWithFrame:CGRectMake(60, (u+1)*50-2, 150, 2)];
+            aline.text = [NSString stringWithFormat:@""];
+            aline.backgroundColor = UIColorFromRGB(0xd3d3d3);
+            [aline setTag:300+u];
+            [scrollview addSubview:aline];
+            
+            //change tag button
+            addTag.frame = CGRectMake(220, 10+u*50, 40, 40);
+
+            UIButton *cutTagButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [cutTagButton setBackgroundColor:UIColorFromRGB(0xd3d3d3)];
+            cutTagButton.frame = CGRectMake(270, 10+u*50, 40, 40);
+            [cutTagButton setTitle:@"-" forState:UIControlStateNormal];
+            [cutTagButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:20]];
+            [cutTagButton addTarget:self action:@selector(deleteTag:) forControlEvents:UIControlEventTouchUpInside];
+            [cutTagButton setTag:400+u];
+            [scrollview addSubview: cutTagButton];
+        }else
+        {
+            //Create normal tag
+            //label
+            UILabel *Views = [[UILabel alloc]initWithFrame:CGRectMake(10, 10+u*50, 40, 40)];
+            Views.text = [NSString stringWithFormat:@"J"];
+            Views.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
+            Views.textColor = [UIColor whiteColor];
+            Views.backgroundColor = [UIColor grayColor];
+            Views.textAlignment = NSTextAlignmentCenter;
+            [Views setTag:100+u];
+            [scrollview addSubview:Views];
+            
+            //textfield
+            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(60, 10+u*50+3, 200, 40)];
+            textField.borderStyle = UITextBorderStyleNone;
+            textField.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
+            textField.placeholder = @"品牌、型号...";
+            textField.autocorrectionType = UITextAutocorrectionTypeNo;
+            textField.keyboardType = UIKeyboardTypeDefault;
+            textField.returnKeyType = UIReturnKeyDone;
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
+            textField.delegate = self;
+            [textField setTag:200+u];
+            [scrollview addSubview:textField];
+            
+            //add underline
+            UILabel *aline = [[UILabel alloc]initWithFrame:CGRectMake(60, (u+1)*50-2, 200, 2)];
+            aline.text = [NSString stringWithFormat:@""];
+            aline.backgroundColor = UIColorFromRGB(0xd3d3d3);
+            [aline setTag:300+u];
+            [scrollview addSubview:aline];
+            
+            //add tag button
+            UIButton *cutTagButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [cutTagButton setBackgroundColor:UIColorFromRGB(0xd3d3d3)];
+            cutTagButton.frame = CGRectMake(270, 10+u*50, 40, 40);
+            [cutTagButton setTitle:@"-" forState:UIControlStateNormal];
+            [cutTagButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:20]];
+            [cutTagButton addTarget:self action:@selector(deleteTag:) forControlEvents:UIControlEventTouchUpInside];
+            [cutTagButton setTag:400+u];
+            [scrollview addSubview: cutTagButton];
+        }
+    }
     
-    //textfield
-    UITextField *ntextField = [[UITextField alloc] initWithFrame:CGRectMake(60, 10+([_addedTagArray count]-1)*50+3, 150, 40)];
-    ntextField.borderStyle = UITextBorderStyleNone;
-    ntextField.font = [UIFont fontWithName:@"Trebuchet MS" size:15];
-    ntextField.placeholder = @"品牌、型号...";
-    ntextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    ntextField.keyboardType = UIKeyboardTypeDefault;
-    ntextField.returnKeyType = UIReturnKeyDone;
-    ntextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    ntextField.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
-    ntextField.delegate = self;
-    [ntextField setTag:200+[_addedTagArray count]-1];
-    [scrollview addSubview:ntextField];
-    //add underline
-    UILabel *naline = [[UILabel alloc]initWithFrame:CGRectMake(60, (([_addedTagArray count]-1)+1)*50-2, 150, 2)];
-    naline.text = [NSString stringWithFormat:@""];
-    naline.backgroundColor = UIColorFromRGB(0xd3d3d3);
-    [naline setTag:300+[_addedTagArray count]-1];
-    [scrollview addSubview:naline];
-    
-    //add tag button
-
-    addTag.frame = CGRectMake(220, 10+([_addedTagArray count]-1)*50, 40, 40);
-
-    UIButton *ncutTagButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [ncutTagButton setBackgroundColor:UIColorFromRGB(0xd3d3d3)];
-    ncutTagButton.frame = CGRectMake(270, 10+([_addedTagArray count]-1)*50, 40, 40);
-    [ncutTagButton setTitle:@"-" forState:UIControlStateNormal];
-    [ncutTagButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:20]];
-    [ncutTagButton addTarget:self action:@selector(deleteTag:) forControlEvents:UIControlEventTouchUpInside];
-    [ncutTagButton setTag:400+[_addedTagArray count]-1];
-    [scrollview addSubview: ncutTagButton];
-
-    [self updateUI];
 }
 
 - (void)updateUI
@@ -642,10 +676,7 @@
     _tf.frame = CGRectMake(10, [_addedTagArray count]*50+10, 300, 80+30);
     line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30, 300, 2);
     photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30, 320, 155);
-    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295);
-//    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
-//    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
-//    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
+    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295+180);
 }
 
 - (void)deleteTag:(UIButton *) sender{
@@ -713,9 +744,6 @@
     line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30, 300, 2);
     photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30, 320, 155);
     scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295);
-//    weiboButton.frame = CGRectMake(10, [addedTagArray count]*50+10+270+30, 30, 30);
-//    wechatButton.frame = CGRectMake(50, [addedTagArray count]*50+10+270+30, 30, 30);
-//    renrenButton.frame = CGRectMake(90, [addedTagArray count]*50+10+270+30, 30, 30);
     if(textView.tag == 0) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
@@ -735,9 +763,6 @@
         _tf.frame = CGRectMake(10, [_addedTagArray count]*50, 300, _tf.contentSize.height);
         line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30+_tf.contentSize.height-110-20, 300, 2);
         photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30+_tf.contentSize.height-110-20, 320, 155);
-        weiboButton.frame = CGRectMake(10, [_addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30, 30);
-        wechatButton.frame = CGRectMake(50, [_addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30-10, 30);
-        renrenButton.frame = CGRectMake(90, [_addedTagArray count]*50+10+270+30+_tf.contentSize.height-110-20, 30-10, 30);
     }
     if([textView.text length] == 0)
     {
