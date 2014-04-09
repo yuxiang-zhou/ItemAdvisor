@@ -56,6 +56,7 @@
 		D41D547418A98C350074C182 /* haha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D41D547318A98C350074C182 /* haha.jpeg */; };
 		D4272C2D18F2AE9B0070E920 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4272C2C18F2AE9B0070E920 /* PostCell.m */; };
 		D4272C3018F2B80B0070E920 /* choco_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4272C2F18F2B80B0070E920 /* choco_1.jpg */; };
+		D4272C3318F561520070E920 /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4272C3218F561520070E920 /* AccountCell.m */; };
 		D4297D5C18B69EEF002CFC8E /* PrepareRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */; };
 		D43DC73118D9FA4300C454C0 /* AllocManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D43DC73018D9FA4300C454C0 /* AllocManager.m */; };
 		D44C451518D881A7005488C0 /* addPicCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = D44C451418D881A7005488C0 /* addPicCamera.png */; };
@@ -205,6 +206,8 @@
 		D4272C2B18F2AE9B0070E920 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		D4272C2C18F2AE9B0070E920 /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		D4272C2F18F2B80B0070E920 /* choco_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = choco_1.jpg; sourceTree = "<group>"; };
+		D4272C3118F561520070E920 /* AccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		D4272C3218F561520070E920 /* AccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
 		D4297D5A18B69EEF002CFC8E /* PrepareRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRegisterViewController.h; sourceTree = "<group>"; };
 		D4297D5B18B69EEF002CFC8E /* PrepareRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRegisterViewController.m; sourceTree = "<group>"; };
 		D43DC72F18D9FA4300C454C0 /* AllocManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllocManager.h; sourceTree = "<group>"; };
@@ -477,6 +480,8 @@
 			children = (
 				D4272C2B18F2AE9B0070E920 /* PostCell.h */,
 				D4272C2C18F2AE9B0070E920 /* PostCell.m */,
+				D4272C3118F561520070E920 /* AccountCell.h */,
+				D4272C3218F561520070E920 /* AccountCell.m */,
 			);
 			name = "Show Post";
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				2737229318ABCAD000D94103 /* PostEntity.m in Sources */,
 				D472C06518AE20C300D7DEC2 /* TLAlertView.m in Sources */,
 				D463AE4118E04BD700A0F4E6 /* AFHTTPRequestOperation.m in Sources */,
+				D4272C3318F561520070E920 /* AccountCell.m in Sources */,
 				D4272C2D18F2AE9B0070E920 /* PostCell.m in Sources */,
 				D40897C618B95AE20015D954 /* XWEditPhotoViewController.m in Sources */,
 				7FC1DBFB18A27AAC005C216C /* MsgViewController.m in Sources */,

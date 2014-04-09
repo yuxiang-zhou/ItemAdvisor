@@ -15,19 +15,19 @@
 
 @implementation AccountViewController
 
-static NSString *CellIdentifier = @"CellIdentifier";
+static NSString *CellIdentifier = @"PostCellIdentifier";
+static NSString *CellIdentifier1 = @"AccountCellIdentifier";
 
 - (void)viewDidLoad
 {
     //Create scroll view
-    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 415)];
-    scrollview.showsVerticalScrollIndicator=YES;
-    scrollview.scrollEnabled=YES;
-    scrollview.userInteractionEnabled=YES;
-    [self.view addSubview:scrollview];
-    scrollview.contentSize = CGSizeMake(320,220+([UserManager getUserManager].noPost)*530);
+//    UIScrollView *scrollview=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, 320, 415)];
+//    scrollview.showsVerticalScrollIndicator=YES;
+//    scrollview.scrollEnabled=YES;
+//    scrollview.userInteractionEnabled=YES;
+//    [self.view addSubview:scrollview];
+//    scrollview.contentSize = CGSizeMake(320,220+([UserManager getUserManager].noPost)*530);
     //create post arrays
-    _postList = [[NSMutableArray alloc]init];
     
     //Create 4 buttons switching contents in view
     //日志
@@ -106,90 +106,96 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [thingsNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
     [self.view addSubview: thingsNum];
     
-    //Create profile pic
-    UIImageView *myProfile = [[UIImageView alloc] init];
-    if (![UserManager getUserManager].profile) {
-        myProfile.image = [UIImage imageNamed:@"haha.jpeg"];
-    }else{
-        myProfile.image = [UserManager getUserManager].profile;
-    }
-    myProfile.frame = CGRectMake(0, 0, 160, 160);
-    [scrollview addSubview:myProfile];
-    
-    
-    //Create and Initialise username
-    NSString *nameString = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];
-    UITextView *tfn = [[UITextView alloc] initWithFrame:CGRectMake(165, 60, 150, 30)];
-    tfn.textColor = [UIColor blackColor];
-    tfn.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
-    tfn.text = nameString;
-    tfn.editable = NO;
-    [scrollview addSubview:tfn];
-    
-    //Create and Initialise introduction
-    NSString *intro = [NSString stringWithFormat:@"%@", [UserManager getUserManager].description];
-    UITextView *tf = [[UITextView alloc] initWithFrame:CGRectMake(165, 90, 150, 65)];
-    tf.textColor = [UIColor blackColor];
-    tf.font = [UIFont fontWithName:@"Trebuchet MS" size:11];
-    tf.text = intro;
-    tf.editable = NO;
-    [scrollview addSubview:tf];
-    
-    //Create edit button
-    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [editButton setBackgroundColor:UIColorFromRGB(0x502d25)];
-    editButton.frame = CGRectMake(0, 160, 320, 60);
-    [editButton setTitle:@"编  辑" forState:UIControlStateNormal];
-    [editButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:22]];
-    [scrollview addSubview: editButton];
+//    //Create profile pic
+//    UIImageView *myProfile = [[UIImageView alloc] init];
+//    if (![UserManager getUserManager].profile) {
+//        myProfile.image = [UIImage imageNamed:@"haha.jpeg"];
+//    }else{
+//        myProfile.image = [UserManager getUserManager].profile;
+//    }
+//    myProfile.frame = CGRectMake(0, 0, 160, 160);
+//    [scrollview addSubview:myProfile];
+//    
+//    
+//    //Create and Initialise username
+//    NSString *nameString = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];
+//    UILabel *tfn = [[UILabel alloc] initWithFrame:CGRectMake(165, 60, 150, 30)];
+//    tfn.textColor = [UIColor blackColor];
+//    tfn.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
+//    tfn.text = nameString;
+//    [tfn sizeToFit];
+//    tfn.numberOfLines = 0;
+//    [scrollview addSubview:tfn];
+//    
+//    //Create and Initialise introduction
+//    NSString *intro = [NSString stringWithFormat:@"%@", [UserManager getUserManager].description];
+//    UILabel *tf = [[UILabel alloc] initWithFrame:CGRectMake(165, 90, 150, 65)];
+//    tf.textColor = [UIColor blackColor];
+//    tf.font = [UIFont fontWithName:@"Trebuchet MS" size:11];
+//    tf.text = intro;
+//    [tf sizeToFit];
+//    tf.numberOfLines = 0;
+//    [scrollview addSubview:tf];
+//    
+//    //Create edit button
+//    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [editButton setBackgroundColor:UIColorFromRGB(0x502d25)];
+//    editButton.frame = CGRectMake(0, 160, 320, 60);
+//    [editButton setTitle:@"编  辑" forState:UIControlStateNormal];
+//    [editButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:22]];
+//    [scrollview addSubview: editButton];
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    _postList = [[NSMutableArray alloc]init];
+    
     [[PostManager getPostManager]getUserPost:[UserManager getUserManager].userId range:NSMakeRange(1, [UserManager getUserManager].noPost) withDelegate:self];
     
-    _nameArray = [[NSMutableArray alloc]init];
-    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+//    _nameArray = [[NSMutableArray alloc]init];
+//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
+//    
+//    _dataArray = [[NSMutableArray alloc]init];
+//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
+//    
+//    _addedTagArray = [[NSMutableArray alloc]init];
+//    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
+//    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
+//    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     
-    _dataArray = [[NSMutableArray alloc]init];
-    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-    
-    _addedTagArray = [[NSMutableArray alloc]init];
-    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
-    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
-    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
-    
-    _postTable = [self createTableViewWithHeight:([UserManager getUserManager].noPost)*530];
+    _postTable = [self createTableViewWithHeight:415];
     _postTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_postTable registerClass:[PostCell class] forCellReuseIdentifier:CellIdentifier];
-    [scrollview addSubview:_postTable];
+    [_postTable registerClass:[AccountCell class] forCellReuseIdentifier:CellIdentifier1];
+    [self.view addSubview:_postTable];
     
 }
 
 - (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list{
     if (isSuccess.boolValue) {
         [_postList addObjectsFromArray:list];
+        [_postTable reloadData];
     }
 }
 
 - (UITableView *)createTableViewWithHeight:(CGFloat)height{
     CGFloat x = 0;
-    CGFloat y = 221;
+    CGFloat y = 40;
     CGFloat width = self.view.frame.size.width;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView * tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
-    tableView.scrollEnabled = NO;
-    tableView.showsVerticalScrollIndicator = NO;
+    tableView.scrollEnabled = YES;
+    tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
     tableView.bounces = YES;
     
@@ -200,32 +206,59 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_postList count];
+    return [_postList count]+1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [PostCell cellHeight];
+    if (indexPath.row == 0) {
+        return [AccountCell cellHeight];
+    }else{
+        return [PostCell cellHeight];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    if (indexPath.row == 0) {
+        AccountCell *cell = (AccountCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+        if (!cell) {
+            cell = [[AccountCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1];
+        }
+        cell.nickname.text = [NSString stringWithFormat:@"%@%@",[UserManager getUserManager].lastName,[UserManager getUserManager].firstName];
+        cell.intro.text = [UserManager getUserManager].description;
+        [self performSelectorInBackground:@selector(loadProfile:) withObject:cell];
+        cell.color = UIColorFromRGB(0x502d25);
+        [cell createContent];
+        return cell;
+    }else{
+        PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!cell) {
+            cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).tags];
+        cell.color = UIColorFromRGB(0x502d25);
+        cell.name.text = ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).username;
+        cell.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).images objectAtIndex:0]]];
+        [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
+        [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).content];
+        [cell createContentInCell];
+        [cell createTagLabels];
+        return cell;
     }
     
-    cell.addedTagArray = _addedTagArray;
-    cell.color = UIColorFromRGB(0x502d25);
-    cell.name.text = [UserManager getUserManager].firstName;
-    cell.firstPic.image = [UIImage imageNamed:@"choco_1.jpg"];
-    [self putLabelTextInCell:cell withOrder:indexPath.row];
-    
-    return cell;
 }
 
--(void)putLabelTextInCell:(PostCell *)cell withOrder:(NSInteger)order{
-    [cell.desc setText:((PostEntity *)[_postList objectAtIndex:order]).content];
-    [cell.desc sizeToFit];
+-(void) loadProfile:(AccountCell *)cell{
+    if (!cell.profilePic.image) {
+        cell.profilePic.image = [UserManager getUserManager].profile;
+    }
+}
+
+-(void) loadImage:(PostCell*)cell{
+    if (!cell.firstPic.image) {
+        cell.firstPic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.url]];
+    }
 }
 
 - (void)didReceiveMemoryWarning

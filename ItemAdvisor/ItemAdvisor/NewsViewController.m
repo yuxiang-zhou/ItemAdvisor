@@ -103,11 +103,11 @@ static NSString *CellIdentifier = @"CellIdentifier";
         
     }
     
-    //cell.addedTagArray = ((PostEntity *)[_postList objectAtIndex:indexPath.row]).tags;
-    [cell.addedTagArray addObjectsFromArray:_addedTagArray];
+    [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row]).tags];
     cell.color = UIColorFromRGB(0x2a477a);
-    cell.profilePic.image = [UIImage imageNamed:@"sky.jpg"];
-    cell.name.text = [NSString stringWithFormat:@"Xiaoming"];
+    cell.profileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",((PostEntity *)[_postList objectAtIndex:indexPath.row]).profileURL]];
+    [self performSelectorInBackground:@selector(loadProfile:) withObject:cell];
+    cell.name.text = ((PostEntity *)[_postList objectAtIndex:indexPath.row]).username;
     cell.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[((PostEntity *)[_postList objectAtIndex:indexPath.row]).images objectAtIndex:0]]];
     [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
     [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row]).content];
@@ -118,8 +118,16 @@ static NSString *CellIdentifier = @"CellIdentifier";
     return cell;
 }
 
+-(void) loadProfile:(PostCell *)cell{
+    if (!cell.profilePic.image) {
+        cell.profilePic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.profileUrl]];
+    }
+}
+
 -(void) loadImage:(PostCell*)cell{
-    cell.firstPic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.url]];
+    if (!cell.firstPic.image) {
+        cell.firstPic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.url]];
+    }
 }
 
 

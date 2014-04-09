@@ -36,6 +36,7 @@
 @property (strong,nonatomic)UILabel *tagDecisionMark;
 
 @property NSURL* url;
+@property NSURL* profileUrl;
 
 +(CGFloat)cellHeight;
 -(void)createContentInCell;
