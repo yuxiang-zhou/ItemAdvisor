@@ -12,6 +12,7 @@
 #import "ImageFilterProcessViewController.h"
 #import "PostManager.h"
 #import "UserManager.h"
+#import "TagEntity.h"
 #import "ELCImagePickerController.h"
 #import "ELCImagePickerController.h"
 #import "ELCAlbumPickerController.h"

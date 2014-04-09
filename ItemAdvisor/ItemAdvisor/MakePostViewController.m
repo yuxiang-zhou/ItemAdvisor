@@ -59,8 +59,18 @@
 - (IBAction)sendPost:(id)sender {
     [self checkCover];
     if ([_addedPicArray count] != 0 || _tf.textStorage != nil) {
-        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:_addedTagArray imageList:_addedPicArray contents:[_tf.textStorage string] withDelegate:self];
+        [[PostManager getPostManager]newPost:[UserManager getUserManager].userId tagList:[self getTagEntityArray:_addedTagArray] imageList:_addedPicArray contents:[_tf.textStorage string] withDelegate:self];
     }
+}
+
+- (NSMutableArray *)getTagEntityArray:(NSMutableArray *)tagNumberArray{
+    NSMutableArray *tagEntityArray = [[NSMutableArray alloc]init];
+    for (int i=0; i<[tagNumberArray count]; i++) {
+        UITextField *tagText = (UITextField *)[scrollview viewWithTag:200+i];
+        TagEntity *tag = [[TagEntity alloc]initWithType:(NSInteger)[tagNumberArray objectAtIndex:i] Desc:tagText.text];
+        [tagEntityArray addObject:tag];
+    }
+    return tagEntityArray;
 }
 
 - (void)onPost:(NSNumber *) isSuccess description:(NSString *)desc
