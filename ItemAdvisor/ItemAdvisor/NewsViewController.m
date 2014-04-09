@@ -50,7 +50,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     
-    [[PostManager getPostManager]getUserPost:[UserManager getUserManager].userId range:NSMakeRange(1, [UserManager getUserManager].noPost) withDelegate:self];
+    [[PostManager getPostManager]getPublicPostwithDelegate:self];
     
     _postList = [[NSMutableArray alloc]init];
     
@@ -64,12 +64,13 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list{
     if (isSuccess.boolValue) {
         [_postList addObjectsFromArray:list];
+        [_postTable reloadData];
     }
 }
 
 - (UITableView *)createTableViewWithHeight:(CGFloat)height{
     CGFloat x = 0;
-    CGFloat y = 221;
+    CGFloat y = 0;
     CGFloat width = self.view.frame.size.width;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
@@ -102,21 +103,25 @@ static NSString *CellIdentifier = @"CellIdentifier";
         
     }
     
-    cell.addedTagArray = ((PostEntity *)[_postList objectAtIndex:indexPath.row]).tags;
+    //cell.addedTagArray = ((PostEntity *)[_postList objectAtIndex:indexPath.row]).tags;
+    [cell.addedTagArray addObjectsFromArray:_addedTagArray];
     cell.color = UIColorFromRGB(0x2a477a);
     cell.profilePic.image = [UIImage imageNamed:@"sky.jpg"];
     cell.name.text = [NSString stringWithFormat:@"Xiaoming"];
-    cell.firstPic.image = [((PostEntity *)[_postList objectAtIndex:indexPath.row]).images objectAtIndex:0] ;
-    [self putLabelTextInCell:cell withOrder:indexPath.row];
+    cell.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[((PostEntity *)[_postList objectAtIndex:indexPath.row]).images objectAtIndex:0]]];
+    [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
+    [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row]).content];
     [cell createContentInCell];
+    [cell createTagLabels];
+    
     
     return cell;
 }
 
--(void)putLabelTextInCell:(PostCell *)cell withOrder:(NSInteger)order{
-    [cell.desc setText:((PostEntity *)[_postList objectAtIndex:order]).content];
-    [cell.desc sizeToFit];
+-(void) loadImage:(PostCell*)cell{
+    cell.firstPic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.url]];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
