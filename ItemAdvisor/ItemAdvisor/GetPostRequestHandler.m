@@ -9,6 +9,7 @@
 #import "GetPostRequestHandler.h"
 #import "PostManager.h"
 #import "PostEntity.h"
+#import "TagEntity.h"
 
 @implementation GetPostRequestHandler
 
@@ -24,7 +25,8 @@
             postEntity.NumberOfViews = [[post objectForKey:@"no_view"] integerValue];
             postEntity.content = [post objectForKey:@"content"];
             postEntity.timeStamp = [NSDate dateWithTimeIntervalSince1970:[[post objectForKey:@"time_stamp"] integerValue]];
-            
+            postEntity.username = [post objectForKey:@"firstname"];
+            postEntity.profileURL = [NSString stringWithFormat:@"http://113.55.0.233/itemadvisor/img/profile/%@.jpg", [post objectForKey:@"email"]];
             NSMutableArray *images = [NSMutableArray new];
             NSMutableArray *tags = [NSMutableArray new];
             
@@ -34,6 +36,7 @@
             
             for (NSDictionary *tag in [post objectForKey:@"tags"]) {
                 [tags addObject:[[NSNumber alloc] initWithInteger:[[tag objectForKey:@"tag_type"] integerValue]]];
+                [tags addObject:[[TagEntity alloc] initWithType:[[tag objectForKey:@"tag_type"] integerValue] Desc:[tag objectForKey:@"tag_desc"]]];
             }
             
             postEntity.images = images;

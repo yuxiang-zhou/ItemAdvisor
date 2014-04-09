@@ -42,7 +42,7 @@
     
     // Override point for customization after application launch.
     
-    //[self testCases]; // comment out when finish
+//    [self testCases]; // comment out when finish
     
     return YES;
 }
@@ -53,13 +53,6 @@
     range.location = 0;
     [[PostManager getPostManager] getUserPost:4 range:range withDelegate:self];
 }
-
-- (void)onGetPost:(NSNumber *) isSuccess content:(NSArray *)list {
-    NSLog(@"get post test");
-}
-
-
-
 
 					
 - (void)applicationWillResignActive:(UIApplication *)application
