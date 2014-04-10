@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostEntity.h"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface DetailPostViewController : UIViewController
+@interface DetailPostViewController : UIViewController <UITextViewDelegate>
+
+@property UIButton *textButton;
+@property UILabel *textButtonText;
+@property UIImageView *textButtonLogo;
+@property UIButton *picButton;
+@property UILabel *picButtonText;
+@property UIImageView *picButtonLogo;
+@property UIButton *comButton;
+@property UILabel *comButtonText;
+@property UIImageView *comButtonLogo;
+@property UIScrollView *mainContent;
+@property UITextView *desc;
+
+@property PostEntity *post;
 
 @end

@@ -10,6 +10,7 @@
                 <navigationController definesPresentationContext="YES" id="seZ-5v-0wg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="广场" image="second" id="oQw-tn-o15"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="v1b-sc-Vev">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -40,7 +41,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <segue destination="GqY-3z-rIr" kind="push" identifier="NewsToDetailPost" id="z2R-2b-OGT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSU-x7-wVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,6 +76,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="TFU-zK-g15" id="vqc-tA-cGr"/>
@@ -129,6 +135,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQa-6v-2LI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,7 +157,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="No0-Vn-0dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="-143"/>
+            <point key="canvasLocation" x="2257" y="657"/>
         </scene>
         <!--Navigation Controller - 信息-->
         <scene sceneID="LTj-0v-Qhd">
@@ -158,6 +165,7 @@
                 <navigationController definesPresentationContext="YES" id="HFo-wV-CBv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="信息" image="second" id="knR-8K-Mh4"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="TaS-CG-F9v">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -176,6 +184,7 @@
                 <navigationController definesPresentationContext="YES" id="eSB-AQ-ACz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="搜素" image="second" id="bO6-Ym-Gzd"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8nQ-im-Bjf">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -194,6 +203,7 @@
                 <navigationController definesPresentationContext="YES" id="cdQ-7N-Dzt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="我" image="second" id="5M7-7g-tiw"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="YvG-Vh-yco">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -223,7 +233,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <segue destination="GqY-3z-rIr" kind="push" identifier="AccountToDetailPost" id="ss6-oW-EOl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyO-ra-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -486,7 +500,7 @@
         <scene sceneID="Vex-rW-GRa">
             <objects>
                 <tabBarController id="8YX-ce-x5E" customClass="TabBarViewController" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -502,6 +516,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-138" y="-44"/>
+        </scene>
+        <!--Detail Post View Controller - 日志正文-->
+        <scene sceneID="VK5-9L-Zgp">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wiw-bE-WDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="GqY-3z-rIr" customClass="DetailPostViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iEq-T5-JLb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="日志正文" id="oSu-ae-lXO">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="xSd-jc-DCb">
+                            <connections>
+                                <action selector="goBack:" destination="GqY-3z-rIr" id="NTD-az-Qj6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="更多" id="xbH-GQ-FY7"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1930" y="-999"/>
         </scene>
         <!--Choose Tag View Controller - 选择物品-->
         <scene sceneID="61E-Rc-3Np">
@@ -524,13 +562,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="NextStepButton" destination="smM-7b-lyP" id="jrC-YL-ARn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqM-id-7Ty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2817" y="-137"/>
+            <point key="canvasLocation" x="3349" y="611"/>
         </scene>
         <!--Make Post View Controller - 编辑日志-->
         <scene sceneID="5bi-QH-W6f">
@@ -554,14 +593,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="hpR-90-EfO" kind="push" identifier="ChooseTag" id="WUN-GC-etj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqY-j6-yem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2351" y="-137"/>
+            <point key="canvasLocation" x="2787" y="657"/>
         </scene>
     </scenes>
     <resources>
@@ -576,6 +614,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="gjO-3O-nWN"/>
-        <segue reference="ZZm-aj-jPa"/>
+        <segue reference="ss6-oW-EOl"/>
+        <segue reference="aZ7-f1-pPq"/>
     </inferredMetricsTieBreakers>
 </document>

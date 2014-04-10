@@ -105,45 +105,7 @@ static NSString *CellIdentifier1 = @"AccountCellIdentifier";
     thingsNum.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     [thingsNum.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
     [self.view addSubview: thingsNum];
-    
-//    //Create profile pic
-//    UIImageView *myProfile = [[UIImageView alloc] init];
-//    if (![UserManager getUserManager].profile) {
-//        myProfile.image = [UIImage imageNamed:@"haha.jpeg"];
-//    }else{
-//        myProfile.image = [UserManager getUserManager].profile;
-//    }
-//    myProfile.frame = CGRectMake(0, 0, 160, 160);
-//    [scrollview addSubview:myProfile];
-//    
-//    
-//    //Create and Initialise username
-//    NSString *nameString = [NSString stringWithFormat:@"%@ %@", [UserManager getUserManager].lastName, [UserManager getUserManager].firstName];
-//    UILabel *tfn = [[UILabel alloc] initWithFrame:CGRectMake(165, 60, 150, 30)];
-//    tfn.textColor = [UIColor blackColor];
-//    tfn.font = [UIFont fontWithName:@"Trebuchet MS" size:20];
-//    tfn.text = nameString;
-//    [tfn sizeToFit];
-//    tfn.numberOfLines = 0;
-//    [scrollview addSubview:tfn];
-//    
-//    //Create and Initialise introduction
-//    NSString *intro = [NSString stringWithFormat:@"%@", [UserManager getUserManager].description];
-//    UILabel *tf = [[UILabel alloc] initWithFrame:CGRectMake(165, 90, 150, 65)];
-//    tf.textColor = [UIColor blackColor];
-//    tf.font = [UIFont fontWithName:@"Trebuchet MS" size:11];
-//    tf.text = intro;
-//    [tf sizeToFit];
-//    tf.numberOfLines = 0;
-//    [scrollview addSubview:tf];
-//    
-//    //Create edit button
-//    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [editButton setBackgroundColor:UIColorFromRGB(0x502d25)];
-//    editButton.frame = CGRectMake(0, 160, 320, 60);
-//    [editButton setTitle:@"编  辑" forState:UIControlStateNormal];
-//    [editButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:22]];
-//    [scrollview addSubview: editButton];
+
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -151,25 +113,6 @@ static NSString *CellIdentifier1 = @"AccountCellIdentifier";
     _postList = [[NSMutableArray alloc]init];
     
     [[PostManager getPostManager]getUserPost:[UserManager getUserManager].userId range:NSMakeRange(1, [UserManager getUserManager].noPost) withDelegate:self];
-    
-//    _nameArray = [[NSMutableArray alloc]init];
-//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-//    [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
-//    
-//    _dataArray = [[NSMutableArray alloc]init];
-//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-//    [_dataArray addObject:[NSString stringWithFormat:@"Good Morning!"]];
-//    
-//    _addedTagArray = [[NSMutableArray alloc]init];
-//    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
-//    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
-//    [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     
     _postTable = [self createTableViewWithHeight:415];
     _postTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -247,6 +190,12 @@ static NSString *CellIdentifier1 = @"AccountCellIdentifier";
         return cell;
     }
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row != 0) {
+        [self performSegueWithIdentifier:[NSString stringWithFormat:@"AccountToDetailPost"] sender:self];
+    }
 }
 
 -(void) loadProfile:(AccountCell *)cell{

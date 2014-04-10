@@ -22,8 +22,11 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"Making A Post"]){
-        
+    if ([segue.identifier isEqualToString:@"NewsToDetailPost"]) {
+        DetailPostViewController *vc = [segue destinationViewController];
+        NSIndexPath *path = [_postTable indexPathForSelectedRow];
+        vc.post = [[PostEntity alloc]init];
+        vc.post = [_postList objectAtIndex:path.row];
     }
 }
 
@@ -104,6 +107,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     }
     
     [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row]).tags];
+    //[cell.addedTagArray addObjectsFromArray:_dataArray];
     cell.color = UIColorFromRGB(0x2a477a);
     cell.profileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",((PostEntity *)[_postList objectAtIndex:indexPath.row]).profileURL]];
     [self performSelectorInBackground:@selector(loadProfile:) withObject:cell];
@@ -116,6 +120,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:[NSString stringWithFormat:@"NewsToDetailPost"] sender:self];
 }
 
 -(void) loadProfile:(PostCell *)cell{

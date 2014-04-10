@@ -189,6 +189,8 @@
 -(void)createImageView{
     if (!_firstPic) {
         _firstPic = [[UIImageView alloc]initWithFrame:CGRectMake(0, 120, 320, 320)];
+        _firstPic.contentMode = UIViewContentModeScaleAspectFill;
+        _firstPic.clipsToBounds = YES;
         [self addSubview:_firstPic];
     }
 }
