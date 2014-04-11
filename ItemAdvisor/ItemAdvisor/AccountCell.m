@@ -128,7 +128,7 @@
     if (!_editButton) {
         _editButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 160, 320, 60)];
         [_editButton setTitle:@"编  辑" forState:UIControlStateNormal];
-        [_editButton.titleLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:22]];
+        [_editButton.titleLabel setFont:[UIFont fontWithName:@"TrebuchetMS-Bold" size:22]];
         [_editButton setBackgroundColor:_color];
         [self addSubview: _editButton];
     }

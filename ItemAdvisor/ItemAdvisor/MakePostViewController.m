@@ -117,6 +117,7 @@
     scrollview.showsVerticalScrollIndicator=YES;
     scrollview.scrollEnabled=YES;
     scrollview.userInteractionEnabled=YES;
+    scrollview.delegate = self;
     [self.view addSubview:scrollview];
     scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295+100);
     
@@ -753,16 +754,16 @@
     _tf.frame = CGRectMake(10, [_addedTagArray count]*50+10, 300, 110);
     line.frame = CGRectMake(10, [_addedTagArray count]*50+10+88+30, 300, 2);
     photoScroll.frame = CGRectMake(0, [_addedTagArray count]*50+10+100+30, 320, 155);
-    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295);
+    scrollview.contentSize = CGSizeMake(320,[_addedTagArray count]*50+295+180);
     if(textView.tag == 0) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
         textView.tag = 1;
     }
     photoScroll.userInteractionEnabled = NO;
-    scrollview.scrollEnabled = false;
-    CGRect toVisible = CGRectMake(0, [_addedTagArray count]*50, 320, 504);
-    [scrollview scrollRectToVisible:toVisible animated:YES];
+    //scrollview.scrollEnabled = false;
+//    CGRect toVisible = CGRectMake(0, [_addedTagArray count]*50, 320, 504);
+//    [scrollview scrollRectToVisible:toVisible animated:YES];
     
     return YES;
 }
@@ -808,6 +809,23 @@
 -(void)hideKeyboard
 {
     [_tf resignFirstResponder];
+    for (int i=0; i<[_addedTagArray count]; i++) {
+        UITextField *textField = (UITextField *)[scrollview viewWithTag:200+i];
+        [textField resignFirstResponder];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [_tf resignFirstResponder];
+    for (int i=0; i<[_addedTagArray count]; i++) {
+        UITextField *textField = (UITextField *)[scrollview viewWithTag:200+i];
+        [textField resignFirstResponder];
+    }
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    CGFloat y = _tf.frame.origin.y-10;
+    scrollview.contentOffset = CGPointMake(0, y);
 }
 
 //Override function to dismiss keyboard for uitextfield by "Done" button
@@ -815,13 +833,12 @@
     
     [textField resignFirstResponder];
     
-    return NO;
+    return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
     photoScroll.userInteractionEnabled = NO;
     _tf.userInteractionEnabled = NO;
-    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{

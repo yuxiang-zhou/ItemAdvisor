@@ -10,7 +10,7 @@
 #import "PostEntity.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface DetailPostViewController : UIViewController <UITextViewDelegate>
+@interface DetailPostViewController : UIViewController <UIScrollViewDelegate,UITextViewDelegate, UITextFieldDelegate>
 
 @property UIButton *textButton;
 @property UILabel *textButtonText;
@@ -23,7 +23,16 @@
 @property UIImageView *comButtonLogo;
 @property UIScrollView *mainContent;
 @property UITextView *desc;
+@property UIButton *comment;
+@property UIButton *likes;
+@property UIButton *toLike;
+@property UILabel *myCommentLabel;
+@property UITextField *myComment;
+@property UIButton *sendComment;
 
 @property PostEntity *post;
+@property NSMutableArray *picArray;
+@property NSMutableArray *comArray;
+@property NSMutableArray *likesArray;
 
 @end

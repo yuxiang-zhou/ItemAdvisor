@@ -89,6 +89,8 @@
 		D4766C8318D73BED000550BB /* weibo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4766C8018D73BED000550BB /* weibo.jpg */; };
 		D49E119718B69ACD004F2F7D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E119618B69ACD004F2F7D /* RegisterViewController.m */; };
 		D49E119A18B69C00004F2F7D /* DetailPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E119918B69C00004F2F7D /* DetailPostViewController.m */; };
+		D4A7A88418F7F70700CB895B /* car_p.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4A7A88218F7F70700CB895B /* car_p.jpg */; };
+		D4A7A88518F7F70700CB895B /* car_v.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4A7A88318F7F70700CB895B /* car_v.jpg */; };
 		D4B6F91518E1C6BF00703876 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B6F91418E1C6BF00703876 /* AssetsLibrary.framework */; };
 		D4B6F92218E1C75100703876 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B6F91718E1C75100703876 /* ELCAlbumPickerController.m */; };
 		D4B6F92318E1C75100703876 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B6F91918E1C75100703876 /* ELCAsset.m */; };
@@ -258,6 +260,8 @@
 		D49E119618B69ACD004F2F7D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ../RegisterViewController.m; sourceTree = "<group>"; };
 		D49E119818B69C00004F2F7D /* DetailPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPostViewController.h; sourceTree = "<group>"; };
 		D49E119918B69C00004F2F7D /* DetailPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPostViewController.m; sourceTree = "<group>"; };
+		D4A7A88218F7F70700CB895B /* car_p.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car_p.jpg; sourceTree = "<group>"; };
+		D4A7A88318F7F70700CB895B /* car_v.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car_v.jpg; sourceTree = "<group>"; };
 		D4B6F91418E1C6BF00703876 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		D4B6F91618E1C75100703876 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		D4B6F91718E1C75100703876 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
@@ -515,6 +519,8 @@
 		D463AE4918E04C1300A0F4E6 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				D4A7A88218F7F70700CB895B /* car_p.jpg */,
+				D4A7A88318F7F70700CB895B /* car_v.jpg */,
 				D4272C2F18F2B80B0070E920 /* choco_1.jpg */,
 				D463AE4A18E06E9C00A0F4E6 /* tesla.jpg */,
 				D44C451418D881A7005488C0 /* addPicCamera.png */,
@@ -773,8 +779,10 @@
 				D4E63DC518B4E3AE00D27DB3 /* delete.png in Resources */,
 				D46C6A0A18C7C817001151D5 /* car.png in Resources */,
 				D4272C3018F2B80B0070E920 /* choco_1.jpg in Resources */,
+				D4A7A88418F7F70700CB895B /* car_p.jpg in Resources */,
 				7FC1DBD018A257CA005C216C /* Main.storyboard in Resources */,
 				D41AE6CE18BDFF6300D282FC /* camera_btn_ok.png in Resources */,
+				D4A7A88518F7F70700CB895B /* car_v.jpg in Resources */,
 				D44C451518D881A7005488C0 /* addPicCamera.png in Resources */,
 				D41D547418A98C350074C182 /* haha.jpeg in Resources */,
 				D46C6A0818C7BECE001151D5 /* sky.jpg in Resources */,
