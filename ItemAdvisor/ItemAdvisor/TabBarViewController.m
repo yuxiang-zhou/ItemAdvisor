@@ -42,6 +42,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [[self.tabBar.items objectAtIndex:0] setFinishedSelectedImage:[UIImage imageNamed:@"news"] withFinishedUnselectedImage:[UIImage imageNamed:@"news"]];
+    [[self.tabBar.items objectAtIndex:1] setFinishedSelectedImage:[UIImage imageNamed:@"search"] withFinishedUnselectedImage:[UIImage imageNamed:@"search"]];
+    [[self.tabBar.items objectAtIndex:2] setFinishedSelectedImage:[UIImage imageNamed:@"msg"] withFinishedUnselectedImage:[UIImage imageNamed:@"msg"]];
+    [[self.tabBar.items objectAtIndex:3] setFinishedSelectedImage:[UIImage imageNamed:@"account"] withFinishedUnselectedImage:[UIImage imageNamed:@"account"]];
+    
 }
 
 - (void)didReceiveMemoryWarning

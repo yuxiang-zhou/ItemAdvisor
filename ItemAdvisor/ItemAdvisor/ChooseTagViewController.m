@@ -52,13 +52,13 @@
     _NextStepButton.tintColor = [UIColor grayColor];
     
     _selectedList = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 121)];
-    [_selectedList setContentSize:CGSizeMake(320, _selectedList.frame.size.height)];
+    [_selectedList setContentSize:CGSizeMake(325, _selectedList.frame.size.height)];
     [self setUpScrollView:_selectedList with:UIColorFromRGB(0x2D9DD7)];
     [self initialSelectedList];
     [self.view addSubview:_selectedList];
     
     _itemList = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 121, 320, 262)];
-    [_itemList setContentSize:CGSizeMake(640, _itemList.frame.size.height)];
+    //[_itemList setContentSize:CGSizeMake(640, _itemList.frame.size.height)];
     [self setUpScrollView:_itemList with:UIColorFromRGB(0xFFB837)];
     [self initialItemList];
     [self.view addSubview:_itemList];
@@ -94,7 +94,7 @@
     [_itemList addSubview:title];
     
     //set contentsize
-    [_itemList setContentSize:CGSizeMake(_itemList.frame.size.width, _itemList.frame.size.height)];
+    [_itemList setContentSize:CGSizeMake(325, _itemList.frame.size.height)];
     
     //Insert buttons(show the catalog clothes first)
     for (int i=0; i<9; i++) {
@@ -210,9 +210,11 @@
         if ([self numOfItemsIn:(int)sender.tag] > 9) {
             [_itemList setContentSize:CGSizeMake(510, _itemList.frame.size.height)];
         }else {
-            [_itemList setContentSize:CGSizeMake(_itemList.frame.size.width, _itemList.frame.size.height)];
+            [_itemList setContentSize:CGSizeMake(325, _itemList.frame.size.height)];
         }
     }
+    _itemList.showsHorizontalScrollIndicator = NO;
+    _itemList.showsHorizontalScrollIndicator = YES;
 }
 
 -(void)updateSelectedListBy:(UIButton *)sender{
@@ -238,8 +240,14 @@
     [_selectedList addSubview: itemButton];
     
     //set scrollview
-    [_selectedList setContentSize:CGSizeMake([_addedTagArray count]*100+10, _selectedList.frame.size.height)];
+    if ([_addedTagArray count]>3) {
+        [_selectedList setContentSize:CGSizeMake([_addedTagArray count]*100+10, _selectedList.frame.size.height)];
+    }else{
+        [_selectedList setContentSize:CGSizeMake(325, _selectedList.frame.size.height)];
+    }
     [_selectedList setContentOffset:CGPointMake(0, 0)];
+    _selectedList.showsHorizontalScrollIndicator = NO;
+    _selectedList.showsHorizontalScrollIndicator = YES;
 }
 
 -(void)deleteButton:(UIButton *)sender{

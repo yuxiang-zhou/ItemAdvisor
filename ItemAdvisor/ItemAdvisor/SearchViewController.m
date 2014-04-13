@@ -19,6 +19,28 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from
+    _searchBar.delegate = self;
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 44, 320, 411)];
+    _scrollView.contentSize = CGSizeMake(320, 416);
+    _scrollView.showsVerticalScrollIndicator = YES;
+    _scrollView.delegate = self;
+    [self.view addSubview:_scrollView];
+    
+    //Create gesture for scroll view to dismiss keyboard
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditSearch)];
+    
+    // prevents the scroll view from swallowing up the touch event of child buttons
+    tapGesture.cancelsTouchesInView = NO;
+    [_scrollView addGestureRecognizer:tapGesture];
+
+}
+
+- (void)endEditSearch{
+    [_searchBar resignFirstResponder];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [_searchBar resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
