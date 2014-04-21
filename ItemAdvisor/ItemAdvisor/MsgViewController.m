@@ -46,7 +46,52 @@
     _msgButtonLogo.frame = CGRectMake(68, 6, 24, 24);
     [_msgButton addSubview:_msgButtonLogo];
     
+    
+    
 }
+
+- (UITableView *)createTableViewWithHeight:(CGFloat)height{
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGFloat width = self.view.frame.size.width;
+    CGRect tableFrame = CGRectMake(x, y, width, height);
+    
+    UITableView * tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
+    
+    tableView.scrollEnabled = YES;
+    tableView.showsVerticalScrollIndicator = YES;
+    tableView.userInteractionEnabled = YES;
+    tableView.bounces = YES;
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    return tableView;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_contactArray count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:[NSString stringWithFormat:@"NewsToDetailPost"] sender:self];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
