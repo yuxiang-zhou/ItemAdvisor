@@ -120,6 +120,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     PostEntity* pe = [_postList objectAtIndex:indexPath.row];
     cell.firstPic.image = nil;
+    cell.profilePic.image = nil;
     cell.post = pe;
     cell.color = UIColorFromRGB(0x2a477a);
     cell.name.text = pe.username;
@@ -130,15 +131,14 @@ static NSString *CellIdentifier = @"CellIdentifier";
         [self performSelectorInBackground:@selector(loadImage:) withObject:@(indexPath.row)];
     }
     
+    if(pe.profile)
+        cell.profilePic.image = pe.profile;
+    
     [cell.desc setText:pe.content];
     [cell.addedTagArray addObjectsFromArray: pe.tags];
     
     [cell createContentInCell];
     [cell createTagLabels];
-    
-    [self performSelectorInBackground:@selector(loadProfile:) withObject:cell];
-    
-    
     
     return cell;
 }
@@ -179,7 +179,9 @@ static NSString *CellIdentifier = @"CellIdentifier";
         }
         [self releaseLock];
         NSLog(@"loading: %d", loadIndex.intValue);
-        [self downloadImg:[_postList objectAtIndex:loadIndex.integerValue]];
+        PostEntity* pe = [_postList objectAtIndex:loadIndex.integerValue];
+        pe.profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pe.profileURL]]];
+        [self downloadImg:pe];
         [_postTable reloadData];
     }
 }

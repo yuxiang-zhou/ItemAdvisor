@@ -27,6 +27,7 @@
         _NumberOfThumbUp = 0;
         _NumberOfThumbDown = 0;
         _NumberOfViews = 0;
+        _profile = nil;
     }
     return self;
 }
