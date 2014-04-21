@@ -39,7 +39,7 @@
                 [tags addObject:[[TagEntity alloc] initWithType:[[tag objectForKey:@"tag_type"] integerValue] Desc:[tag objectForKey:@"tag_desc"]]];
             }
             
-            postEntity.images = images;
+            postEntity.imageURLs = images;
             postEntity.tags = tags;
             
             [posts addObject:postEntity];

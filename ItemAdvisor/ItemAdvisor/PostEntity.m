@@ -20,6 +20,7 @@
     if(self = [super init]) {
         _content = @"";
         _images = [NSMutableArray new]; // store URL, not UIImage
+        _imageURLs = [NSMutableArray new];
         _tags = [NSMutableArray new];   // store NSNumber
 //        _timeStamp;
         _postID = 0;
