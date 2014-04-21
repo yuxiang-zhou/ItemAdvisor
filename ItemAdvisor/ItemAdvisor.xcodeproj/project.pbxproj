@@ -339,8 +339,6 @@
 		275A60EE18B4F9B2002F123B /* PostModel */ = {
 			isa = PBXGroup;
 			children = (
-				2737228E18ABC6F200D94103 /* PostManager.h */,
-				2737228F18ABC6F200D94103 /* PostManager.m */,
 				2737229118ABCAD000D94103 /* PostEntity.h */,
 				2737229218ABCAD000D94103 /* PostEntity.m */,
 				2737229718ABD89D00D94103 /* PostCommemts.h */,
@@ -354,6 +352,8 @@
 		7F9C0FD718B7C88A00D022FE /* BridgeModel */ = {
 			isa = PBXGroup;
 			children = (
+				2737228E18ABC6F200D94103 /* PostManager.h */,
+				2737228F18ABC6F200D94103 /* PostManager.m */,
 				7F198FDE18ABD59700FC5E61 /* BridgeManager.h */,
 				7F198FDF18ABD59700FC5E61 /* BridgeManager.m */,
 				7F24547A18ABB7D300896C81 /* UserManager.h */,

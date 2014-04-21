@@ -19,10 +19,9 @@
 -(id)init {
     if(self = [super init]) {
         _content = @"";
-        _images = [NSMutableArray new]; // store URL, not UIImage
-        _imageURLs = [NSMutableArray new];
-        _tags = [NSMutableArray new];   // store NSNumber
-//        _timeStamp;
+        _images = [NSMutableArray new];     // store image
+        _imageURLs = [NSMutableArray new];  // store URL
+        _tags = [NSMutableArray new];       // store NSNumber
         _postID = 0;
         _userID = 0;
         _NumberOfThumbUp = 0;
