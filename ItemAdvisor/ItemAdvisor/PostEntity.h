@@ -17,6 +17,7 @@
 @property NSDate *timeStamp;
 @property NSString *username;
 @property NSString *profileURL;
+@property UIImage *profile;
 @property NSInteger postID;
 @property NSInteger userID;
 @property NSInteger NumberOfThumbUp;
