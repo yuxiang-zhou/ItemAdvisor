@@ -11,7 +11,9 @@
 
 @interface SearchViewController : UIViewController <UITextFieldDelegate, UISearchBarDelegate, UIScrollViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property UIButton *user;
+@property UIButton *text;
+@property UISearchBar *searchBar;
 @property UIScrollView *scrollView;
 
 

@@ -58,13 +58,6 @@
                     <view key="view" contentMode="scaleToFill" id="Aif-Fl-xMK">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" placeholder="搜物品标签，用户，日志文" id="e0z-Ej-R8n">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -79,7 +72,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="searchBar" destination="e0z-Ej-R8n" id="J1V-16-fgW"/>
                         <outlet property="searchDisplayController" destination="TFU-zK-g15" id="vqc-tA-cGr"/>
                     </connections>
                 </viewController>
@@ -591,8 +583,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AmL-Wc-7Ca"/>
         <segue reference="gjO-3O-nWN"/>
+        <segue reference="aZ7-f1-pPq"/>
         <segue reference="ss6-oW-EOl"/>
     </inferredMetricsTieBreakers>
 </document>
