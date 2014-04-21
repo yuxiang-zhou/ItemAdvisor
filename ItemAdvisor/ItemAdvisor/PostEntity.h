@@ -11,7 +11,8 @@
 @interface PostEntity : NSObject
 
 @property NSString *content;
-@property NSMutableArray *images; // store URL, not UIImage
+@property NSMutableArray *images; // store UIImage
+@property NSMutableArray *imageURLs; // store URL
 @property NSMutableArray *tags;   // store NSNumber
 @property NSDate *timeStamp;
 @property NSString *username;

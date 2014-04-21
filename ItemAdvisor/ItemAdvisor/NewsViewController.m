@@ -106,17 +106,20 @@ static NSString *CellIdentifier = @"CellIdentifier";
         
     }
     
-    [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row]).tags];
-    //[cell.addedTagArray addObjectsFromArray:_dataArray];
+    PostEntity* pe = [_postList objectAtIndex:indexPath.row];
+    cell.firstPic.image = nil;
+    cell.post = pe;
     cell.color = UIColorFromRGB(0x2a477a);
-    cell.profileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",((PostEntity *)[_postList objectAtIndex:indexPath.row]).profileURL]];
-    [self performSelectorInBackground:@selector(loadProfile:) withObject:cell];
-    cell.name.text = ((PostEntity *)[_postList objectAtIndex:indexPath.row]).username;
-    cell.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[((PostEntity *)[_postList objectAtIndex:indexPath.row]).images objectAtIndex:0]]];
-    [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
-    [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row]).content];
+    cell.name.text = pe.username;
+    
+    [cell.desc setText:pe.content];
+    [cell.addedTagArray addObjectsFromArray: pe.tags];
+    
     [cell createContentInCell];
     [cell createTagLabels];
+    
+    [self performSelectorInBackground:@selector(loadProfile:) withObject:cell];
+    [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
     
     
     return cell;
@@ -128,14 +131,19 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 -(void) loadProfile:(PostCell *)cell{
     if (!cell.profilePic.image) {
-        cell.profilePic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.profileUrl]];
+        cell.profilePic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:cell.post.profileURL]]];
     }
 }
-
+	
 -(void) loadImage:(PostCell*)cell{
-    if (!cell.firstPic.image) {
-        cell.firstPic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:cell.url]];
+    UIImage *img;
+    if([cell.post.images count]) {
+        img = [cell.post.images objectAtIndex:0];
+    } else {
+        img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[cell.post.imageURLs objectAtIndex:0]]]];
+        [cell.post.images addObject:img];
     }
+    cell.firstPic.image = img;
 }
 
 
