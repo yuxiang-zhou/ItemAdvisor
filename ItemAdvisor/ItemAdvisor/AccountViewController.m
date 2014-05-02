@@ -182,7 +182,7 @@ static NSString *CellIdentifier1 = @"AccountCellIdentifier";
         [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).tags];
         cell.color = UIColorFromRGB(0x502d25);
         cell.name.text = ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).username;
-        cell.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).images objectAtIndex:0]]];
+        cell.url = [NSURL URLWithString:[((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).imageURLs objectAtIndex:0]];
         [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
         [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).content];
         [cell createContentInCell];
