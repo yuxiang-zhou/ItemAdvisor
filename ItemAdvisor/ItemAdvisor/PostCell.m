@@ -25,6 +25,7 @@
     [self createColorButtonWithColor:_color];
     [self addContentColorButton];
     [self createTagArray];
+    [self createTagLabels];
     [self createImageView];
     [self createTexts];
 }
