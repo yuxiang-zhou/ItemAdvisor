@@ -10,6 +10,7 @@
 #import "UserManager.h"
 #import "PostManager.h"
 #import "TagEntity.h"
+#import "SharedResources.h"
 
 @implementation BridgeManager
 {
@@ -35,13 +36,13 @@
 - (id)init {	
     if (self = [super init]) {
         // init propertise
-        gerUserURL = @"http://113.55.0.233/itemadvisor/getuser.php";
-        loginURL = @"http://113.55.0.233/itemadvisor/login.php";
-        registerURL = @"http://113.55.0.233/itemadvisor/register.php";
-        uploadProfileURL = @"http://113.55.0.233/itemadvisor/uploadImg.php";
-        uploadPostURL = @"http://113.55.0.233/itemadvisor/uploadPost.php";
-        addPostURL = @"http://113.55.0.233/itemadvisor/addPost.php";
-        getPostURL = @"http://113.55.0.233/itemadvisor/getPost.php";
+        gerUserURL = [NSString stringWithFormat:@"%@/getuser.php", [SharedResources getResources].serverIP];
+        loginURL = [NSString stringWithFormat:@"%@/login.php", [SharedResources getResources].serverIP];
+        registerURL = [NSString stringWithFormat:@"%@/register.php", [SharedResources getResources].serverIP];
+        uploadProfileURL = [NSString stringWithFormat:@"%@/uploadImg.php", [SharedResources getResources].serverIP];
+        uploadPostURL = [NSString stringWithFormat:@"%@/uploadPost.php", [SharedResources getResources].serverIP];
+        addPostURL = [NSString stringWithFormat:@"%@/addPost.php", [SharedResources getResources].serverIP];
+        getPostURL = [NSString stringWithFormat:@"%@/getPost.php", [SharedResources getResources].serverIP];
     }
     return self;
 }

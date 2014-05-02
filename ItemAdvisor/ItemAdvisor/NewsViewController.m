@@ -195,7 +195,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 -(void) acquireLock {
-    while(loadingLock) {[NSThread sleepForTimeInterval:10];}
+    while(loadingLock) {[NSThread sleepForTimeInterval:0.1];}
     loadingLock = YES;
 }
 
