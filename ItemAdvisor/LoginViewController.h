@@ -12,5 +12,6 @@
 @interface LoginViewController : UIViewController <UserManagerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
+@property (strong, nonatomic) IBOutlet UIView *loginView;
 
 @end

@@ -16,25 +16,40 @@
 @interface PostCell : UITableViewCell
 
 @property (strong,nonatomic)NSMutableArray *addedTagArray;
+@property NSMutableArray *tagsWithoutText;
+@property NSMutableArray *tagsWithText;
+@property CGFloat prevTagY;
+@property CGFloat prevImgY;
+@property CGFloat prevTxtY;
 
-@property (strong,nonatomic)UIButton *colorButton;
 @property (strong,nonatomic)UIColor *color;
+
+@property (strong,nonatomic)UIButton *toAccountViewButton;
 @property (strong,nonatomic)UIImageView *profilePic;
 @property (strong,nonatomic)UILabel *name;
-@property (strong,nonatomic)UILabel *time;
+//@property (strong,nonatomic)UILabel *time;
+
+@property (strong,nonatomic)UIButton *toLikeButton;
+@property (strong,nonatomic)UIButton *toCommentButton;
 
 @property (strong,nonatomic)UIImageView *firstPic;
 @property (strong,nonatomic)UILabel *desc;
-@property (strong,nonatomic)UILabel *likeLabel;
-@property (strong,nonatomic)UILabel *likes;
-@property (strong,nonatomic)UILabel *oneCommentLabel;
-@property (strong,nonatomic)UILabel *recentCommment;
-@property (strong,nonatomic)UIButton *makeCommentButton;
-@property (strong,nonatomic)UILabel * commentLogo;
-@property (strong,nonatomic)UILabel *commentLogoText;
-@property (strong,nonatomic)UIButton *toLikeButton;
+
+//@property (strong,nonatomic)UILabel *likeLabel;
+//@property (strong,nonatomic)UILabel *likes;
+//@property (strong,nonatomic)UILabel *oneCommentLabel;
+//@property (strong,nonatomic)UILabel *recentCommment;
+
+
+@property (strong,nonatomic)UILabel * readLogo;
+@property (strong,nonatomic)UILabel *readLogoText;
+
 @property (strong,nonatomic)UILabel * likeLogo;
 @property (strong,nonatomic)UILabel *likeLogoText;
+
+@property (strong,nonatomic)UILabel * commentLogo;
+@property (strong,nonatomic)UILabel *commentLogoText;
+
 @property (strong,nonatomic)UILabel *tagDecisionMark;
 
 @property NSURL* url;
@@ -43,6 +58,6 @@
 
 +(CGFloat)cellHeight;
 -(void)createContentInCell;
--(void)createTagLabels;
+-(void)updateContent;
 
 @end

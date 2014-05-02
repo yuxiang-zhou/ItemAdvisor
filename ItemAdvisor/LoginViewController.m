@@ -50,11 +50,37 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
+    if (textField == _userName) {
+        [_passWord becomeFirstResponder];
+    }
     [textField resignFirstResponder];
     
     return NO;
 }
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.5];
+    _loginView.frame = CGRectMake(_loginView.frame.origin.x, _loginView.frame.origin.y-56, _loginView.frame.size.width, _loginView.frame.size.height);
+    
+    [UIView commitAnimations];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.5];
+    _loginView.frame = CGRectMake(_loginView.frame.origin.x, _loginView.frame.origin.y+56, _loginView.frame.size.width, _loginView.frame.size.height);
+    
+    [UIView commitAnimations];
+    return YES;
+}
+
+
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];

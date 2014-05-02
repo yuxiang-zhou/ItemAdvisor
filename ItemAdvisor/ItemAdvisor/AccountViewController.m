@@ -186,7 +186,6 @@ static NSString *CellIdentifier1 = @"AccountCellIdentifier";
         [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
         [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).content];
         [cell createContentInCell];
-        [cell createTagLabels];
         return cell;
     }
     

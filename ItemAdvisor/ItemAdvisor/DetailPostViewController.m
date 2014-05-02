@@ -343,9 +343,14 @@
     return NO;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.5];
     CGFloat y = _myCommentLabel.frame.origin.y;
     _mainContent.contentOffset = CGPointMake(0, y);
+    [UIView commitAnimations];
+    return YES;
 }
 
 
