@@ -30,22 +30,22 @@
 }
 
 -(void)loadImageAtBackend:(NSString*)imgURL storeAt:(UIImageView*)imgStore {
-    if([[imgBuffer allKeys] containsObject:imgURL]) {
-        [imgStore setImage:imgBuffer[imgURL]];
-    } else {
+    if(imgStore) [imgStore setImage:imgBuffer[imgURL]];
+    if(![[imgBuffer allKeys] containsObject:imgURL]) {
         imgBuffer[imgURL] = [[UIImage alloc] init];
-        [imgStore setImage:imgBuffer[imgURL]];
         [self performSelectorInBackground:@selector(loadImage:) withObject:@{@"img":imgURL,@"store":imgStore}];
     }
+}
+
+-(void)preloadImage:(NSString *)imgURL {
+    [self loadImageAtBackend:imgURL storeAt:nil];
 }
 
 -(void)loadImage:(NSDictionary*)imgBlock {
     UIImageView* imgView = imgBlock[@"store"];
     UIImage* img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgBlock[@"img"]]]];
-    if(imgView && img) {
-        [imgView setImage:img];
-        imgBuffer[imgBlock[@"img"]] = img;
-    }
+    if(img) imgBuffer[imgBlock[@"img"]] = img;
+    if(imgView) [imgView setImage:img];
 }
 
 @end
