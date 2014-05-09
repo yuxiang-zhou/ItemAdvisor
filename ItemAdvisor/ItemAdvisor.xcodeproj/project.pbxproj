@@ -13,6 +13,9 @@
 		27DD881C18A536E90093827D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD881B18A536E90093827D /* SettingsViewController.m */; };
 		7F198FE018ABD59700FC5E61 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F198FDF18ABD59700FC5E61 /* BridgeManager.m */; };
 		7F24547C18ABB7D300896C81 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F24547B18ABB7D300896C81 /* UserManager.m */; };
+		7F27AB18191CFAE00053D349 /* ViewPostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AB17191CFAE00053D349 /* ViewPostRequestHandler.m */; };
+		7F27AB1B191CFAF60053D349 /* LikePostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AB1A191CFAF60053D349 /* LikePostRequestHandler.m */; };
+		7F27AB1E191CFB060053D349 /* CommentPostRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F27AB1D191CFB060053D349 /* CommentPostRequestHandler.m */; };
 		7F9A648218A534F600FBDB9C /* MakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A648118A534F600FBDB9C /* MakePostViewController.m */; };
 		7F9C0FD018B50D6200D022FE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FCF18B50D6200D022FE /* RequestHandler.m */; };
 		7F9C0FD318B5128F00D022FE /* UserInfoRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C0FD218B5128F00D022FE /* UserInfoRequestHandler.m */; };
@@ -139,6 +142,12 @@
 		7F198FDF18ABD59700FC5E61 /* BridgeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeManager.m; sourceTree = "<group>"; };
 		7F24547A18ABB7D300896C81 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManager.h; path = ../UserManager.h; sourceTree = "<group>"; };
 		7F24547B18ABB7D300896C81 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserManager.m; path = ../UserManager.m; sourceTree = "<group>"; };
+		7F27AB16191CFAE00053D349 /* ViewPostRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPostRequestHandler.h; sourceTree = "<group>"; };
+		7F27AB17191CFAE00053D349 /* ViewPostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPostRequestHandler.m; sourceTree = "<group>"; };
+		7F27AB19191CFAF60053D349 /* LikePostRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikePostRequestHandler.h; sourceTree = "<group>"; };
+		7F27AB1A191CFAF60053D349 /* LikePostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikePostRequestHandler.m; sourceTree = "<group>"; };
+		7F27AB1C191CFB060053D349 /* CommentPostRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentPostRequestHandler.h; sourceTree = "<group>"; };
+		7F27AB1D191CFB060053D349 /* CommentPostRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentPostRequestHandler.m; sourceTree = "<group>"; };
 		7F9A648018A534F600FBDB9C /* MakePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakePostViewController.h; sourceTree = "<group>"; };
 		7F9A648118A534F600FBDB9C /* MakePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakePostViewController.m; sourceTree = "<group>"; };
 		7F9C0FCE18B50D6200D022FE /* RequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
@@ -387,6 +396,12 @@
 				7FD29CEF18D8FB9F004723D7 /* GetPostRequestHandler.m */,
 				7FD29CF218D9F452004723D7 /* UploadPostImageRequestHandler.h */,
 				7FD29CF318D9F452004723D7 /* UploadPostImageRequestHandler.m */,
+				7F27AB16191CFAE00053D349 /* ViewPostRequestHandler.h */,
+				7F27AB17191CFAE00053D349 /* ViewPostRequestHandler.m */,
+				7F27AB19191CFAF60053D349 /* LikePostRequestHandler.h */,
+				7F27AB1A191CFAF60053D349 /* LikePostRequestHandler.m */,
+				7F27AB1C191CFB060053D349 /* CommentPostRequestHandler.h */,
+				7F27AB1D191CFB060053D349 /* CommentPostRequestHandler.m */,
 			);
 			name = RequestHandlers;
 			sourceTree = "<group>";
@@ -833,6 +848,7 @@
 				D4B6F93418E1F3D400703876 /* ItemManager.m in Sources */,
 				7FD29CF418D9F452004723D7 /* UploadPostImageRequestHandler.m in Sources */,
 				D40897CC18B9623B0015D954 /* XWCropWindow.m in Sources */,
+				7F27AB18191CFAE00053D349 /* ViewPostRequestHandler.m in Sources */,
 				D4B6F92318E1C75100703876 /* ELCAsset.m in Sources */,
 				7FD29CED18D8E221004723D7 /* AddPostRequestHandler.m in Sources */,
 				D463AE4818E04BD700A0F4E6 /* UIImageView+AFNetworking.m in Sources */,
@@ -847,6 +863,7 @@
 				7F9C0FD618B5362C00D022FE /* LoginRequestHandler.m in Sources */,
 				7FC1DBD618A257CA005C216C /* SearchViewController.m in Sources */,
 				7F9C0FDE18B7CFDF00D022FE /* RegisterUserRequestHandler.m in Sources */,
+				7F27AB1E191CFB060053D349 /* CommentPostRequestHandler.m in Sources */,
 				7F9C0FD318B5128F00D022FE /* UserInfoRequestHandler.m in Sources */,
 				D4B6F92418E1C75100703876 /* ELCAssetCell.m in Sources */,
 				D41AE6F218BE323200D282FC /* ImageFilterProcessViewController.m in Sources */,
@@ -854,6 +871,7 @@
 				D4B6F92618E1C75100703876 /* ELCImagePickerController.m in Sources */,
 				D40897C718B95AE20015D954 /* XWPhotoEditorViewController.m in Sources */,
 				7F9C0FD018B50D6200D022FE /* RequestHandler.m in Sources */,
+				7F27AB1B191CFAF60053D349 /* LikePostRequestHandler.m in Sources */,
 				D49E119A18B69C00004F2F7D /* DetailPostViewController.m in Sources */,
 				7FC1DBCD18A257CA005C216C /* AppDelegate.m in Sources */,
 				7FC1DBD318A257CA005C216C /* NewsViewController.m in Sources */,
