@@ -174,19 +174,28 @@ static NSString *CellIdentifier1 = @"AccountCellIdentifier";
         [cell createContent];
         return cell;
     }else{
-        PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (!cell) {
-            cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
+        PostCell *cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+//        [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).tags];
+//        cell.color = UIColorFromRGB(0x502d25);
+//        cell.name.text = ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).username;
+//        cell.url = [NSURL URLWithString:[((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).imageURLs objectAtIndex:0]];
+//        [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
+//        [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).content];
         
-        [cell.addedTagArray addObjectsFromArray: ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).tags];
+        PostEntity* pe = [_postList objectAtIndex:indexPath.row-1];
+        cell.post = pe;
         cell.color = UIColorFromRGB(0x502d25);
-        cell.name.text = ((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).username;
-        cell.url = [NSURL URLWithString:[((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).imageURLs objectAtIndex:0]];
-        [self performSelectorInBackground:@selector(loadImage:) withObject:cell];
-        [cell.desc setText:((PostEntity *)[_postList objectAtIndex:indexPath.row-1]).content];
+        cell.name.text = pe.username;
+        
+        [[SharedResources getResources] loadImageAtBackend:pe.imageURLs[0] storeAt:cell.firstPic];
+        [[SharedResources getResources] loadImageAtBackend:pe.profileURL storeAt:cell.profilePic];
+        
+        [cell.desc setText:pe.content];
+        [cell.addedTagArray addObjectsFromArray: pe.tags];
+        
         [cell createContentInCell];
-        [cell createTagLabels];
+        
         return cell;
     }
     

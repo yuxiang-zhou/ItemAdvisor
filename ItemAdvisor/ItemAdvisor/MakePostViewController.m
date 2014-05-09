@@ -761,10 +761,6 @@
         textView.tag = 1;
     }
     photoScroll.userInteractionEnabled = NO;
-    //scrollview.scrollEnabled = false;
-//    CGRect toVisible = CGRectMake(0, [_addedTagArray count]*50, 320, 504);
-//    [scrollview scrollRectToVisible:toVisible animated:YES];
-    
     return YES;
 }
 

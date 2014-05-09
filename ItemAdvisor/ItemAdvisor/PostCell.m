@@ -8,7 +8,6 @@
 
 #import "PostCell.h"
 
-
 @implementation PostCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -17,234 +16,230 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self createContentInCell];
+        _tagInMark = 0;
     }
     return self;
 }
 
 -(void)createContentInCell{
-    [self createColorButtonWithColor:_color];
-    [self addContentColorButton];
     [self createTagArray];
-    [self createTagLabels];
-    [self createImageView];
-    [self createTexts];
+    if (_tagInMark) {
+        [self createTopPartWithColor:_color];
+        [self createMiddlePart];
+        [self createBottomPart];
+    }
 }
 
 -(void)createTagArray{
     if (!_addedTagArray) {
         _addedTagArray = [[NSMutableArray alloc]init];
     }
+    if (!_tagsWithText) {
+        _tagsWithText = [[NSMutableArray alloc]init];
+    }
+    if (!_tagsWithoutText) {
+        _tagsWithoutText = [[NSMutableArray alloc]init];
+    }
 }
 
 -(void)setColor:(UIColor *)color{
     _color = color;
-    [_colorButton setBackgroundColor:color];
+    [_toAccountViewButton setBackgroundColor:color];
 }
 
--(void)createColorButtonWithColor:(UIColor *)color{
-    if (!_colorButton) {
-        _colorButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _colorButton.frame = CGRectMake(160, 0, 160, 120);
-        [self addSubview: _colorButton];
+-(void)createTopPartWithColor:(UIColor *)color{
+    //头像，名字，和进入个人主页的按键
+    if (!_toAccountViewButton) {
+        _toAccountViewButton = [[UIButton alloc]initWithFrame:CGRectMake(140, 0, 180, 50)];
+        [self addSubview:_toAccountViewButton];
     }
-}
-
--(void)addContentColorButton{
-    //Create profile pic in color button of post
     if (!_profilePic) {
-        _profilePic = [[UIImageView alloc] init];
-        _profilePic.frame = CGRectMake(10, 10, 46, 46);
-        [_colorButton addSubview:_profilePic];
+        _profilePic = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [_toAccountViewButton addSubview:_profilePic];
     }
-    
-    //Create labels in right button of post
     if (!_name) {
-        _name = [[UILabel alloc]initWithFrame:CGRectMake(8, 63, 100, 25)];
-        _name.backgroundColor = [UIColor clearColor];
+        _name = [[UILabel alloc]initWithFrame:CGRectMake(60, 10, 100, 25)];
         _name.textColor = [UIColor whiteColor];
         _name.textAlignment = NSTextAlignmentLeft;
-        [_name setFont:[UIFont fontWithName:@"Trebuchet MS" size:23]];
-        [_colorButton  addSubview:_name];
+        [_name setFont:[UIFont fontWithName:@"Trebuchet MS" size:15]];
+        [_toAccountViewButton  addSubview:_name];
     }
-    
     if (!_time) {
-        _time = [[UILabel alloc]initWithFrame:CGRectMake(8, 90, 100, 25)];
-        _time.text = [NSString stringWithFormat:@"08/08/2014"];
-        _time.backgroundColor = [UIColor clearColor];
-        _time.textColor = [UIColor whiteColor];
+        _time = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, 100, 20)];
+        _time.textColor = [UIColor lightGrayColor];
         _time.textAlignment = NSTextAlignmentLeft;
-        [_time setFont:[UIFont fontWithName:@"Trebuchet MS" size:12]];
-        [_colorButton  addSubview:_time];
+        [_time setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        _time.text = @"2天前";
+        [self addSubview:_time];
+    }
+}
+
+-(void)createMiddlePart{
+    //物品标签，包括小图标和文字
+    UILabel *truthTagWithText = (UILabel *)[self viewWithTag:100];
+    UILabel *truthTagWithoutText = (UILabel *)[self viewWithTag:200];
+    
+    if (!truthTagWithText && !truthTagWithoutText) {
         
-
-    }
-
-}
-
--(void)createTexts{
-    if (!_desc) {
-        _desc = [[UILabel alloc]initWithFrame:CGRectMake(10, 445, 320, 15)];
-        _desc.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
-        _desc.textColor = [UIColor blackColor];
-        _desc.backgroundColor = [UIColor clearColor];
-        _desc.textAlignment = NSTextAlignmentLeft;
-        _desc.numberOfLines = 0;
-        [self addSubview:_desc];
-    }
-    
-    //Create like list in the post
-    if (!_likeLabel) {
-        _likeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 465, 10, 10)];
-        _likeLabel.backgroundColor = [UIColor lightGrayColor];
-        _likeLabel.layer.cornerRadius = 10.0;
-        [self addSubview:_likeLabel];
-    }
-    
-    if (!_likes) {
-        _likes = [[UILabel alloc]initWithFrame:CGRectMake(25, 462, 320, 15)];
-        _likes.text = [NSString stringWithFormat:@"(List of Likes)"];
-        _likes.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
-        _likes.textColor = [UIColor blackColor];
-        _likes.backgroundColor = [UIColor clearColor];
-        _likes.textAlignment = NSTextAlignmentLeft;
-        //[_likes sizeToFit];
-        _likes.numberOfLines = 0;
-        [self addSubview:_likes];
-    }
-    
-    
-    //Create like list in the post
-    if (!_oneCommentLabel) {
-        _oneCommentLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 482, 10, 10)];
-        _oneCommentLabel.backgroundColor = [UIColor lightGrayColor];
-        _oneCommentLabel.layer.cornerRadius = 10.0;
-        [self addSubview:_oneCommentLabel];
-    }
-    
-    if (!_recentCommment) {
-        _recentCommment = [[UILabel alloc]initWithFrame:CGRectMake(25, 479, 320, 15)];
-        _recentCommment.text = [NSString stringWithFormat:@"(Show one comment, and the num of comments)"];
-        _recentCommment.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
-        _recentCommment.textColor = [UIColor blackColor];
-        _recentCommment.backgroundColor = [UIColor clearColor];
-        _recentCommment.textAlignment = NSTextAlignmentLeft;
-        //[_recentCommment sizeToFit];
-        _recentCommment.numberOfLines = 0;
-        [self addSubview:_recentCommment];
-    }
-    
-    
-    //--Create buttons in the bottom
-    if (!_makeCommentButton) {
-        _makeCommentButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 500, 60, 25)];
-        [_makeCommentButton setBackgroundColor:UIColorFromRGB(0xd2d2d2)];
-        [self addSubview:_makeCommentButton];
-    }
-    
-    if (!_commentLogo) {
-        _commentLogo= [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 15, 15)];
-        _commentLogo.backgroundColor = [UIColor grayColor];
-        _commentLogo.layer.cornerRadius = 10.0;
-        [_makeCommentButton addSubview:_commentLogo];
-    }
-    
-    if (!_commentLogoText) {
-        _commentLogoText = [[UILabel alloc]initWithFrame:CGRectMake(25, 5, 35, 15)];
-        _commentLogoText.text = [NSString stringWithFormat:@"评论"];
-        _commentLogoText.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
-        _commentLogoText.textColor = [UIColor grayColor];
-        _commentLogoText.backgroundColor = [UIColor clearColor];
-        _commentLogoText.textAlignment = NSTextAlignmentLeft;
-        [_commentLogoText sizeToFit];
-        _commentLogoText.numberOfLines = 0;
-        [_makeCommentButton addSubview:_commentLogoText];
-
-    }
-    if (!_toLikeButton) {
-        _toLikeButton = [[UIButton alloc]initWithFrame:CGRectMake(80, 500, 60, 25)];
-        [_toLikeButton setBackgroundColor:UIColorFromRGB(0xd2d2d2)];
-        [self addSubview:_toLikeButton];
-    }
-    
-    if (!_likeLogo) {
-        _likeLogo= [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 15, 15)];
-        _likeLogo.backgroundColor = [UIColor grayColor];
-        _likeLogo.layer.cornerRadius = 10.0;
-        [_toLikeButton addSubview:_likeLogo];
-    }
-    
-    if (!_likeLogoText) {
-        _likeLogoText = [[UILabel alloc]initWithFrame:CGRectMake(25, 5, 35, 15)];
-        _likeLogoText.text = [NSString stringWithFormat:@"赞"];
-        _likeLogoText.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
-        _likeLogoText.textColor = [UIColor grayColor];
-        _likeLogoText.backgroundColor = [UIColor clearColor];
-        _likeLogoText.textAlignment = NSTextAlignmentLeft;
-        [_likeLogoText sizeToFit];
-        _likeLogoText.numberOfLines = 0;
-        [_toLikeButton addSubview:_likeLogoText];
-    }
-    
-}
-
--(void)createImageView{
-    if (!_firstPic) {
-        _firstPic = [[UIImageView alloc]initWithFrame:CGRectMake(0, 120, 320, 320)];
-        _firstPic.contentMode = UIViewContentModeScaleAspectFill;
-        _firstPic.clipsToBounds = YES;
-        [self addSubview:_firstPic];
-    }
-}
-
--(void)createTagLabels{
-    UILabel *truthTag = (UILabel *)[self viewWithTag:100];
-    if (!truthTag) {
-        for (int i=0; i<[_addedTagArray count]; i++) {
+        [self splitTagsArray];
+        
+        for (int i=0; i<[_tagsWithText count]; i++) {
+            TagEntity *theTag = [[TagEntity alloc]init];
+            theTag = [_tagsWithText objectAtIndex:i];
             
-            UILabel *tag = [[UILabel alloc]init];
+            UILabel *tag = [[UILabel alloc]initWithFrame:CGRectMake(15, 55+30*i, 20, 20)];
             tag.backgroundColor = [UIColor lightGrayColor];
             tag.layer.cornerRadius = 10.0;
             tag.tag = 100+i;
             [self addSubview:tag];
+            UILabel *tagDescription = [[UILabel alloc]initWithFrame:CGRectMake(45, 55+30*i, 255, 20)];
+            tagDescription.text = theTag.description;
+            tagDescription.textAlignment = NSTextAlignmentLeft;
+            [tagDescription setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
             
-            switch (i) {
-                case 0:
-                    tag.frame = CGRectMake(10, 85, 24, 24);
-                    break;
-                case 1:
-                    tag.frame = CGRectMake(44, 85, 24, 24);
-                    break;
-                case 2:
-                    tag.frame = CGRectMake(78, 85, 24, 24);
-                    break;
-                case 3:
-                    tag.frame = CGRectMake(112, 85, 24, 24);
-                    break;
-                case 4:
-                    tag.frame = CGRectMake(10, 50, 24, 24);
-                    break;
-                case 5:
-                    tag.frame = CGRectMake(44, 50, 24, 24);
-                    break;
-                case 6:
-                    tag.frame = CGRectMake(78, 50, 24, 24);
-                    break;
-                case 7:
-                    tag.frame = CGRectMake(112, 50, 24, 24);
-                    break;
-                    
-                default:
-                    tag.frame = CGRectMake(10, 85, 24, 24);
-                    break;
-            }
+            _prevTagY = tag.frame.origin.y+20;
         }
+    //}
+    //if (!truthTagWithText && !truthTagWithoutText) {
+        for (int i=0; i<[_tagsWithoutText count]; i++) {
+            UILabel *tag = [[UILabel alloc]initWithFrame:CGRectMake(15+35*i, 145, 20, 20)];
+            tag.backgroundColor = [UIColor lightGrayColor];
+            tag.layer.cornerRadius = 10.0;
+            tag.tag = 200+i;
+            [self addSubview:tag];
+            NSLog(@"no text in tags");
+            
+            _prevTagY = tag.frame.origin.y+20;
+        }
+    }
+    //图片
+    if (!_firstPic) {
+        _firstPic = [[UIImageView alloc]init];
+        _firstPic.contentMode = UIViewContentModeScaleAspectFill;
+        _firstPic.clipsToBounds = YES;
+        if ([_addedTagArray count]) {
+            _firstPic.frame = CGRectMake(15, _prevTagY+15, 160, [self getImageHeight:_firstPic.image]);
+        }else{
+            _firstPic.frame = CGRectMake(15, 85, 160, [self getImageHeight:_firstPic.image]);
+        }
+        [self addSubview:_firstPic];
+            
+        _prevImgY = _firstPic.frame.origin.y+_firstPic.frame.size.height+5;
+    }
+    //文字叙述
+    if (!_desc){
+        _desc = [[UILabel alloc]initWithFrame:CGRectMake(15, _prevImgY+10, 290, 15)];
+        _desc.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
+        _desc.textColor = [UIColor blackColor];
+        _desc.textAlignment = NSTextAlignmentLeft;
+        _desc.numberOfLines = 0;
+        [self addSubview:_desc];
+        
+        _prevTxtY = _desc.frame.origin.y+_desc.frame.size.height+5;
+    }
+}
 
+-(void)createBottomPart{
+    //先模拟几个数量
+    int NumOfReads = 888;
+    int NumOfLikes = 689;
+    int NumOfCommts = 389;
+    
+    //浏览，赞，评论的数量
+    CGFloat upperY = _prevTxtY+10;
+    if (!_readButton) {
+        _readButton = [[UIButton alloc]initWithFrame:CGRectMake(0, upperY, 107, 42)];
+        _readButton.backgroundColor = UIColorFromRGB(0xe8e8e8);
+        [self addSubview:_readButton];
+    }
+    if (!_readLogo) {
+        _readLogo = [[UILabel alloc]initWithFrame:CGRectMake(30, 12, 30, 15)];
+        _readLogo.text = @"浏览";
+        _readLogo.textColor = [UIColor lightGrayColor];
+        _readLogo.textAlignment = NSTextAlignmentCenter;
+        [_readLogo setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        [_readButton addSubview:_readLogo];
+    }
+    if (!_readLogoText) {
+        _readLogoText = [[UILabel alloc]initWithFrame:CGRectMake(55, 12, 35, 15)];
+        _readLogoText.text = [NSString stringWithFormat:@"%d",NumOfReads];
+        _readLogoText.textColor = [UIColor lightGrayColor];
+        _readLogoText.textAlignment = NSTextAlignmentCenter;
+        [_readLogoText setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        [_readButton addSubview:_readLogoText];
     }
     
+    if (!_likeButton) {
+        _likeButton = [[UIButton alloc]initWithFrame:CGRectMake(107, upperY, 106, 42)];
+        _likeButton.backgroundColor = UIColorFromRGB(0xe8e8e8);
+        [self addSubview:_likeButton];
+    }
+    if (!_likeLogo) {
+        _likeLogo = [[UILabel alloc]initWithFrame:CGRectMake(35, 12, 15, 15)];
+        _likeLogo.text = @"赞";
+        _likeLogo.textColor = [UIColor lightGrayColor];
+        _likeLogo.textAlignment = NSTextAlignmentCenter;
+        [_likeLogo setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        [_likeButton  addSubview:_likeLogo];
+    }
+    if (!_likeLogoText) {
+        _likeLogoText = [[UILabel alloc]initWithFrame:CGRectMake(50, 12, 35, 15)];
+        _likeLogoText.text = [NSString stringWithFormat:@"%d",NumOfLikes];
+        _likeLogoText.textColor = [UIColor lightGrayColor];
+        _likeLogoText.textAlignment = NSTextAlignmentCenter;
+        [_likeLogoText setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        [_likeButton addSubview:_likeLogoText];
+    }
+    
+    if (!_commentButton) {
+        _commentButton = [[UIButton alloc]initWithFrame:CGRectMake(213, upperY, 107, 42)];
+        _commentButton.backgroundColor = UIColorFromRGB(0xe8e8e8);
+        [self addSubview:_commentButton];
+    }
+    if (!_commentLogo) {
+        _commentLogo = [[UILabel alloc]initWithFrame:CGRectMake(30, 12, 30, 15)];
+        _commentLogo.text = @"评论";
+        _commentLogo.textColor = [UIColor lightGrayColor];
+        _commentLogo.textAlignment = NSTextAlignmentCenter;
+        [_commentLogo setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        [_commentButton addSubview:_commentLogo];
+    }
+    if (!_commentLogoText) {
+        _commentLogoText = [[UILabel alloc]initWithFrame:CGRectMake(55, 12, 35, 15)];
+        _commentLogoText.text = [NSString stringWithFormat:@"%d",NumOfCommts];
+        _commentLogoText.textColor = [UIColor lightGrayColor];
+        _commentLogoText.textAlignment = NSTextAlignmentCenter;
+        [_commentLogoText setFont:[UIFont fontWithName:@"Trebuchet MS" size:13]];
+        [_commentButton addSubview:_commentLogoText];
+    }
+}
+
+- (CGFloat)getImageHeight:(UIImage *)image{
+    if (image.size.height > image.size.width) {
+        return 240;
+    }else if (image.size.height == image.size.width){
+        return 160;
+    }else{
+        return 107;
+    }
+}
+
+-(void)splitTagsArray{
+    if (_addedTagArray) {
+        for (int i=0; i<[_addedTagArray count]; i++) {
+            TagEntity *theTag = [[TagEntity alloc]init];
+            theTag = [_addedTagArray objectAtIndex:i];
+            if (!theTag.description.length) {
+                [_tagsWithoutText addObject:theTag];
+            }else{
+                [_tagsWithText addObject:theTag];
+            }
+        }
+    }
 }
 
 +(CGFloat)cellHeight{
-    return 530;
+    return 380;
 }
 
 - (void)awakeFromNib

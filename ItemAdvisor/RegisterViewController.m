@@ -36,6 +36,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [_nickName becomeFirstResponder];
+    
 }
 
 
@@ -132,7 +134,7 @@
 
 - (void)finish:(UIImage *)image didCancel:(BOOL)cancel {
     if (!cancel) {
-        _profileImage = image;
+        _profileImageBig = image;
         [_picker dismissViewControllerAnimated:NO completion:^{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
         [self presentfilter];
@@ -145,7 +147,7 @@
 -(void)presentfilter{
     ImageFilterProcessViewController *fitler = [[ImageFilterProcessViewController alloc] init];
     [fitler setDelegate:self];
-    fitler.currentImage = _profileImage;
+    fitler.currentImage = _profileImageBig;
     [self presentViewController:fitler animated:YES completion:nil];
 }
 
@@ -153,10 +155,11 @@
 {
     //make status bar reappear
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    _profileImageBig = image;
+    _profileImageSmall = [self resizeImage:image toSize:CGSizeMake(120, 120)];
     
-    [_profilePicButton setBackgroundImage:image forState:UIControlStateNormal];
+    [_profilePicButton setBackgroundImage:_profileImageSmall forState:UIControlStateNormal];
     [_profilePicButton setTitle:@"" forState:UIControlStateNormal];
-    _profileImage = image;
 }
 
 #pragma mark -
@@ -182,30 +185,15 @@
     }
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.5];
-    _registerView.frame = CGRectMake(_registerView.frame.origin.x, _registerView.frame.origin.y-50, _registerView.frame.size.width, _registerView.frame.size.height);
-    
-    [UIView commitAnimations];
-    return YES;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.5];
-    _registerView.frame = CGRectMake(_registerView.frame.origin.x, _registerView.frame.origin.y+50, _registerView.frame.size.width, _registerView.frame.size.height);
-                           
-    [UIView commitAnimations];
-    return YES;
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    if (textField == _nickName) {
+        [_emailAddress becomeFirstResponder];
+    }else if (textField == _emailAddress) {
+        [_createdPassword becomeFirstResponder];
+    }else if (textField == _createdPassword){
+        [_confirmedPassword becomeFirstResponder];
+    }
     return YES;
 }
 
@@ -294,7 +282,7 @@
 
 - (void)checkOnline
 {
-    [[UserManager getUserManager] registerUser:_emailAddress.text password:_createdPassword.text nickname:_nickName.text image:_profileImage withDelegate:self];
+    [[UserManager getUserManager] registerUser:_emailAddress.text password:_createdPassword.text nickname:_nickName.text image:_profileImageBig withDelegate:self];
 }
 
 - (void)onRegistUser:(NSNumber *) isSuccess description:(NSString *)desc
