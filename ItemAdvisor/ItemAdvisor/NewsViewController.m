@@ -112,7 +112,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
@@ -138,7 +138,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [cell.addedTagArray addObjectsFromArray: pe.tags];
     
     [cell createContentInCell];
-    [cell updateContent];
     
     return cell;
 }

@@ -27,26 +27,21 @@
 @property (strong,nonatomic)UIButton *toAccountViewButton;
 @property (strong,nonatomic)UIImageView *profilePic;
 @property (strong,nonatomic)UILabel *name;
-//@property (strong,nonatomic)UILabel *time;
-
-@property (strong,nonatomic)UIButton *toLikeButton;
-@property (strong,nonatomic)UIButton *toCommentButton;
+@property (strong,nonatomic)UILabel *time;
 
 @property (strong,nonatomic)UIImageView *firstPic;
 @property (strong,nonatomic)UILabel *desc;
 
-//@property (strong,nonatomic)UILabel *likeLabel;
-//@property (strong,nonatomic)UILabel *likes;
-//@property (strong,nonatomic)UILabel *oneCommentLabel;
-//@property (strong,nonatomic)UILabel *recentCommment;
 
-
+@property UIButton *readButton;
 @property (strong,nonatomic)UILabel * readLogo;
 @property (strong,nonatomic)UILabel *readLogoText;
 
+@property UIButton *likeButton;
 @property (strong,nonatomic)UILabel * likeLogo;
 @property (strong,nonatomic)UILabel *likeLogoText;
 
+@property UIButton *commentButton;
 @property (strong,nonatomic)UILabel * commentLogo;
 @property (strong,nonatomic)UILabel *commentLogoText;
 
@@ -58,6 +53,5 @@
 
 +(CGFloat)cellHeight;
 -(void)createContentInCell;
--(void)updateContent;
 
 @end

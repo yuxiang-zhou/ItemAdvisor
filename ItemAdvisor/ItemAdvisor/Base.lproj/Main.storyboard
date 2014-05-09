@@ -34,7 +34,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="广场浏览" id="EM0-Jd-VkV">
-                        <barButtonItem key="leftBarButtonItem" image="setting" id="y2l-JR-JYE"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="9oy-No-1jG">
                             <connections>
                                 <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="NewsToMakePost" id="ZZm-aj-jPa"/>
@@ -62,7 +61,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="物品搜索" id="ypo-kZ-9eT">
-                        <barButtonItem key="leftBarButtonItem" image="setting" id="tze-m8-VSy"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="u6d-z9-OiW">
                             <connections>
                                 <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="SearchToMakePost" id="aZ7-f1-pPq"/>
@@ -97,7 +95,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="消息列表" id="DIH-ST-i8e">
-                        <barButtonItem key="leftBarButtonItem" image="setting" id="CD3-o9-jlZ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ulk-8x-e0P">
                             <connections>
                                 <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="MsgToMakePost" id="qxO-kZ-Rqz"/>
@@ -195,7 +192,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="个人主页" id="PCa-y3-d9J">
-                        <barButtonItem key="leftBarButtonItem" image="setting" id="HOQ-U1-q0N"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="setting" id="HOQ-U1-q0N"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv">
                             <connections>
                                 <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="AccountToMakePost" id="AmL-Wc-7Ca"/>
@@ -544,7 +541,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kx7-hV-qvk"/>
+        <segue reference="AmL-Wc-7Ca"/>
         <segue reference="ss6-oW-EOl"/>
-        <segue reference="qxO-kZ-Rqz"/>
     </inferredMetricsTieBreakers>
 </document>
