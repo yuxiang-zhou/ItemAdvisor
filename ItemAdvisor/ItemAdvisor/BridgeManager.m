@@ -23,6 +23,9 @@
     NSString* uploadPostURL;
     NSString* addPostURL;
     NSString* getPostURL;
+    NSString* viewPostURL;
+    NSString* likePostURL;
+    NSString* commentPostURL;
 }
 
 + (instancetype)getBridgeManager {
@@ -43,6 +46,9 @@
         uploadPostURL = [NSString stringWithFormat:@"%@/uploadPost.php", [SharedResources getResources].serverIP];
         addPostURL = [NSString stringWithFormat:@"%@/addPost.php", [SharedResources getResources].serverIP];
         getPostURL = [NSString stringWithFormat:@"%@/getPost.php", [SharedResources getResources].serverIP];
+        viewPostURL = [NSString stringWithFormat:@"%@/viewPost.php", [SharedResources getResources].serverIP];
+        likePostURL = [NSString stringWithFormat:@"%@/likePost.php", [SharedResources getResources].serverIP];
+        commentPostURL = [NSString stringWithFormat:@"%@/commentPost.php", [SharedResources getResources].serverIP];
     }
     return self;
 }
@@ -154,7 +160,7 @@
      */
     NSMutableData *body = [NSMutableData data];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%d.jpg\"\r\n",postid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%ld.jpg\"\r\n",postid] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[NSData dataWithData:imageData]];
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -166,10 +172,10 @@
 -(void)newPost:(NSInteger)userID tagList:(NSArray *)tags contents:(NSString *)text {
     NSMutableArray* tagstring = [NSMutableArray array];
     for(TagEntity* te in tags) {
-        [tagstring addObject:[NSString stringWithFormat:@"%d;%@", te.TagType, te.description]];
+        [tagstring addObject:[NSString stringWithFormat:@"%ld;%@", te.TagType, te.description]];
     }
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:addPostURL]];
-    NSString *postString = [NSString stringWithFormat:@"userid=%d&content=%@&tags=%@",userID,text,[tagstring componentsJoinedByString:@","]];
+    NSString *postString = [NSString stringWithFormat:@"userid=%ld&content=%@&tags=%@",userID,text,[tagstring componentsJoinedByString:@","]];
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -178,7 +184,7 @@
 
 -(void)getUserPost:(NSInteger)userID range:(NSRange)range {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:getPostURL]];
-    NSString *postString = [NSString stringWithFormat:@"userid=%d&location=%d&range=%d", userID, range.location, range.length];
+    NSString *postString = [NSString stringWithFormat:@"userid=%ld&location=%ld&range=%ld", userID, range.location, range.length];
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -193,4 +199,17 @@
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:[PostManager getPostManager].getPostRH];
 }
+
+-(void)viewPost:(NSInteger)postID {
+    
+}
+
+-(void)likePost:(NSInteger)postID flag:(NSInteger)flag {
+    
+}
+
+-(void)commentPost:(NSInteger)postID replyTo:(NSInteger)replyID content:(NSString*)content {
+    
+}
+
 @end

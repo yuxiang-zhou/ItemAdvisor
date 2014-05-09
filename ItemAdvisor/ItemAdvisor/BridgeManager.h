@@ -23,5 +23,8 @@
 -(void)uploadPostImage:(UIImage *)image forPost:(NSInteger)postid;
 -(void)getUserPost:(NSInteger)userID range:(NSRange)range;
 -(void)getPublicPost;
+-(void)viewPost:(NSInteger)postID;
+-(void)likePost:(NSInteger)postID flag:(NSInteger)flag;
+-(void)commentPost:(NSInteger)postID replyTo:(NSInteger)replyID content:(NSString*)content;
 
 @end
