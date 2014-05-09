@@ -45,11 +45,10 @@
 @property (strong,nonatomic)UILabel * commentLogo;
 @property (strong,nonatomic)UILabel *commentLogoText;
 
-@property (strong,nonatomic)UILabel *tagDecisionMark;
-
 @property NSURL* url;
 @property NSURL* profileUrl;
 @property PostEntity* post;
+@property NSInteger tagInMark;
 
 +(CGFloat)cellHeight;
 -(void)createContentInCell;

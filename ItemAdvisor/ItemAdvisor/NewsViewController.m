@@ -136,6 +136,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     [cell.desc setText:pe.content];
     [cell.addedTagArray addObjectsFromArray: pe.tags];
+    cell.tagInMark = 1;
     
     [cell createContentInCell];
     

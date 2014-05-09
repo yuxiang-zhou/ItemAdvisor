@@ -16,13 +16,14 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self createContentInCell];
+        _tagInMark = 0;
     }
     return self;
 }
 
 -(void)createContentInCell{
     [self createTagArray];
-    if ([_addedTagArray count]) {
+    if (_tagInMark) {
         [self createTopPartWithColor:_color];
         [self createMiddlePart];
         [self createBottomPart];
@@ -45,14 +46,6 @@
     _color = color;
     [_toAccountViewButton setBackgroundColor:color];
 }
-
-//-(void)createColorButtonWithColor:(UIColor *)color{
-//    if (!_colorButton) {
-//        _colorButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _colorButton.frame = CGRectMake(160, 0, 160, 120);
-//        [self addSubview: _colorButton];
-//    }
-//}
 
 -(void)createTopPartWithColor:(UIColor *)color{
     //头像，名字，和进入个人主页的按键
@@ -106,32 +99,35 @@
             
             _prevTagY = tag.frame.origin.y+20;
         }
-        
-    }
-    if (!truthTagWithText && !truthTagWithoutText) {
+    //}
+    //if (!truthTagWithText && !truthTagWithoutText) {
         for (int i=0; i<[_tagsWithoutText count]; i++) {
             UILabel *tag = [[UILabel alloc]initWithFrame:CGRectMake(15+35*i, 145, 20, 20)];
             tag.backgroundColor = [UIColor lightGrayColor];
             tag.layer.cornerRadius = 10.0;
             tag.tag = 200+i;
             [self addSubview:tag];
+            NSLog(@"no text in tags");
             
             _prevTagY = tag.frame.origin.y+20;
         }
-        
     }
     //图片
     if (!_firstPic) {
-        _firstPic = [[UIImageView alloc]initWithFrame:CGRectMake(15, _prevTagY+15, 160, [self getImageHeight:_firstPic.image])];
+        _firstPic = [[UIImageView alloc]init];
         _firstPic.contentMode = UIViewContentModeScaleAspectFill;
         _firstPic.clipsToBounds = YES;
+        if ([_addedTagArray count]) {
+            _firstPic.frame = CGRectMake(15, _prevTagY+15, 160, [self getImageHeight:_firstPic.image]);
+        }else{
+            _firstPic.frame = CGRectMake(15, 85, 160, [self getImageHeight:_firstPic.image]);
+        }
         [self addSubview:_firstPic];
-        
+            
         _prevImgY = _firstPic.frame.origin.y+_firstPic.frame.size.height+5;
     }
-    
     //文字叙述
-    if (!_desc) {
+    if (!_desc){
         _desc = [[UILabel alloc]initWithFrame:CGRectMake(15, _prevImgY+10, 290, 15)];
         _desc.font = [UIFont fontWithName:@"Trebuchet MS" size:13];
         _desc.textColor = [UIColor blackColor];
@@ -233,7 +229,7 @@
         for (int i=0; i<[_addedTagArray count]; i++) {
             TagEntity *theTag = [[TagEntity alloc]init];
             theTag = [_addedTagArray objectAtIndex:i];
-            if (!theTag.description) {
+            if (!theTag.description.length) {
                 [_tagsWithoutText addObject:theTag];
             }else{
                 [_tagsWithText addObject:theTag];
@@ -243,7 +239,7 @@
 }
 
 +(CGFloat)cellHeight{
-    return 370;
+    return 380;
 }
 
 - (void)awakeFromNib

@@ -192,7 +192,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="个人主页" id="PCa-y3-d9J">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="setting" id="HOQ-U1-q0N"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="setting" style="plain" id="HOQ-U1-q0N"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ix4-cG-WGv">
                             <connections>
                                 <segue destination="1nq-Ch-ZdQ" kind="modal" identifier="AccountToMakePost" id="AmL-Wc-7Ca"/>
