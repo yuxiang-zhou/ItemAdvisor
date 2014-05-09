@@ -15,5 +15,6 @@
 +(instancetype) getResources;
 
 -(void)loadImageAtBackend:(NSString*)imgURL storeAt:(UIImageView*)imgStore;
+-(void)preloadImage:(NSString*)imgURL;
 
 @end
