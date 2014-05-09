@@ -8,6 +8,7 @@
 
 #import "NewsViewController.h"
 #import "MakePostViewController.h"
+#import "SharedResources.h"
 
 @interface NewsViewController ()
 
@@ -17,10 +18,6 @@
 @end
 
 @implementation NewsViewController
-{
-    BOOL loadingLock;
-    NSMutableArray *imgLoadingQueue;
-}
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -38,7 +35,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typicsally from a nib.
-    loadingLock = NO;
+
     _nameArray = [[NSMutableArray alloc]init];
     [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
     [_nameArray addObject:[NSString stringWithFormat:@"Tom"]];
@@ -57,8 +54,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
     [_addedTagArray addObject:[NSNumber numberWithInt:100]];
-    
-    imgLoadingQueue = [NSMutableArray new];
+
     
     [[PostManager getPostManager]getPublicPostwithDelegate:self];
     
@@ -75,11 +71,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
     if (isSuccess.boolValue) {
         [_postList addObjectsFromArray:list];
         [_postTable reloadData];
-        [imgLoadingQueue removeAllObjects];
-        for (NSInteger i = [_postList count] - 1; i >= 0; --i) {
-            [imgLoadingQueue addObject:@(i)];
-        }
-        [self performSelectorInBackground:@selector(loadImageList) withObject:nil];
     }
 }
 
@@ -112,27 +103,15 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PostCell *cell = (PostCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-    }
+    PostCell *cell = [[PostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     PostEntity* pe = [_postList objectAtIndex:indexPath.row];
-    cell.firstPic.image = nil;
-    cell.profilePic.image = nil;
     cell.post = pe;
     cell.color = UIColorFromRGB(0x2a477a);
     cell.name.text = pe.username;
     
-    if ([pe.images count]) {
-        cell.firstPic.image = [pe.images objectAtIndex:0];
-    } else {
-        [self performSelectorInBackground:@selector(loadImage:) withObject:@(indexPath.row)];
-    }
-    
-    if(pe.profile)
-        cell.profilePic.image = pe.profile;
+    [[SharedResources getResources] loadImageAtBackend:pe.imageURLs[0] storeAt:cell.firstPic];
+    [[SharedResources getResources] loadImageAtBackend:pe.profileURL storeAt:cell.profilePic];
     
     [cell.desc setText:pe.content];
     [cell.addedTagArray addObjectsFromArray: pe.tags];
@@ -145,62 +124,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:[NSString stringWithFormat:@"NewsToDetailPost"] sender:self];
-}
-
--(void) loadProfile:(PostCell *)cell{
-    if (!cell.profilePic.image) {
-        cell.profilePic.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:cell.post.profileURL]]];
-    }
-}
-	
--(void) loadImage:(NSNumber *)index{
-    [self acquireLock];
-    {
-        for(NSInteger i = 0; i < [imgLoadingQueue count]; ++i) {
-            NSNumber *item = imgLoadingQueue[i];
-            if(item.integerValue == index.integerValue) {
-                [imgLoadingQueue removeObjectAtIndex:i];
-                [imgLoadingQueue addObject:index];
-            }
-        }
-        
-    }
-    [self releaseLock];
-    
-}
-
--(void) loadImageList {
-    while ([imgLoadingQueue count]) {
-        NSNumber *loadIndex;
-        [self acquireLock];
-        {
-            loadIndex = imgLoadingQueue.lastObject;
-            [imgLoadingQueue removeLastObject];
-        }
-        [self releaseLock];
-        NSLog(@"loading: %d", loadIndex.intValue);
-        PostEntity* pe = [_postList objectAtIndex:loadIndex.integerValue];
-        pe.profile = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pe.profileURL]]];
-        [self downloadImg:pe];
-        [_postTable reloadData];
-    }
-}
-
--(void) downloadImg:(PostEntity*)pe {
-    if ([pe.images count] == 0) {
-        for (NSString* url in pe.imageURLs) {
-            [pe.images addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]]];
-        }
-    }
-}
-
--(void) acquireLock {
-    while(loadingLock) {[NSThread sleepForTimeInterval:0.1];}
-    loadingLock = YES;
-}
-
--(void) releaseLock {
-    loadingLock = NO;
 }
 
 

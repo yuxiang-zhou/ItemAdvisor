@@ -27,7 +27,7 @@
         _NumberOfThumbUp = 0;
         _NumberOfThumbDown = 0;
         _NumberOfViews = 0;
-        _profile = nil;
+        _profile = [[UIImage alloc] init];
     }
     return self;
 }
