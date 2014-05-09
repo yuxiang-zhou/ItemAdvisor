@@ -117,7 +117,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [cell.addedTagArray addObjectsFromArray: pe.tags];
     
     [cell createContentInCell];
-    [cell createTagLabels];
     
     return cell;
 }
