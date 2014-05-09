@@ -23,8 +23,8 @@
 
 -(void)createContentInCell{
     [self createTagArray];
+    [self createTopPartWithColor:_color];
     if (_tagInMark) {
-        [self createTopPartWithColor:_color];
         [self createMiddlePart];
         [self createBottomPart];
     }

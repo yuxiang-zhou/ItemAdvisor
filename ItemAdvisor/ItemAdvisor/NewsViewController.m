@@ -110,13 +110,14 @@ static NSString *CellIdentifier = @"CellIdentifier";
     cell.color = UIColorFromRGB(0x2a477a);
     cell.name.text = pe.username;
     
-    [[SharedResources getResources] loadImageAtBackend:pe.imageURLs[0] storeAt:cell.firstPic];
-    [[SharedResources getResources] loadImageAtBackend:pe.profileURL storeAt:cell.profilePic];
-    
     [cell.desc setText:pe.content];
     [cell.addedTagArray addObjectsFromArray: pe.tags];
-    
+    cell.tagInMark = 1;
+
     [cell createContentInCell];
+    
+    [[SharedResources getResources] loadImageAtBackend:pe.imageURLs[0] storeAt:cell.firstPic];
+    [[SharedResources getResources] loadImageAtBackend:pe.profileURL storeAt:cell.profilePic];
     
     return cell;
 }
