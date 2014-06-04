@@ -14,6 +14,4 @@
 @property NSString  *comment;
 @property NSDate    *timeStamp;
 
-
-
 @end

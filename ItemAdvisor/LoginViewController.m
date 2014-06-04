@@ -23,9 +23,14 @@
     [self performSegueWithIdentifier:@"registerSegue" sender:self];
 }
 
+-(void)appInit {
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self performSelectorInBackground:@selector(appInit) withObject:nil];
 	// Do any additional setup after loading the view.
 }
 

@@ -24,10 +24,10 @@
         // init propertise
         _addPostRH = [[AddPostRequestHandler alloc] initWithDelegate:self];
         _getPostRH = [[GetPostRequestHandler alloc] initWithDelegate:self];
-        _uploadPostImageRH = [[UploadPostImageRequestHandler alloc] initWithDelegate:_addPostRH];
         _viewPostRH = [[ViewPostRequestHandler alloc] initWithDelegate:self];
         _likePostRH = [[LikePostRequestHandler alloc] initWithDelegate:self];
         _commentPostRH = [[CommentPostRequestHandler alloc] initWithDelegate:self];
+        _uploadPostImageRH = [[UploadPostImageRequestHandler alloc] initWithDelegate:_addPostRH];
     }
     return self;
 }
